@@ -1,679 +1,255 @@
 <!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="トレプロの新規リード獲得。9月の有効CPAは145,009円まで悪化。戻す目安は10万円未満。指名検索とLP01は良く、媒体の本体とエリア効率は改善が必要。">
-  <meta name="theme-color" content="#102d36">
-  <title>トレプロ｜新規リード獲得 アカウントプランニング</title>
-  <script>document.documentElement.classList.add("js");</script>
-  <style>
-    :root {
-      --ink:#163038; --muted:#5d7278; --line:#d5e2df; --paper:#f4f7f5; --white:#fff;
-      --navy:#102d36; --teal:#0c7c68; --teal-soft:#e5f4ef; --blue:#3d7197;
-      --amber:#b86a2f; --amber-soft:#fff4e8; --red:#b42318; --red-soft:#fdeceb;
-      --hold:#6d7f86; --goal:#1c3a34;
-      --shadow:0 10px 30px rgba(16,45,54,.06);
-      --font:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
-      --serif:Georgia,"Yu Mincho","Hiragino Mincho ProN",serif;
-    }
-    * { box-sizing:border-box }
-    html { scroll-behavior:smooth; scroll-padding-top:72px }
-    body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; letter-spacing:.02em }
-    img,svg { max-width:100%; display:block }
-    a { color:var(--teal) }
-    button,input { font:inherit }
-    :focus-visible { outline:3px solid #0c7c68; outline-offset:3px }
-    .wrap { width:min(1120px, calc(100% - 40px)); margin:auto }
-    .nav { position:sticky; top:0; z-index:20; background:rgba(255,252,248,.92); backdrop-filter:saturate(1.2) blur(10px); border-bottom:1px solid var(--line) }
-    .nav .wrap { width:min(1120px, 100%); display:flex; gap:4px; overflow-x:auto; padding:0 12px; scrollbar-width:none }
-    .nav .wrap::-webkit-scrollbar { display:none }
-    .nav a { flex:0 0 auto; text-decoration:none; color:var(--muted); font-size:.86rem; font-weight:700; padding:14px 12px; min-height:48px; display:inline-flex; align-items:center; border-bottom:3px solid transparent }
-    .nav a.is-on,.nav a:hover { color:var(--navy); border-bottom-color:var(--teal) }
-    .hero { background:radial-gradient(900px 420px at 90% -10%, rgba(232,196,150,.18), transparent 50%), linear-gradient(145deg,#0e2830 0%,#16464a 70%,#1d5c52 100%); color:#f7f4ee; overflow:hidden; position:relative }
-    .hero .wrap { padding:54px 0 64px; display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:end }
-    .eyebrow { font-size:.72rem; letter-spacing:.18em; font-weight:800; color:#efc08a }
-    .hero h1 { font-family:var(--serif); font-weight:500; font-size:clamp(2rem, 4.4vw, 3.35rem); line-height:1.28; letter-spacing:.02em; margin:12px 0 16px }
-    .hero p { margin:0; color:#d7e6e1; max-width:40rem }
-    .hero-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px }
-    .hero-meta span { border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:5px 10px; font-size:.75rem; color:#d5e4df }
-    .hero-chart { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:18px; padding:16px 16px 10px }
-    .hero-chart p { color:#d7e6e1; font-size:.78rem; margin:0 0 8px }
-    .section { padding:72px 0; border-bottom:1px solid var(--line) }
-    .section h2 { font-family:var(--serif); font-weight:500; font-size:clamp(1.7rem, 3vw, 2.4rem); line-height:1.35; margin:8px 0 12px }
-    .lede { color:var(--muted); max-width:44rem; margin:0 0 28px }
-    .kicker { font-size:.75rem; letter-spacing:.16em; font-weight:800; color:var(--teal) }
-    .flags { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px }
-    .flag { display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:4px 10px; font-size:.75rem; font-weight:800; background:#eef3f1; color:var(--ink) }
-    .flag i { width:8px; height:8px; border-radius:99px; background:currentColor; display:block }
-    .flag.good { background:var(--teal-soft); color:var(--teal) }
-    .flag.bad { background:var(--red-soft); color:var(--red) }
-    .flag.watch { background:var(--amber-soft); color:var(--amber) }
-    .flag.hold { background:#eef2f3; color:var(--hold) }
-    .filters { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px }
-    .filters button { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px; padding:8px 14px; min-height:44px; font-weight:800; font-size:.85rem; cursor:pointer }
-    .filters button.is-on { background:var(--navy); color:#fff; border-color:var(--navy) }
-    .scores { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px }
-    .score { background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px 18px; box-shadow:var(--shadow); border-top:4px solid var(--hold) }
-    .score.good { border-top-color:var(--teal) }
-    .score.bad { border-top-color:var(--red) }
-    .score.watch { border-top-color:var(--amber) }
-    .score.hold { border-top-color:#9aabb0 }
-    .score[hidden] { display:none }
-    .score b { display:block; font-size:1.02rem; line-height:1.45; margin:8px 0 4px }
-    .score p { margin:0; color:var(--muted); font-size:.9rem }
-    .compare { display:grid; grid-template-columns:1fr auto 1fr; gap:12px; align-items:stretch; margin-top:18px }
-    .month-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; box-shadow:var(--shadow) }
-    .month-card.good { background:linear-gradient(#fff, #f3faf7) }
-    .month-card.bad { background:linear-gradient(#fff, #fff6f5) }
-    .month-card .when { font-size:.78rem; font-weight:800; letter-spacing:.08em; color:var(--muted) }
-    .month-card strong { display:block; font-family:var(--serif); font-size:clamp(1.8rem, 4vw, 2.4rem); font-weight:500; line-height:1.15; margin:6px 0 }
-    .month-card ul { margin:8px 0 0; padding:0; list-style:none; color:var(--muted); font-size:.88rem }
-    .delta { display:flex; flex-direction:column; justify-content:center; gap:8px; min-width:132px }
-    .delta span { background:#fff; border:1px solid var(--line); border-radius:12px; padding:8px 10px; font-size:.78rem; font-weight:800; text-align:center }
-    .delta .down { color:var(--red) }
-    .grid-2 { display:grid; grid-template-columns:1.15fr .85fr; gap:22px; align-items:start }
-    .grid-3 { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px }
-    .panel { background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px 18px 16px; box-shadow:var(--shadow) }
-    .panel h3 { margin:0 0 6px; font-size:1.05rem }
-    .panel .micro, .micro { color:var(--muted); font-size:.8rem; margin:8px 0 0 }
-    .tabs { display:flex; gap:6px; flex-wrap:wrap; margin:0 0 12px }
-    .tabs button { border:1px solid var(--line); background:#f7faf8; border-radius:999px; padding:8px 12px; min-height:40px; font-weight:800; font-size:.82rem; cursor:pointer; color:var(--ink) }
-    .tabs button.is-on { background:var(--navy); color:#fff; border-color:var(--navy) }
-    html.js .pane { display:none }
-    html.js .pane.is-on { display:block }
-    .track-wrap { position:relative; margin:8px 0 4px }
-    .track { height:12px; border-radius:99px; background:#e7eeeb; overflow:hidden }
-    .track i { display:block; height:100%; width:0; border-radius:99px; background:var(--c, var(--teal)); transition:width 1.05s cubic-bezier(.16,.8,.24,1) }
-    .reveal.in .track i { width:var(--w) }
-    .goal { position:absolute; top:-3px; bottom:-3px; left:var(--g); width:2px; background:var(--goal); border-radius:2px }
-    .goal::after { content:attr(data-label); position:absolute; left:6px; top:-15px; font-size:10px; font-weight:800; color:var(--goal); white-space:nowrap }
-    .row { display:grid; grid-template-columns:92px minmax(0,1fr) auto; gap:10px; align-items:center; margin:12px 0 }
-    .row .name { font-weight:800; font-size:.92rem }
-    .row .val { font-variant-numeric:tabular-nums; font-weight:800; font-size:.92rem; text-align:right }
-    .row .sub { grid-column:1 / -1; color:var(--muted); font-size:.78rem; margin-top:-6px }
-    .good-c { --c:var(--teal) }
-    .bad-c { --c:var(--red) }
-    .watch-c { --c:var(--amber) }
-    .hold-c { --c:#8aa0a8 }
-    .line-chart { margin-top:8px }
-    .line-chart svg { width:100%; height:auto }
-    .line { fill:none; stroke:var(--teal); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:900; stroke-dashoffset:900; transition:stroke-dashoffset 1.3s ease }
-    .reveal.in .line { stroke-dashoffset:0 }
-    .dot { opacity:0; transform:scale(.6); transform-origin:center; transform-box:fill-box; transition:opacity .4s ease, transform .4s ease }
-    .reveal.in .dot { opacity:1; transform:scale(1) }
-    .reveal.in .d2 { transition-delay:.25s }
-    .reveal.in .d3 { transition-delay:.45s }
-    .reveal.in .d4 { transition-delay:.65s }
-    .target-line { stroke:var(--goal); stroke-dasharray:4 4; stroke-width:1.5 }
-    .svg-label { font-size:12px; fill:#5d7278; font-family:var(--font) }
-    .hero-chart .svg-label { fill:#d7e6e1 }
-    .hero-chart .hot { fill:#ffe1d6 }
-    .svg-strong { font-size:13px; font-weight:700; fill:#163038; font-family:var(--font) }
-    .funnel { display:grid; gap:8px }
-    .funnel .step { display:grid; grid-template-columns:88px minmax(0,1fr) auto; gap:10px; align-items:center }
-    .funnel b { font-size:.85rem }
-    .funnel .pipe { height:28px; background:#e7eeeb; border-radius:8px; overflow:hidden }
-    .funnel .pipe i { display:block; height:100%; width:0; background:linear-gradient(90deg, #0c7c68, #3d7197); transition:width 1.1s cubic-bezier(.16,.8,.24,1) }
-    .reveal.in .funnel .pipe i { width:var(--w) }
-    .funnel .step:last-child .pipe i { background:var(--red) }
-    .callout { border-radius:14px; padding:14px 16px; margin:14px 0; background:var(--teal-soft); border-left:4px solid var(--teal) }
-    .callout.bad { background:var(--red-soft); border-left-color:var(--red) }
-    .callout.warn { background:var(--amber-soft); border-left-color:var(--amber) }
-    .callout p { margin:4px 0 0 }
-    .donut-layout { display:grid; grid-template-columns:220px 1fr; gap:18px; align-items:center }
-    .donut { width:min(220px, 100%); margin:auto }
-    .seg { fill:none; stroke-width:22; stroke-linecap:butt; transition:stroke-dasharray 1.15s cubic-bezier(.16,.8,.24,1) }
-    .legend { display:grid; gap:8px }
-    .legend div { display:grid; grid-template-columns:12px 1fr auto; gap:8px; align-items:center; font-size:.86rem }
-    .swatch { width:12px; height:12px; border-radius:3px }
-    .cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px }
-    .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:var(--shadow) }
-    .card .idx { font-size:.72rem; font-weight:800; letter-spacing:.12em; color:var(--teal) }
-    .card h3 { margin:6px 0 8px; font-size:1.08rem }
-    .card p { margin:0; color:var(--muted); font-size:.9rem }
-    .steps { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:10px }
-    .step-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px; min-height:100% }
-    .step-card b { display:block; color:var(--teal); margin-bottom:4px }
-    .step-card p { margin:0; color:var(--muted); font-size:.86rem }
-    .week { display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:8px }
-    .day { background:#fff; border:1px solid var(--line); border-radius:12px; padding:10px; min-height:112px }
-    .day b { display:block; color:var(--teal); font-size:.78rem }
-    .day strong { display:block; font-size:.92rem; line-height:1.35; margin-top:4px }
-    .day span { display:block; color:var(--muted); font-size:.75rem; margin-top:4px }
-    .targets .card strong { font-family:var(--serif); font-size:1.7rem; font-weight:500; display:block; margin:6px 0 }
-    table { width:100%; border-collapse:collapse; font-size:.86rem }
-    th,td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top }
-    th { font-size:.75rem; color:#24584f; background:#e7f3ef; white-space:nowrap }
-    td.num { font-variant-numeric:tabular-nums; white-space:nowrap }
-    .scroll { overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:#fff; -webkit-overflow-scrolling:touch }
-    .scroll table { min-width:720px }
-    details.more { margin-top:14px; background:#fff; border:1px solid var(--line); border-radius:14px }
-    details.more summary { cursor:pointer; padding:12px 14px; font-weight:800; min-height:44px }
-    details.more .inside { padding:0 12px 12px }
-    .sources { font-size:.86rem; color:var(--muted) }
-    .sources li { margin:8px 0 }
-    footer { background:var(--navy); color:#c9dbd6; padding:28px 0 calc(28px + env(safe-area-inset-bottom)); font-size:.8rem }
-    footer .wrap { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap }
-    .reveal { opacity:0; transform:translateY(16px); animation:rise .7s ease forwards }
-    .reveal.d1 { animation-delay:.08s } .reveal.d2 { animation-delay:.16s } .reveal.d3 { animation-delay:.24s }
-    @keyframes rise { to { opacity:1; transform:none } }
-    @media (max-width:900px) {
-      .hero .wrap,.grid-2,.donut-layout,.compare,.cards,.steps { grid-template-columns:1fr }
-      .scores,.grid-3,.targets { grid-template-columns:1fr 1fr }
-      .delta { flex-direction:row; flex-wrap:wrap; min-width:0 }
-      .delta span { flex:1 1 120px }
-      .week { grid-template-columns:repeat(2, minmax(0,1fr)) }
-      .day { min-height:0 }
-    }
-    @media (max-width:640px) {
-      .wrap { width:min(100% - 28px, 1120px) }
-      .section { padding:48px 0 }
-      .hero .wrap { padding:36px 0 40px }
-      .scores,.grid-3,.targets { grid-template-columns:1fr }
-      .row { grid-template-columns:1fr auto; }
-      .row .name { grid-column:1; grid-row:1 }
-      .row .val { grid-column:2; grid-row:1 }
-      .row .track-wrap { grid-column:1 / -1; grid-row:2 }
-      .row .sub { grid-column:1 / -1; grid-row:3; margin-top:0 }
-      .funnel .step { grid-template-columns:74px minmax(0,1fr) }
-      .funnel .step em { grid-column:1 / -1; font-style:normal; color:var(--muted); font-size:.78rem }
-      .goal::after { display:none }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior:auto }
-      .reveal { animation:none; opacity:1; transform:none }
-      .line,.track i,.seg,.funnel .pipe i,.dot { transition:none !important }
-      .line { stroke-dashoffset:0 }
-      .track i,.funnel .pipe i { width:var(--w) }
-      .dot { opacity:1; transform:none }
-    }
-  </style>
+<html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>トレプロ｜新規リード獲得施策・アカウントプランニング</title>
+<style>
+:root{--ink:#16323b;--muted:#63777e;--line:#d8e3e4;--paper:#f3f6f4;--white:#fff;--navy:#102d36;--teal:#08786d;--blue:#3d7197;--amber:#b86735;--red:#b34a3e;--soft:#e8f2ef;--pale:#fff7ee;--shadow:0 5px 22px #17333c0b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:var(--teal);text-underline-offset:3px}.shell{display:grid;grid-template-columns:224px minmax(0,1fr);max-width:1660px;margin:auto}.side{position:sticky;top:0;height:100vh;overflow:auto;background:var(--navy);color:white;padding:27px 16px}.side .brand{font-size:11px;font-weight:850;letter-spacing:.15em;color:#a8d1c6}.side h2{font-size:19px;line-height:1.38;margin:8px 8px 22px}.side nav a{display:block;color:#d4e3df;text-decoration:none;font-size:12px;padding:8px 10px;border-radius:8px}.side nav a:hover,.side nav a:focus{background:#27545c;color:#fff}.side .aside-note{font-size:11px;color:#adc8c4;margin:20px 9px}.main{min-width:0}.hero{background:linear-gradient(128deg,#102d36 0%,#1d535b 74%,#27665f 100%);padding:54px min(5vw,66px) 47px;color:#fff}.eyebrow{color:#efae77;font-size:11px;font-weight:850;letter-spacing:.16em}.hero h1{font-size:clamp(30px,4vw,52px);line-height:1.22;letter-spacing:-.04em;margin:12px 0 13px}.hero p{max-width:840px;font-size:16px;color:#dcece8;margin:0}.hero-meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:24px;color:#b9d5ce;font-size:12px}.wrap{max-width:1360px;padding:22px min(5vw,66px) 90px}.section{margin:42px 0 64px;scroll-margin-top:25px}.section h2{font-size:28px;letter-spacing:-.03em;line-height:1.4;margin:0 0 7px}.section h3{font-size:18px;line-height:1.4;margin:22px 0 10px}.lede{color:var(--muted);margin:0 0 20px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:21px 0}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.card{padding:18px 20px}.panel{padding:21px 23px}.card .label{color:var(--muted);font-size:11px;font-weight:850;letter-spacing:.07em}.card .value{font-size:27px;font-weight:850;line-height:1.28;margin:5px 0}.card .note{font-size:11px;color:var(--muted);line-height:1.5}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.callout{border-left:5px solid var(--teal);background:#edf7f2;padding:15px 19px;border-radius:0 12px 12px 0;margin:18px 0}.callout.warn{border-color:var(--amber);background:var(--pale)}.callout.red{border-color:var(--red);background:#fff1ee}.callout p:last-child{margin-bottom:0}.tag{display:inline-block;background:#e7f1ed;color:#246f5b;font-size:11px;font-weight:800;border-radius:50px;padding:2px 9px;white-space:nowrap}.tag.orange{background:#fff0e4;color:#a9582e}.tag.gray{background:#eef1f2;color:#5d7379}.tag.red{background:#fff0ed;color:#a64239}.micro{font-size:12px;color:var(--muted);line-height:1.65}.table-scroll{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);-webkit-overflow-scrolling:touch}.table-scroll:focus{outline:2px solid var(--teal)}table{border-collapse:collapse;width:100%;min-width:760px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:12.5px}th{background:#e7f0ed;color:#214d47;font-size:11px;line-height:1.4;white-space:nowrap}tbody tr:last-child td{border-bottom:0}td:first-child{font-weight:800;white-space:nowrap}.num{font-variant-numeric:tabular-nums;white-space:nowrap}.good{color:#08786d;font-weight:850}.bad{color:#a64239;font-weight:850}.two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.allocation{display:grid;gap:8px}.alloc-row{display:grid;grid-template-columns:140px minmax(0,1fr) 44px 110px;align-items:center;gap:10px;font-size:12px}.alloc-row b{font-size:13px}.bar{height:11px;border-radius:99px;background:#e8eeee;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);border-radius:99px}.alloc-row.meta .bar i{background:var(--blue)}.alloc-row.reserve .bar i{background:#d6a05b}.alloc-row.zero .bar i{background:#c4c9c8}.step-list{list-style:none;padding:0;margin:0}.step-list li{display:grid;grid-template-columns:78px 1fr;gap:12px;border-top:1px solid var(--line);padding:11px 0}.step-list li:first-child{border-top:0}.step-list b{color:var(--teal)}.mini-list{padding-left:1.2em;margin:8px 0}.mini-list li{margin:5px 0}.plan-month{border-top:4px solid var(--teal)}.plan-month:nth-child(2){border-top-color:var(--blue)}.plan-month:nth-child(3){border-top-color:var(--amber)}.plan-month .month{font-size:12px;letter-spacing:.1em;font-weight:850;color:var(--teal)}.plan-month:nth-child(2) .month{color:var(--blue)}.plan-month:nth-child(3) .month{color:var(--amber)}.plan-month strong{font-size:19px;display:block;margin:5px 0}.divider{border-top:1px solid var(--line);margin:18px 0}.form-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.field label{display:block;font-size:11px;font-weight:800;color:#49616a;line-height:1.4;margin-bottom:4px}.field input{width:100%;padding:9px 10px;border:1px solid #bdcfd0;border-radius:9px;color:var(--ink);background:#fff;font-variant-numeric:tabular-nums}.field input:focus{outline:2px solid #74b4aa;outline-offset:1px}.field .hint{font-size:10px;color:var(--muted);margin-top:3px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}.btn{border:1px solid var(--teal);background:var(--teal);color:#fff;border-radius:9px;padding:8px 13px;font-size:12px;font-weight:800}.btn.secondary{background:#fff;color:var(--teal)}.calc-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:17px}.calc-cell{background:#eef6f3;border:1px solid #cfe1db;border-radius:12px;padding:12px}.calc-cell .small{font-size:10px;font-weight:800;color:#4b6766}.calc-cell .big{font-size:22px;font-weight:850;line-height:1.3}.calc-cell .sub{font-size:10px;color:var(--muted)}.scenario{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:14px}.scenario .panel{border-top:4px solid var(--teal)}.scenario .panel:last-child{border-top-color:var(--amber)}.scenario h3{margin:0 0 8px}.source-list{padding-left:1.3em}.source-list li{font-size:12px;margin:7px 0}.formula{background:#eff4f4;border:1px solid var(--line);border-radius:9px;padding:10px 13px;font-size:12px;font-variant-numeric:tabular-nums}.week-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.day{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px;font-size:12px}.day b{color:var(--teal);display:block;margin-bottom:5px}.day strong{display:block;font-size:13px}.checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.checkitem{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 15px;font-size:12px}.checkitem b{display:block;color:var(--teal);font-size:13px}.checkitem input{accent-color:var(--teal);width:16px;height:16px;vertical-align:middle;margin-right:6px}.checkitem label{cursor:pointer}.decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.decision{padding:14px;border-radius:11px;background:#fff;border:1px solid var(--line);font-size:12px}.decision b{display:block;font-size:14px;margin-bottom:4px}.decision.green{border-top:4px solid var(--teal)}.decision.yellow{border-top:4px solid var(--amber)}.decision.red{border-top:4px solid var(--red)}.toplink{display:inline-block;margin-top:14px;font-size:12px}.print-note{display:none}
+@media(max-width:1100px){.shell{display:block}.side{position:sticky;top:0;z-index:10;height:auto;padding:10px 18px;box-shadow:0 3px 10px #0002}.side h2,.side .aside-note{display:none}.side .brand{margin-left:6px}.side nav{display:flex;overflow:auto;white-space:nowrap;gap:2px;scrollbar-width:thin}.side nav a{flex:0 0 auto;padding:7px 9px}.hero{padding:42px 28px}.wrap{padding:20px 28px 70px}.week-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){body{font-size:14px}.hero{padding:36px 19px}.hero h1{font-size:31px}.hero p{font-size:14px}.wrap{padding:18px 15px 65px}.section{margin:32px 0 48px;scroll-margin-top:90px}.section h2{font-size:23px}.section h3{font-size:17px}.kpis,.grid,.grid.three,.two-col,.scenario,.checklist,.decision-grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:14px}.card .value{font-size:23px}.panel{padding:17px}.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.calc-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.week-grid{grid-template-columns:1fr 1fr}.alloc-row{grid-template-columns:94px minmax(0,1fr) 35px 86px;gap:5px;font-size:11px}.alloc-row b{font-size:11px}.table-scroll table{min-width:720px}.table-scroll td:first-child,.table-scroll th:first-child{position:sticky;left:0;background:#fff;z-index:1}.table-scroll th:first-child{background:#e7f0ed}.step-list li{grid-template-columns:68px 1fr}.hero-meta{font-size:11px}}
+@media(max-width:430px){.form-grid,.calc-summary,.week-grid{grid-template-columns:1fr 1fr}.field label{min-height:31px}.card .value{font-size:21px}.alloc-row{grid-template-columns:83px minmax(0,1fr) 30px 74px}.alloc-row span:last-child{text-align:right}}
+@media print{.shell{display:block}.side,.controls,.toplink{display:none}.hero{background:#fff;color:var(--ink);padding:20px 0;border-bottom:3px solid var(--ink)}.hero p,.hero-meta{color:var(--ink)}.wrap{max-width:none;padding:10px 0}.section{margin:22px 0;break-inside:avoid}.panel,.card,.table-scroll{box-shadow:none}.table-scroll{overflow:visible}table{min-width:0}.print-note{display:block}a{color:var(--ink)}input{border:none!important;padding:0!important}}
+
+/* Revised plan: three initiatives, editable notes, calendar and Gantt */
+.initiative-index{display:inline-block;color:var(--teal);font-size:11px;font-weight:900;letter-spacing:.13em;margin-bottom:8px}
+.note-fields{display:grid;grid-template-columns:1fr;gap:11px}.note-fields.two{grid-template-columns:repeat(2,minmax(0,1fr))}.note-fields label,.note-label{display:block;font-size:12px;font-weight:800;color:#3b5960}.note-fields textarea,.note-label textarea,.mind-leaf textarea{display:block;width:100%;min-height:74px;margin-top:5px;padding:10px 11px;border:1px solid #bcd0d1;border-radius:9px;background:#fbfdfc;color:var(--ink);resize:vertical;font-size:12px;line-height:1.6;font-family:inherit}.note-fields textarea:focus,.note-label textarea:focus,.mind-leaf textarea:focus{outline:2px solid #73b6ab;outline-offset:1px}.note-label{margin-top:16px}
+.stage-list{list-style:none;padding:0;margin:4px 0}.stage-list li{display:grid;grid-template-columns:85px 1fr;gap:12px;border-top:1px solid var(--line);padding:11px 0;font-size:13px}.stage-list li:first-child{border-top:0}.stage-list b{color:var(--teal)}
+.panel-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.panel-heading h3{margin:0}.guest-editor{display:grid;gap:10px;margin:15px 0}.guest-row{display:grid;grid-template-columns:minmax(145px,1.3fr) repeat(3,minmax(130px,1fr)) 36px;gap:8px;align-items:end;background:#f6faf8;border:1px solid var(--line);padding:10px;border-radius:10px}.guest-row label{font-size:10px;font-weight:800;color:var(--muted)}.guest-row input{display:block;width:100%;margin-top:4px;padding:8px;border:1px solid #bbced0;border-radius:7px;background:#fff;font-size:12px}.guest-remove{width:32px;height:34px;border:1px solid #d5b8b4;border-radius:7px;background:#fff;color:var(--red);font-size:20px;line-height:1}.gantt-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:11px;-webkit-overflow-scrolling:touch}.gantt{display:grid;grid-template-columns:145px repeat(13,minmax(61px,1fr));min-width:960px}.gantt>div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:7px 4px;min-height:35px;text-align:center;font-size:11px}.gantt>div:nth-last-child(-n+14){border-bottom:0}.gantt-head{background:#e7f0ed;font-weight:850;color:#28524e}.gantt-name{text-align:left!important;font-weight:800;background:#f7faf8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gantt-cell{background:#fff}.gantt-cell.phase-contact{background:#e5f2ee;color:#176d5c;font-weight:800}.gantt-cell.phase-record{background:#e8eff8;color:#31648d;font-weight:800}.gantt-cell.phase-publish{background:#fff1dd;color:#9d6128;font-weight:800}.gantt-cell.phase-multi{background:linear-gradient(130deg,#e5f2ee 0 33%,#e8eff8 33% 66%,#fff1dd 66%);font-weight:800}.gantt-legend{font-size:11px;color:var(--muted)}
+.mind-root{max-width:440px;margin:16px auto 19px;background:var(--navy);color:#fff;border-radius:13px;padding:14px;text-align:center;font-size:17px;font-weight:850}.mind-root small{display:block;font-size:11px;color:#bed9d3;font-weight:500}.mindmap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mind-branch{position:relative;background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:12px;padding:16px;box-shadow:var(--shadow)}.mind-branch:nth-child(2){border-top-color:var(--blue)}.mind-branch:nth-child(3){border-top-color:var(--amber)}.mind-branch:nth-child(4){border-top-color:#735693}.mind-branch h4{font-size:15px;margin:0 0 12px}.mind-branch h4 small{font-size:11px;color:var(--muted);font-weight:600}.mind-sub{border-left:2px solid #b7d6ce;padding-left:12px;margin:12px 0 0}.mind-sub>b{display:block;font-size:12px;color:var(--teal);margin-bottom:6px}.mind-leaf{border:1px solid var(--line);border-radius:9px;background:#f7faf8;padding:9px 10px;margin-top:7px;font-size:12px}.mind-leaf span{font-weight:800}.mind-leaf textarea{min-height:58px;background:#fff;font-weight:400}
+.calendar-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff;-webkit-overflow-scrolling:touch}.week-calendar{display:grid;grid-template-columns:repeat(7,minmax(100px,1fr));min-width:760px}.week-day{padding:12px;border-right:1px solid var(--line);min-height:138px}.week-day:last-child{border-right:0}.week-date{font-size:18px;font-weight:900;border-bottom:2px solid var(--teal);padding-bottom:7px;margin-bottom:9px}.week-date small{margin-left:6px;color:var(--muted);font-size:11px}.week-day strong{display:block;font-size:12px;line-height:1.4}.week-day p{font-size:11px;line-height:1.5;margin:5px 0 0;color:var(--muted)}.month-calendar{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);margin:14px 0;overflow:hidden}.month-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px 15px;padding:13px 17px;background:#eef5f2}.month-head b{font-size:18px;margin-right:10px}.month-head span{font-size:12px;color:var(--muted)}.month-head strong{font-size:12px;color:var(--teal)}.month-grid{display:grid;grid-template-columns:repeat(7,minmax(90px,1fr));min-width:630px}.weekday{font-size:11px;font-weight:850;text-align:center;background:#f8faf9;color:var(--muted);padding:6px;border-right:1px solid var(--line)}.month-day{min-height:70px;border-top:1px solid var(--line);border-right:1px solid var(--line);padding:6px}.month-day.outside{background:#f7f9f8}.month-day.has-event{background:#f7fbf9}.day-number{display:block;font-size:11px;color:var(--muted);font-weight:800}.month-event{display:block;font-size:11px;line-height:1.3;font-weight:750;color:var(--ink);margin-top:5px}.handoff-groups{display:grid;gap:14px}.checklist-group{border:1px solid var(--line);border-radius:14px;background:#f9fbfa;padding:12px 15px 17px;min-width:0}.checklist-group legend{padding:0 9px;color:var(--teal);font-size:14px;font-weight:900}.checklist-group .checkitem{box-shadow:none}
+@media(max-width:760px){.note-fields.two,.mindmap{grid-template-columns:1fr}.guest-row{grid-template-columns:repeat(2,minmax(0,1fr))}.guest-row label:first-child{grid-column:1/-1}.guest-remove{justify-self:end}.panel-heading{align-items:center}.week-calendar{min-width:720px}.month-grid{min-width:630px}.month-head{padding:11px 13px}.calendar-scroll{scrollbar-width:thin}.checklist-group{padding:10px 10px 14px}}
+@media print{.note-fields textarea,.note-label textarea,.mind-leaf textarea{border:1px solid var(--line)}.calendar-scroll,.gantt-scroll{overflow:visible}.month-grid,.week-calendar,.gantt{min-width:0}.month-calendar,.mind-branch,.checklist-group{break-inside:avoid}}
+.gantt-cell.phase-booking{background:#f0f8f5;color:#458677}.gantt-cell.phase-edit{background:#f0f5fc;color:#6b8eaa}
+.mind-root{position:relative}.mind-root:after{content:"";position:absolute;left:50%;bottom:-19px;height:19px;border-left:2px solid #9ac7ba}.mindmap{position:relative;padding-top:18px}.mindmap:before{content:"";position:absolute;top:0;left:25%;right:25%;border-top:2px solid #9ac7ba}.mind-branch:before{content:"";position:absolute;top:-18px;left:50%;height:18px;border-left:2px solid #9ac7ba}@media(max-width:760px){.mindmap:before,.mind-branch:before{display:none}.mindmap{border-left:2px solid #9ac7ba;margin-left:14px;padding:0 0 0 18px}.mind-root{margin-left:14px;margin-right:0}.mind-root:after{left:0}.mind-branch:after{content:"";position:absolute;left:-19px;top:20px;width:18px;border-top:2px solid #9ac7ba}}
+.logic-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:17px 0}.logic-step{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:11px;padding:14px;min-width:0}.logic-step b{display:block;color:var(--teal);font-size:12px;margin-bottom:5px}.logic-step p{font-size:12px;margin:0}.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.evidence-grid .panel h3{margin-top:0}.evidence-grid .panel p{margin-bottom:0}.source-inline{font-size:11px;color:var(--muted)}.problem-table td:first-child{font-weight:800;min-width:170px}.problem-table td{vertical-align:top}.hypothesis{border:1px solid #d6e3de;background:#f5faf7;border-radius:11px;padding:13px 15px;margin:12px 0}.hypothesis b{color:var(--teal)}.hypothesis p{margin:5px 0 0}.initiative-logic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:14px 0}.initiative-logic>div{border:1px solid var(--line);background:#fff;border-radius:11px;padding:13px 15px}.initiative-logic b{display:block;font-size:12px;color:var(--teal)}.initiative-logic p{margin:5px 0 0;font-size:12px}.guest-row{grid-template-columns:repeat(3,minmax(0,1fr)) 36px;align-items:start}.guest-row .wide{grid-column:span 2}.guest-row textarea{display:block;width:100%;min-height:68px;margin-top:4px;padding:8px;border:1px solid #bbced0;border-radius:7px;background:#fff;font-size:12px;line-height:1.5;font-family:inherit;resize:vertical}.guest-remove{grid-column:4;grid-row:1;align-self:end}.gantt{grid-template-columns:190px repeat(13,minmax(61px,1fr));min-width:1005px}
+@media(max-width:900px){.logic-flow,.initiative-logic{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.evidence-grid,.initiative-logic,.logic-flow{grid-template-columns:1fr}.guest-row{grid-template-columns:repeat(2,minmax(0,1fr))}.guest-row .wide{grid-column:1/-1}.guest-remove{grid-column:2;grid-row:auto}.problem-table{min-width:900px}}
+@media print{.logic-step,.initiative-logic>div{break-inside:avoid}}
+.work-details{background:#fff;border:1px solid var(--line);border-radius:13px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.work-details summary{cursor:pointer;padding:14px 18px;font-size:15px;font-weight:850;color:var(--ink);background:#eef5f2}.work-details[open] summary{border-bottom:1px solid var(--line)}.work-details .inside{padding:14px 18px 18px}.work-details .inside h4{font-size:13px;margin:12px 0 3px;color:var(--teal)}.work-details .inside p{margin:0 0 8px;font-size:12px}.work-details .table-scroll{box-shadow:none}.work-details .table-scroll table{min-width:760px}.mini-owner{font-size:11px;font-weight:850;color:var(--muted)}.forecast-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.forecast-top h3{margin:0}.forecast-top label{font-size:12px;font-weight:850}.forecast-top select{padding:8px 10px;border:1px solid #bdcfd0;border-radius:8px;background:#fff;color:var(--ink)}.forecast-group{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.forecast-group h4{margin:0 0 8px;font-size:13px;color:var(--teal)}.forecast-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}.forecast-summary>div{background:#eef6f3;border:1px solid #cfe1db;border-radius:11px;padding:12px}.forecast-summary small{display:block;color:var(--muted);font-weight:800}.forecast-summary strong{font-size:20px;line-height:1.4}.field select{width:100%;padding:9px 10px;border:1px solid #bdcfd0;border-radius:9px;background:#fff;color:var(--ink)}
+@media(max-width:760px){.forecast-summary{grid-template-columns:1fr}.forecast-group .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.work-details .inside{padding:12px}}
+@media(max-width:430px){.forecast-group .form-grid{grid-template-columns:1fr}}
+.hero-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:23px}.hero-actions button{border:1px solid #bfd8d3;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850;background:#fff;color:var(--navy)}.hero-actions button.secondary{background:transparent;color:#fff}.hero-actions button:hover,.hero-actions button:focus-visible{outline:2px solid #fff;outline-offset:2px}.hero-help{font-size:11px!important;color:#d6e6e2!important;margin-top:9px!important}.category-group,.item-toggle{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);overflow:hidden}.category-group{margin:16px 0}.category-group>summary,.item-toggle>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:13px}.category-group>summary::-webkit-details-marker,.item-toggle>summary::-webkit-details-marker{display:none}.category-group>summary{padding:18px 21px;background:#fff}.category-group>summary:hover,.item-toggle>summary:hover{background:#eef6f3}.category-group[open]>summary{background:#e8f2ef;border-bottom:1px solid var(--line)}.group-index{flex:0 0 auto;background:var(--navy);color:#fff;border-radius:8px;padding:4px 8px;font-size:11px;font-weight:900}.group-name{display:block;font-size:20px;font-weight:900;line-height:1.35}.group-desc{display:block;font-size:11px;color:var(--muted);margin-top:2px}.group-count{margin-left:auto;color:var(--teal);font-size:11px;font-weight:850;white-space:nowrap}.category-group>summary:after,.item-toggle>summary:after{content:"＋";font-size:19px;font-weight:500;color:var(--teal);margin-left:9px}.category-group[open]>summary:after,.item-toggle[open]>summary:after{content:"−"}.group-body{padding:12px 17px 17px;background:#f7faf8}.item-toggle{margin:9px 0;scroll-margin-top:95px}.item-toggle>summary{padding:13px 16px}.item-toggle[open]>summary{border-bottom:1px solid var(--line);background:#f5faf7}.item-number{font-size:10px;font-weight:850;color:var(--teal);min-width:24px}.item-title{font-size:15px;line-height:1.35;font-weight:850}.item-body{padding:17px 20px 22px}.item-body>h2{display:none}.item-body>.initiative-index{margin-top:2px}.item-body .lede:first-of-type{margin-top:0}.category-group summary:focus-visible,.item-toggle summary:focus-visible{outline:3px solid #69b5a7;outline-offset:-3px}
+@media(max-width:760px){.category-group>summary{padding:15px 13px;gap:9px}.group-name{font-size:17px}.group-desc{font-size:10px}.group-count{font-size:10px}.group-body{padding:8px}.item-toggle>summary{padding:12px;gap:8px}.item-title{font-size:13px}.item-body{padding:13px}.hero-actions button{flex:1 1 145px}}
+@media print{.category-group,.item-toggle{break-inside:auto}.group-body,.item-body{padding:8px}.hero-actions{display:none}}
+
+.motion-block{margin:12px 0 16px}
+.motion-block .alloc-row{grid-template-columns:78px minmax(0,1fr) 112px}
+.bar-hold{position:relative;min-width:0;display:block}
+.bar-hold .bar{display:block;width:100%;height:11px}
+.bar-hold .goal-line{position:absolute;top:-4px;bottom:-4px;left:var(--goal,50%);width:2px;background:#16323b;opacity:.45;border-radius:2px;pointer-events:none}
+.motion-block .bar i,.allocation .bar i{transform:scaleX(0);transform-origin:left center;transition:transform .95s cubic-bezier(.16,.8,.24,1)}
+.motion-on .bar i{transform:scaleX(1)}
+.bar i.tone-good{background:var(--teal)}
+.bar i.tone-bad{background:var(--red)}
+.bar i.tone-watch{background:var(--amber)}
+@media(max-width:760px){.motion-block .alloc-row{grid-template-columns:64px minmax(0,1fr) 96px;gap:6px}}
+@media(prefers-reduced-motion:reduce){.motion-block .bar i,.allocation .bar i{transform:none;transition:none}}
+
+</style>
 </head>
 <body>
-  <nav class="nav" aria-label="ページ内"><div class="wrap">
-    <a href="#verdict">判定</a>
-    <a href="#trend">月次</a>
-    <a href="#mix">媒体・LP・エリア</a>
-    <a href="#problem">課題</a>
-    <a href="#plan">3つの施策</a>
-    <a href="#budget">配分</a>
-    <a href="#schedule">日程と費用</a>
-    <a href="#sources">出典</a>
-  </div></nav>
+<div class="shell" id="top">
+<aside class="side"><div class="brand">TREPRO / LEAD ACQUISITION</div><h2>新規リード獲得施策<br>アカウントプランニング</h2><nav aria-label="カテゴリー目次"><a href="#group-context">現状と課題</a><a href="#group-core">基幹施策</a><a href="#group-growth">周辺施策と経営管理</a><a href="#group-operation">配信・訴求設計</a><a href="#group-execution">実行・費用・引き継ぎ</a></nav><p class="aside-note">大カテゴリーから開いて確認。入力内容と開閉状態はHTMLで共有できます。</p></aside>
+<main class="main">
+<header class="hero"><div class="eyebrow">NEW LEAD ACQUISITION / 2026.10.06</div><h1>新規リード獲得施策<br>アカウントプランニング</h1><p>採用課題の実態を聞き、効く訴求の根拠を作り、地域と媒体で再現性を検証する。既存の成約を成功例として消費せず、どの課題・条件・表現が有効リードから受注につながったかを確かめる。</p><div class="hero-meta"><span>対象：2026年10〜12月</span><span>直近1週間：10月6〜12日</span><span>基準資料：9月確定・10月4日までの追加集計</span></div><div class="hero-actions"><button type="button" id="downloadSnapshot">表示中の内容をHTMLでダウンロード</button><button type="button" class="secondary" id="openAllSections">すべて開く</button><button type="button" class="secondary" id="closeAllSections">すべて閉じる</button></div><p class="hero-help">入力内容と開閉状態を含む1ファイルとして保存できます。共有前に見せたい項目だけ開いてください。</p></header>
+<div class="wrap">
 
-  <header class="hero">
-    <div class="wrap">
-      <div>
-        <div class="eyebrow">TREPRO / LEAD ACQUISITION / 2026.10.06</div>
-        <h1>9月は、件数も効率も落ちている。</h1>
-        <p>有効CPAは7月の77,482円から9月の145,009円へ、約87%悪化した。有効リードは100件から42件、受注は3件から1件。14万円台を維持目標にはしない。戻す目安は10万円未満。</p>
-        <div class="hero-meta">
-          <span>対象：2026年10〜12月</span>
-          <span>直近週：10月6〜12日</span>
-          <span>基準：9月確定と10月4日までの追加</span>
-        </div>
-      </div>
-      <div class="hero-chart reveal" aria-hidden="true">
-        <p>有効CPA。上に行くほど高く、悪い。点線は10万円。</p>
-        <svg viewBox="0 0 640 250" role="presentation">
-          <line class="target-line" x1="56" y1="104" x2="610" y2="104" />
-          <text class="svg-label" x="56" y="98" fill="#d7e6e1">10万円</text>
-          <polyline class="line" points="70,113 246,128 423,67 600,57" style="stroke:#f2c48a" />
-          <circle class="dot d1" cx="70" cy="113" r="6" fill="#9ddecb" />
-          <circle class="dot d2" cx="246" cy="128" r="6" fill="#9ddecb" />
-          <circle class="dot d3" cx="423" cy="67" r="6" fill="#f0b4a4" />
-          <circle class="dot d4" cx="600" cy="57" r="7" fill="#ffd0c4" />
-          <text class="svg-label" x="58" y="232" fill="#d7e6e1">6月 91,494</text>
-          <text class="svg-label" x="214" y="232" fill="#d7e6e1">7月 77,482</text>
-          <text class="svg-label" x="392" y="232" fill="#d7e6e1">8月 135,835</text>
-          <text class="svg-label hot" x="548" y="232">9月 145,009</text>
-        </svg>
-      </div>
-    </div>
-  </header>
+<details class="category-group" id="group-context"><summary><span class="group-index">01</span><span><strong class="group-name">現状と課題</strong><small class="group-desc">数字・市場背景・顧客課題</small></span><span class="group-count">3項目</span></summary><div class="group-body">
+<details class="section item-toggle" id="summary" open=""><summary class="item-summary"><span class="item-number">01</span><strong class="item-title">現状把握</strong></summary><div class="item-body"><h2>現状把握</h2><p class="lede">先に現在地を数値で確認する。9月の獲得効率は厳しく、現状の有効CPAを合格水準とは扱わない。</p>
+<div class="kpis"><div class="card"><div class="label">9月の有効リードCPA</div><div class="value">¥145,009</div><div class="note">有効42件／費用¥6,090,390</div></div><div class="card"><div class="label">LP01の有効リードCPA</div><div class="value good">¥97,047</div><div class="note">9/25〜10/4、有効5件</div></div><div class="card"><div class="label">大阪の有効リード</div><div class="value">4件</div><div class="note">9/25〜10/4、兵庫の実績は未取得</div></div><div class="card"><div class="label">基本のAI動画制作</div><div class="value">4本／週</div><div class="note">1訴求 × 2冒頭 × 2地域</div></div></div>
+<div class="callout red"><b>現状評価：獲得効率は低い</b><p>9月の有効CPAは¥145,009で、6月¥91,494・7月¥77,482を大きく上回る。有効リードも8月55件から9月42件へ減少。CPAを14万円前後で維持する方針にはせず、10万円未満を改善判定の目安として検証を組む。</p></div>
+<div class="grid"><div class="panel"><span class="tag">観測値</span><h3>LP01は有効CPAで先行</h3><p>9/25〜10/4のLP01は有効5件・有効CPA¥97,047。フォーム位置などの効果は未確定で、媒体・エリアの流入差もある。</p></div><div class="panel"><span class="tag">観測値</span><h3>地域実績は大阪に偏る</h3><p>同期間の大阪は有効4件、岡山・倉敷は0件。過去の地域拡大設定が効いていた可能性があり、純粋なエリア比較としては再検証が必要。</p></div></div>
+</div></details>
+<details class="section item-toggle" id="baseline" open=""><summary class="item-summary"><span class="item-number">02</span><strong class="item-title">実績と考察</strong></summary><div class="item-body"><h2>実績と考察</h2><p class="lede">出典は末尾に記載。期間・指標の定義が異なる表を足し合わせず、比較対象を明示する。</p>
+<h3>月次推移</h3><div class="panel motion-block"><p class="micro" style="margin-top:0">有効CPA。長いほど高い。縦線は10万円未満の改善判定の目安。</p><div class="allocation"><div class="alloc-row"><b>6月</b><span class="bar-hold" style="--goal:62.5%"><span class="bar"><i class="tone-good" style="width:57.2%"></i></span><em class="goal-line"></em></span><span class="num">¥91,494</span></div><div class="alloc-row"><b>7月</b><span class="bar-hold" style="--goal:62.5%"><span class="bar"><i class="tone-good" style="width:48.4%"></i></span><em class="goal-line"></em></span><span class="num">¥77,482</span></div><div class="alloc-row"><b>8月</b><span class="bar-hold" style="--goal:62.5%"><span class="bar"><i class="tone-bad" style="width:84.9%"></i></span><em class="goal-line"></em></span><span class="num">¥135,835</span></div><div class="alloc-row"><b>9月</b><span class="bar-hold" style="--goal:62.5%"><span class="bar"><i class="tone-bad" style="width:90.6%"></i></span><em class="goal-line"></em></span><span class="num">¥145,009</span></div></div></div><div class="panel motion-block"><p class="micro" style="margin-top:0">有効リード。7月100件、8月55件、9月42件。</p><div class="allocation"><div class="alloc-row"><b>6月</b><span class="bar-hold"><span class="bar"><i class="" style="width:60%"></i></span></span><span class="num">66件</span></div><div class="alloc-row"><b>7月</b><span class="bar-hold"><span class="bar"><i class="tone-good" style="width:90.9%"></i></span></span><span class="num">100件</span></div><div class="alloc-row"><b>8月</b><span class="bar-hold"><span class="bar"><i class="tone-watch" style="width:50%"></i></span></span><span class="num">55件</span></div><div class="alloc-row"><b>9月</b><span class="bar-hold"><span class="bar"><i class="tone-bad" style="width:38.2%"></i></span></span><span class="num">42件</span></div></div></div><div class="table-scroll" tabindex="0" aria-label="月次推移。横スクロールできます"><table><thead><tr><th>月</th><th>費用</th><th>有効リード</th><th>有効率</th><th>有効CPA</th><th>アポ</th><th>受注</th><th>ROAS</th></tr></thead><tbody><tr><td>6月</td><td class="num">¥6.04M</td><td>66</td><td>56.90%</td><td class="num">¥91,494</td><td>47</td><td>3</td><td>284%</td></tr><tr><td>7月</td><td class="num">¥7.75M</td><td>100</td><td>78.13%</td><td class="num">¥77,482</td><td>56</td><td>3</td><td>187%</td></tr><tr><td>8月</td><td class="num">¥7.47M</td><td>55</td><td>67.07%</td><td class="num">¥135,835</td><td>37</td><td>2</td><td>124%</td></tr><tr><td>9月</td><td class="num">¥6,090,390</td><td>42</td><td>60.00%</td><td class="num bad">¥145,009</td><td>38</td><td>1</td><td>65%</td></tr></tbody></table></div>
+<div class="callout red"><b>9月は件数と質の両方が低下</b><p>8月から有効リードは55→42件、有効率は67.07→60.00%。有効CPAは7月¥77,482から9月¥145,009へ約87%悪化した。一方、9月のアポは38件で有効リードに対する率は90.48%。優先課題は有効リードの獲得効率と質の回復。9月の受注1件・ROAS65%は今後の評価でも追う。</p></div>
+<h3>直近週次</h3><div class="panel motion-block"><p class="micro" style="margin-top:0">直近週の有効CPA。縦線は10万円。9/28週は10/1までの4日間。</p><div class="allocation"><div class="alloc-row"><b>9/07</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-bad" style="width:63.3%"></i></span><em class="goal-line"></em></span><span class="num">¥126,534</span></div><div class="alloc-row"><b>9/14</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-watch" style="width:50.4%"></i></span><em class="goal-line"></em></span><span class="num">¥100,789</span></div><div class="alloc-row"><b>9/21</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-bad" style="width:91.7%"></i></span><em class="goal-line"></em></span><span class="num">¥183,366</span></div><div class="alloc-row"><b>9/28</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-bad" style="width:70%"></i></span><em class="goal-line"></em></span><span class="num">¥140,063</span></div></div></div><div class="table-scroll" tabindex="0" aria-label="週次推移。横スクロールできます"><table><thead><tr><th>週開始</th><th>費用</th><th>有効リード</th><th>有効率</th><th>有効CPA</th><th>注記</th></tr></thead><tbody><tr><td>9/07</td><td>¥1.39M</td><td>11</td><td>73.33%</td><td>¥126,534</td><td>確定</td></tr><tr><td>9/14</td><td>¥1.21M</td><td>12</td><td>70.59%</td><td>¥100,789</td><td>確定</td></tr><tr><td>9/21</td><td>¥1.28M</td><td>7</td><td>46.67%</td><td>¥183,366</td><td>確定</td></tr><tr><td>9/28</td><td>¥1.12M</td><td>8</td><td>61.54%</td><td>¥140,063</td><td>10/1までの4日間</td></tr></tbody></table></div><p class="micro">9/20〜10/1の日別集計では、平日6日間の有効率62.5%、土日祝6日間38.5%。有効CPAは平日¥147,429、土日祝¥213,078。曜日差はサンプルが少ないため、まず休日の日額を平日より抑えて再検証する。</p><div class="panel motion-block"><p class="micro" style="margin-top:0">9/20〜10/1。平日の有効CPA ¥147,429、土日祝 ¥213,078。縦線は10万円。</p><div class="allocation"><div class="alloc-row"><b>平日</b><span class="bar-hold" style="--goal:40%"><span class="bar"><i class="tone-bad" style="width:59%"></i></span><em class="goal-line"></em></span><span class="num">¥147,429</span></div><div class="alloc-row"><b>土日祝</b><span class="bar-hold" style="--goal:40%"><span class="bar"><i class="tone-bad" style="width:85.2%"></i></span><em class="goal-line"></em></span><span class="num">¥213,078</span></div></div></div>
+<h3>9月媒体別</h3><div class="panel motion-block"><p class="micro" style="margin-top:0">9月媒体別の有効CPA。縦線は10万円。その他指名2CPNは有効0件。</p><div class="allocation"><div class="alloc-row"><b>指名</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-good" style="width:27.5%"></i></span><em class="goal-line"></em></span><span class="num">¥54,961</span></div><div class="alloc-row"><b>Meta</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-bad" style="width:73.5%"></i></span><em class="goal-line"></em></span><span class="num">¥146,903</span></div><div class="alloc-row"><b>一般</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-bad" style="width:80.8%"></i></span><em class="goal-line"></em></span><span class="num">¥161,659</span></div><div class="alloc-row"><b>DG</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-bad" style="width:81.7%"></i></span><em class="goal-line"></em></span><span class="num">¥163,457</span></div></div></div><div class="table-scroll" tabindex="0" aria-label="媒体別実績。横スクロールできます"><table><thead><tr><th>媒体</th><th>費用</th><th>総リード</th><th>有効</th><th>有効率</th><th>有効CPA</th><th>アポ</th><th>判断</th></tr></thead><tbody><tr><td>Google 指名</td><td>¥219,844</td><td>5</td><td>4</td><td>80.00%</td><td class="good">¥54,961</td><td>5</td><td>需要を取り切る。拡大量は検索需要で制約</td></tr><tr><td>Meta Bridge（新旧計）</td><td>¥2,644,256</td><td>32</td><td>18</td><td>56.25%</td><td>¥146,903</td><td>17</td><td>アポ最多。地域テストの主戦場</td></tr><tr><td>Google 一般</td><td>¥2,263,220</td><td>24</td><td>14</td><td>58.33%</td><td>¥161,659</td><td>14</td><td>9/25以降の増分CPA約¥117,000</td></tr><tr><td>DemandGen</td><td>¥653,829</td><td>7</td><td>4</td><td>57.14%</td><td>¥163,457</td><td>2</td><td>9/25以降¥115,000で有効0件</td></tr><tr><td>その他指名2CPN</td><td>¥7,684</td><td>0</td><td>0</td><td>—</td><td>—</td><td>0</td><td>Microsoft・Yahoo!</td></tr></tbody></table></div><p class="micro">媒体表のCPN費用合計は¥5,788,833。全体費用との差¥301,557はこの表で媒体帰属を確認できない。媒体比率は方針であり、実際の既存配分の完全な再現ではない。9月の指名検索でアポ5件が有効4件を超えるため、アポの帰属・発生日と有効判定の定義を照合する。</p>
+<h3>エリア別：9/25〜10/4</h3><div class="panel motion-block"><p class="micro" style="margin-top:0">9/25〜10/4の有効件数。大阪4件、倉敷0件、岡山0件。</p><div class="allocation"><div class="alloc-row"><b>大阪</b><span class="bar-hold"><span class="bar"><i class="tone-watch" style="width:100%"></i></span></span><span class="num">4件</span></div><div class="alloc-row"><b>倉敷</b><span class="bar-hold"><span class="bar"><i class="tone-bad" style="width:0%"></i></span></span><span class="num">0件</span></div><div class="alloc-row"><b>岡山</b><span class="bar-hold"><span class="bar"><i class="tone-bad" style="width:0%"></i></span></span><span class="num">0件</span></div></div></div><div class="panel motion-block"><p class="micro" style="margin-top:0">同じ期間の費用。大阪の有効CPAは¥190,897。</p><div class="allocation"><div class="alloc-row"><b>大阪</b><span class="bar-hold"><span class="bar"><i class="" style="width:95.4%"></i></span></span><span class="num">¥763,587</span></div><div class="alloc-row"><b>倉敷</b><span class="bar-hold"><span class="bar"><i class="" style="width:17.4%"></i></span></span><span class="num">¥139,189</span></div><div class="alloc-row"><b>岡山</b><span class="bar-hold"><span class="bar"><i class="" style="width:62.6%"></i></span></span><span class="num">¥500,404</span></div></div></div><div class="table-scroll" tabindex="0" aria-label="エリア別実績。横スクロールできます"><table><thead><tr><th>エリア</th><th>費用</th><th>IMP</th><th>CLICK</th><th>CTR</th><th>CPC</th><th>総リード</th><th>CVR</th><th>総CPA</th><th>有効</th><th>有効率</th><th>有効CPA</th><th>アポ</th></tr></thead><tbody><tr><td>大阪</td><td>¥763,587</td><td>120,426</td><td>1,349</td><td>1.12%</td><td>¥566</td><td>7</td><td>0.52%</td><td>¥109,084</td><td>4</td><td>57.14%</td><td class="bad">¥190,897</td><td>2</td></tr><tr><td>倉敷</td><td>¥139,189</td><td>26,195</td><td>240</td><td>0.92%</td><td>¥580</td><td>0</td><td>0.00%</td><td>—</td><td>0</td><td>—</td><td>—</td><td>0</td></tr><tr><td>岡山</td><td>¥500,404</td><td>123,148</td><td>1,374</td><td>1.12%</td><td>¥364</td><td>1</td><td>0.07%</td><td>¥500,404</td><td>0</td><td>0.00%</td><td>—</td><td>0</td></tr></tbody></table></div><p class="micro">大阪は唯一の有効獲得エリアだが、有効CPA¥190,897は9月全体の¥145,009より約32%高い。獲得があることと効率が良いことは分けて評価する。さらに拡大設定の影響、エリア間の配信期間・学習状況、LPとクリエイティブの組み合わせが揃っていない。兵庫は新規検証であり過去の成果値はない。</p>
+<h3>LP別：LP04・05は9/18〜10/4、LP01は9/25〜10/4</h3><div class="panel motion-block"><p class="micro" style="margin-top:0">有効CPA。LP01は9/25〜10/4、LP04・05は9/18〜10/4。縦線は10万円。</p><div class="allocation"><div class="alloc-row"><b>LP01</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-good" style="width:48.5%"></i></span><em class="goal-line"></em></span><span class="num">¥97,047</span></div><div class="alloc-row"><b>LP04</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-bad" style="width:75.4%"></i></span><em class="goal-line"></em></span><span class="num">¥150,780</span></div><div class="alloc-row"><b>LP05</b><span class="bar-hold" style="--goal:50%"><span class="bar"><i class="tone-bad" style="width:90.5%"></i></span><em class="goal-line"></em></span><span class="num">¥181,059</span></div></div></div><div class="table-scroll" tabindex="0" aria-label="LP別実績。横スクロールできます"><table><thead><tr><th>LP</th><th>費用</th><th>IMP</th><th>CLICK</th><th>CTR</th><th>CPC</th><th>総リード</th><th>CVR</th><th>総CPA</th><th>有効</th><th>有効率</th><th>有効CPA</th><th>アポ</th><th>アポCPA</th></tr></thead><tbody><tr><td>LP01</td><td>¥485,237</td><td>80,878</td><td>932</td><td>1.15%</td><td>¥521</td><td>9</td><td class="good">0.97%</td><td>¥53,915</td><td>5</td><td>55.56%</td><td class="good">¥97,047</td><td>2</td><td>¥242,618</td></tr><tr><td>LP04</td><td>¥452,340</td><td>81,780</td><td>661</td><td>0.81%</td><td>¥684</td><td>5</td><td>0.76%</td><td>¥90,468</td><td>3</td><td>60.00%</td><td>¥150,780</td><td>2</td><td class="good">¥226,170</td></tr><tr><td>LP05</td><td>¥1,810,589</td><td>282,451</td><td>2,749</td><td>0.97%</td><td>¥659</td><td>20</td><td>0.73%</td><td>¥90,529</td><td>10</td><td>50.00%</td><td>¥181,059</td><td>6</td><td>¥301,765</td></tr></tbody></table></div>
+<div class="callout"><b>LP01は有効CPAで先行、アポCPAではLP04が僅差で先行</b><p>LP01の有効CPAはLP05比で約46%低い。CVRも0.97%で最も高い。一方、アポCPAはLP04の¥226,170がLP01の¥242,618より低い。流入媒体・エリア・開始日の差があるため、LP単独の因果効果はまだ確定しない。</p></div>
+</div></details>
+<details class="section item-toggle" id="problem" open=""><summary class="item-summary"><span class="item-number">03</span><strong class="item-title">施策の前に解くべき課題</strong></summary><div class="item-body"><h2>施策の前に解くべき課題</h2><p class="lede">広告のCPAだけを下げても、顧客の採用が続く理由までは作れない。まず「どの企業が、どの人材を、なぜ採用・定着できないか」を特定し、広告で伝えられる事実と、顧客企業が改善する必要がある条件を分ける。</p>
+<div class="callout red"><b>現時点の中心仮説：成約の再現条件が分かっていない</b><p>9月は有効42件・受注1件、ROAS65%。既存の成約には営業力、案件条件、時期なども影響し得るため、成約できた事実だけでは新規リード獲得の訴求が再現可能とは言えない。失注理由、求人条件、採用後の定着が広告データとつながっていない点を、顧客と確認する。これは現時点の仮説であり、特定の既存顧客の成果を「偶然」と断定するものではない。</p></div>
+<h3>市場の背景：一次資料で確認できること</h3><div class="evidence-grid"><div class="panel"><h3>不足は業種ごとに深い</h3><p>中小企業庁は建設、運輸・郵便、情報通信で強い人手不足感を示す。製造業は人材確保に加え、定着と技能継承も論点となる。</p><p class="source-inline"><a href="https://www.chusho.meti.go.jp/pamflet/hakusyo/2026/PDF/2026gaiyou.pdf" target="_blank" rel="noopener noreferrer">2026年版中小企業白書・概要</a> ／ <a href="https://www.meti.go.jp/report/whitepaper/mono/2026/index.html" target="_blank" rel="noopener noreferrer">2026年版ものづくり白書</a></p></div><div class="panel"><h3>応募数の先にある課題</h3><p>2025年版中小企業白書は人材不足と採用者の定着率の関係を示す。観光庁は宿泊施設間などでの人材共有を検討。農水省の2025年調査では、個人経営体の基幹的農業従事者が5年前から25.1%減少した。</p><p class="source-inline"><a href="https://www.chusho.meti.go.jp/pamflet/hakusyo/2025/chusho/b2_1_4.html" target="_blank" rel="noopener noreferrer">2025年版中小企業白書・人材戦略</a> ／ <a href="https://www.mlit.go.jp/kankocho/topics06_00045.html" target="_blank" rel="noopener noreferrer">観光庁・人材共有</a> ／ <a href="https://www.maff.go.jp/j/tokei/kekka_gaiyou/noucen/040909/index.html" target="_blank" rel="noopener noreferrer">農水省・2025年農林業センサス</a></p></div></div>
+<h3>人材サービスの顧客が直面する5つの問い</h3><div class="table-scroll" tabindex="0" aria-label="顧客課題とトレプロの役割。横スクロールできます"><table class="problem-table"><thead><tr><th>顧客の課題</th><th>まず確かめること</th><th>トレプロが担うこと</th><th>顧客企業が担うこと</th></tr></thead><tbody><tr><td>求人条件の実態が見えない</td><td>給与以外のシフト、残業、通勤、教育体制が応募前に分かるか</td><td>実態を取材し、広告・動画・LPで誤解なく伝える</td><td>条件を開示し、必要なら改善する</td></tr><tr><td>経験者だけでは採り切れない</td><td>未経験者が入社後に育つ経路、資格取得支援はあるか</td><td>応募可能な対象と育成の証拠を訴求にする</td><td>受け入れ・育成の設計を整える</td></tr><tr><td>採用数だけで評価している</td><td>応募→有効→面談→採用→6か月・1年定着の落ち方</td><td>広告から商談・採用までの帰属を整え、訴求別に学習する</td><td>採用・定着データと早期離職理由を共有する</td></tr><tr><td>地域移動の障壁がある</td><td>通勤、住まい、家族、外国人材の受け入れ条件</td><td>エリアごとに障壁と有効な説明を検証する</td><td>働く・暮らす条件を具体化する</td></tr><tr><td>採用だけでは仕事量を埋められない</td><td>増員以外に業務見直し・省力化が必要な工程</td><td>獲得施策で解ける範囲と解けない範囲を報告する</td><td>業務設計と省力化を進める</td></tr></tbody></table></div><p class="micro">上の5項目は市場資料を踏まえた検証枠組み。個別クライアントにすべて当てはまるという意味ではない。</p>
+<div class="logic-flow"><div class="logic-step"><b>1 課題を特定</b><p>業種・地域・職種別に、応募前と採用後の障壁を顧客・現場に聞く。</p></div><div class="logic-step"><b>2 証拠を作る</b><p>実際の条件、社員の声、育成や定着の事例を撮影・整理する。</p></div><div class="logic-step"><b>3 獲得で検証</b><p>訴求×地域×LPを揃えて配信し、有効リードから受注まで追う。</p></div><div class="logic-step"><b>4 次へ再利用</b><p>勝った理由と失敗理由を、動画・LP・営業資料・次エリアに引き継ぐ。</p></div></div>
+<div class="grid"><div class="panel"><h3>顧客課題の一次回答・編集欄</h3><label class="note-label">どの企業の、どの採用課題を優先するか<textarea data-note="client-problem">第一仮説：建設・運送の採用担当／経営者は応募数だけでなく、条件に合う人材の応募・面談・定着までつながる再現性を求めている。既存成約の理由は未分解。まず直近受注・失注案件を業種、地域、求人条件、導入理由で聞き直す。</textarea></label></div><div class="panel"><h3>次の現場調査候補</h3><p>地域と業種を広げる候補は、介護×郊外・地方、物流×郊外・人口減少地域、製造技能×工業集積地、宿泊×観光地。まずは現行の建設と運送の検証で調査の型を作り、他テーマの優先度は顧客への聞き取り後に決める。</p><label class="note-label">調査候補・優先度の編集<textarea data-note="field-research">一次案：物流は通勤・勤務時間・免許条件、建設は現場経験・資格・育成、製造は技能継承、宿泊は繁閑差と人材共有を質問候補にする。業種を広げる判断には商談需要と事例素材の有無を加える。</textarea></label></div></div>
+</div></details>
+</div></details>
+<details class="category-group" id="group-core"><summary><span class="group-index">02</span><span><strong class="group-name">基幹施策 01〜03</strong><small class="group-desc">建設・YouTube・地域と学習</small></span><span class="group-count">4項目</span></summary><div class="group-body">
+<details class="section item-toggle" id="construction"><summary class="item-summary"><span class="item-number">01</span><strong class="item-title">建設特化のクリエイティブプラン</strong></summary><div class="item-body"><div class="initiative-index">施策 01 / CREATIVE</div><h2>建設特化のクリエイティブプラン</h2><p class="lede">建設の人手不足が強いという市場背景だけでは、訴求は作れない。現場の採用障壁と実際に提供できる条件を照合し、顧客が相談したくなる理由を明確にする。</p>
+<div class="initiative-logic"><div><b>なぜ今</b><p>建設は人材不足感が強い。しかし「人手不足です」だけではどの顧客にも同じ訴求になり、質の高い相談につながる理由が弱い。職種・資格・勤務地・育成のどこが詰まるかを絞る。</p></div><div><b>何を作る</b><p>顧客・現場への聞き取りを基に、課題提示型と事例提示型の2方向をブリーフ化。実際の求人条件、教育体制、実績を確認できた場合だけ証拠として使う。</p></div><div><b>次に残す</b><p>広告反応だけでなく有効リード、面談、受注理由を訴求別に比較。勝ち要素を短尺広告、LP、営業資料に転用し、弱い要素は顧客への質問に戻す。</p></div></div>
+<div class="grid"><div class="panel"><h3>一次考察を修正する</h3><div class="note-fields"><label>対象顧客・誰に届けるか<textarea data-note="construction-audience">一次仮説：採用難のある建設事業者の経営者・採用責任者。職種（施工管理／技能職など）、事業規模、勤務地、募集人数で分け、商談数と顧客事例のある層を優先する。具体的な優先セグメントは案件ヒアリングで確定する。</textarea></label><label>建設特化を選ぶ理由<textarea data-note="construction-why">2026年版中小企業白書は建設の強い人手不足感を示す。一方、業界の不足感はトレプロへの相談理由そのものではない。募集条件を可視化し、未経験者の育成や定着まで説明できる企業に絞れば、広告の約束と実際の採用体験を合わせられる可能性がある。</textarea></label><label>実績・事例・営業の声<textarea data-note="construction-evidence">現在の添付資料には建設業だけのリード・受注実績はない。直近の建設案件から「相談のきっかけ」「採用したい職種」「競合との違い」「失注理由」「動画で示せる事実」を集め、数値と顧客の言葉を追記する。</textarea></label><label>未確定事項・次の判断<textarea data-note="construction-decision">最初の制作前に、対象職種、顧客が開示できる求人条件、出演・撮影許諾、訴求可能な事例を確定する。十分な裏付けが取れなければ制作本数を増やさず、ヒアリングを続ける。</textarea></label></div><p class="micro">記載は一次仮説。編集内容はこの端末のブラウザに保存される。</p></div>
+<div class="panel"><h3>実施から学習まで</h3><ol class="stage-list"><li><b>10月前半</b><span>既存の受注・失注案件を聞き直し、職種・求人条件・採用後の課題を一枚のブリーフに整理。</span></li><li><b>10月後半</b><span>確認できた事実を使い、課題起点と事例起点の2案を試作。媒体・LPを揃えて初回テスト。</span></li><li><b>11月</b><span>有効率、アポ率、受注理由と不一致理由を確認。質の低い流入を生む表現を修正。</span></li><li><b>12月</b><span>効いた要素を建設向けの広告・LP・営業説明の共通素材にし、別職種へ展開できるか判断。</span></li></ol><div class="hypothesis"><b>判定に必要な記録</b><p>訴求ID、対象職種、配信費、総リード、有効、アポ、受注、失注理由。採用・定着情報は顧客から共有可能な範囲で追加する。</p></div></div></div>
+</div></details>
+<details class="section item-toggle" id="channel"><summary class="item-summary"><span class="item-number">02</span><strong class="item-title">トレプロチャンネル（YouTube）</strong></summary><div class="item-body"><div class="initiative-index">施策 02 / OWNED MEDIA</div><h2>トレプロチャンネル（YouTube）</h2><p class="lede">広告の一言では伝わりにくい現場の条件や採用後の姿を、橋口さん・金山さん・ゲストの対話で具体化する。番組を単独の再生数施策にせず、顧客が相談を判断する証拠と次の広告素材の源泉にする。</p>
+<div class="initiative-logic"><div><b>なぜ必要か</b><p>給与や募集人数だけでは顧客の採用課題の深さが見えず、広告の訴求も一般論に寄る。現場・事業者・専門家の声で、働く条件と解決の進め方を具体化する。</p></div><div><b>何を聞くか</b><p>各回で一つの問いを固定する。例：運送で応募前に確認される条件、建設の未経験者育成、定着が進む企業の取り組み。影響力のあるゲストは、その問いに答えられる人から選ぶ。</p></div><div><b>どう使い切るか</b><p>本編→短尺の回答動画→広告の冒頭A/B→LPのFAQ・事例→商談後の説明に再編集。二次利用の許諾を収録前に確認し、各素材の反応と有効リードを追う。</p></div></div>
+<div class="panel"><h3>プロジェクトの一次回答・編集欄</h3><div class="note-fields two"><label>スタジオ・制作体制の進捗<textarea data-note="channel-studio">スタジオ確保に向けた動きは進行中。場所、契約状況、利用可能日、撮影・編集担当、ゲスト調整担当は未入力。初回収録日を入れる前に担当と利用条件を確定する。</textarea></label><label>チャンネルの目的・企画方針<textarea data-note="channel-purpose">一次案：採用課題を抱える企業が、実際の条件・支援の進め方・事例を見て相談の可否を判断できる番組にする。橋口さん／金山さんの知見と現場ゲストの実話を組み合わせる。テーマ別の視聴維持、短尺からの流入、問い合わせ、有効率まで測る。</textarea></label><label>出演者を選ぶ理由・聞きたい問い<textarea data-note="channel-guest-reason">橋口さん・金山さんはトレプロの考え方や実行の裏側を説明する役割を想定。外部ゲストは知名度だけで決めず、建設・運送などの現場課題に具体的な証言を持つ人を候補にする。誰に何を聞くかは企画ごとに確定する。</textarea></label><label>公開後の分析・次の使い道<textarea data-note="channel-analysis">各回で「どの問いに反応したか」「どこで離脱したか」「相談の質は変わったか」を確認。刺さった回答を広告・LP・営業資料に移し、次回ゲストへの質問を更新する。素材の切り出し・広告利用許諾を収録前に確認する。</textarea></label></div><p class="micro">現時点でスタジオの契約・収録日は確定値として扱わない。記載は編集可能な一次案。</p></div>
+<div class="panel" style="margin-top:14px"><div class="panel-heading"><div><h3>企画・出演者ガントチャート</h3><p class="micro">企画単位で追加。同じ出演者の別テーマも別行にできる。打診・収録・公開日を入れると週次ガントに反映。</p></div><button type="button" class="btn secondary" id="addGuest">企画を追加</button></div><div id="guestRows" class="guest-editor"><div class="guest-row" data-guest="0"><label>出演者<input data-field="name" type="text" value="橋口さん" placeholder="出演者名"></label><label class="wide">企画テーマ・聞く問い<input data-field="theme" type="text" value="既存成約の理由をどう分解するか" placeholder="例：応募前に伝えるべき勤務条件"></label><button class="guest-remove" type="button" data-remove="0" aria-label="既存成約の理由をどう分解するかを削除">×</button><label>打診日<input data-field="contact" type="date" value=""></label><label>収録日<input data-field="record" type="date" value=""></label><label>公開日<input data-field="publish" type="date" value=""></label><label class="wide">切り出し・二次利用先<textarea data-field="reuse" placeholder="短尺、広告、LP、営業資料など">成約理由を問う短尺／LPのFAQ／商談資料</textarea></label><label class="wide">公開後の結果・次回に残す学び<textarea data-field="learning" placeholder="視聴・流入・有効リードと次の問い">公開後に有効リードと商談での質問を確認</textarea></label></div><div class="guest-row" data-guest="1"><label>出演者<input data-field="name" type="text" value="金山さん" placeholder="出演者名"></label><label class="wide">企画テーマ・聞く問い<input data-field="theme" type="text" value="建設・運送の採用課題をどう聞き分けるか" placeholder="例：応募前に伝えるべき勤務条件"></label><button class="guest-remove" type="button" data-remove="1" aria-label="建設・運送の採用課題をどう聞き分けるかを削除">×</button><label>打診日<input data-field="contact" type="date" value=""></label><label>収録日<input data-field="record" type="date" value=""></label><label>公開日<input data-field="publish" type="date" value=""></label><label class="wide">切り出し・二次利用先<textarea data-field="reuse" placeholder="短尺、広告、LP、営業資料など">業種別の短尺／広告冒頭A/B</textarea></label><label class="wide">公開後の結果・次回に残す学び<textarea data-field="learning" placeholder="視聴・流入・有効リードと次の問い">視聴維持と相談内容を業種別に比較</textarea></label></div><div class="guest-row" data-guest="2"><label>出演者<input data-field="name" type="text" value="ゲスト候補" placeholder="出演者名"></label><label class="wide">企画テーマ・聞く問い<input data-field="theme" type="text" value="運送の現場で応募前に知りたい条件" placeholder="例：応募前に伝えるべき勤務条件"></label><button class="guest-remove" type="button" data-remove="2" aria-label="運送の現場で応募前に知りたい条件を削除">×</button><label>打診日<input data-field="contact" type="date" value=""></label><label>収録日<input data-field="record" type="date" value=""></label><label>公開日<input data-field="publish" type="date" value=""></label><label class="wide">切り出し・二次利用先<textarea data-field="reuse" placeholder="短尺、広告、LP、営業資料など">現場証言の短尺／運送向けLP</textarea></label><label class="wide">公開後の結果・次回に残す学び<textarea data-field="learning" placeholder="視聴・流入・有効リードと次の問い">出演者・事例利用許諾と企業からの相談内容を確認</textarea></label></div></div><div class="gantt-scroll" tabindex="0" aria-label="企画別ガントチャート。横スクロールできます"><div id="guestGantt"><div class="gantt" style="grid-template-columns:190px repeat(13,minmax(61px,1fr));min-width:983px"><div class="gantt-head">企画・出演者</div><div class="gantt-head">10/6</div><div class="gantt-head">10/13</div><div class="gantt-head">10/20</div><div class="gantt-head">10/27</div><div class="gantt-head">11/3</div><div class="gantt-head">11/10</div><div class="gantt-head">11/17</div><div class="gantt-head">11/24</div><div class="gantt-head">12/1</div><div class="gantt-head">12/8</div><div class="gantt-head">12/15</div><div class="gantt-head">12/22</div><div class="gantt-head">12/29</div><div class="gantt-name" title="既存成約の理由をどう分解するか / 橋口さん">既存成約の理由をどう分解するか / 橋口さん</div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-name" title="建設・運送の採用課題をどう聞き分けるか / 金山さん">建設・運送の採用課題をどう聞き分けるか / 金山さん</div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-name" title="運送の現場で応募前に知りたい条件 / ゲスト候補">運送の現場で応募前に知りたい条件 / ゲスト候補</div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div><div class="gantt-cell "></div></div></div></div><p class="micro">10月6日から最低13週間を表示し、先の予定を入力すると自動で延長。企画内容・二次利用・公開後の学びは各行に追記できる。</p></div>
+</div></details>
+<details class="section item-toggle" id="regional"><summary class="item-summary"><span class="item-number">03</span><strong class="item-title">リージョナル戦略のエリアプラン</strong></summary><div class="item-body"><div class="initiative-index">施策 03 / REGIONAL</div><h2>リージョナル戦略のエリアプラン</h2><p class="lede">同じ「運送の人手不足」でも、通勤圏、勤務時間、配送ルート、免許・経験条件によって応募の障壁は変わる。エリア配信は地名を替える作業ではなく、地域ごとに何を説明すべきかを学ぶために行う。</p>
+<div class="initiative-logic"><div><b>なぜ今</b><p>大阪は有効4件を獲得したが、有効CPAは¥190,897。現状を成功と評価するには高く、過去の地域外拡大設定の影響もある。次の地域へ増額する前に、純粋な地域差と訴求差を分けて確認する。</p></div><div><b>何を試す</b><p>兵庫は候補例。ご提示の「神姫バス」事例から採用課題、映像構成、証拠の見せ方を分解し、今回の運送業向け訴求に使える要素を確認する。大阪と候補地域は同条件で比較する。</p></div><div><b>何を残す</b><p>地域ごとに有効リード、アポ、受注、失注理由を追い、勤務条件や通勤のどの説明が効いたかを記録。勝ち要素を次の類似地域に持ち込んで再検証する。</p></div></div>
+<div class="grid"><div class="panel"><h3>兵庫を候補例に置く根拠</h3><p>ご提示の強力な「神姫バス」事例を、兵庫での企画の材料として活用できる想定がある。ただし、事例の成果や勤務条件を別の事業者の実績として語ることはできない。実績の内容、素材の利用許諾、今回の対象顧客に合う部分を先に確認する。</p><label class="note-label">事例から転用できる要素・一次回答<textarea data-note="regional-case">一次仮説：「神姫バス」の勝ち要素を、冒頭の構成、人物・現場の見せ方、証拠の順番、CTAに分解する。成果値や表現の利用許諾は未確認。今回の動画には対象顧客が実際に開示できる勤務条件・採用成果・現場の声だけを使う。</textarea></label><label class="note-label">運送業の顧客課題・訴求<textarea data-note="regional-appeal">一次仮説：採用担当者は応募数より、必要な免許・勤務時間・運行／配送エリアに合う人材と面談できるかを重視する。「地域の条件に合う応募者の質」を主訴求とし、実際に改善できる範囲を顧客に確認してから広告文にする。</textarea></label></div><div class="panel"><h3>大阪と次エリアの検証</h3><ol class="mini-list"><li>兵庫を次エリアとするのは一例。案件実績、通勤圏、活用できる事例、顧客の採用需要で候補を確定する。</li><li>エリア以外の訴求、動画構成、LP、配信期間、予算を揃え、地域外リーチ拡大を止める。</li><li>地域別の流入属性、求人条件、営業による有効判定を合わせて記録する。</li><li>大阪／次エリアの勝敗は有効リードとアポの母数を確認してから判断し、受注・失注理由を後追いする。</li></ol><label class="note-label">候補エリア・合意結果<textarea data-note="regional-area">一次案：大阪を比較基準とし、次エリアに兵庫を置く。兵庫の過去成果は未取得。候補の合意後、配信可能地域と勤務・通勤条件を確認して設定する。</textarea></label><label class="note-label">配信後に分解する要因<textarea data-note="regional-analysis">勝った地域の理由を、①実際の配信地域、②ターゲット属性、③冒頭・訴求、④LPの離脱、⑤有効判定・アポ・受注理由に分ける。差が小さい場合は「地域差あり」とせず、求人条件と訴求の再設計に戻す。</textarea></label></div></div>
+<div class="callout warn"><b>過去の大阪数値の読み方</b><p>大阪の有効4件は方向性の手掛かりだが、費用効率は悪い。過去配信では地域外へリーチを広げる設定が有効だった可能性もある。新テストでは設定画面と配信先の都道府県内訳を保存し、運送業向けクリエイティブの成果を改めて測る。</p></div>
+</div></details>
+<details class="section item-toggle" id="learning"><summary class="item-summary"><span class="item-number">04</span><strong class="item-title">3施策を一つの学習にする</strong></summary><div class="item-body"><h2>3施策を一つの学習にする</h2><p class="lede">建設の顧客取材、チャンネルの長尺対話、地域別広告を別々の成果報告で終わらせない。同じ顧客課題と訴求IDに結び、広告前後の反応を追う。</p><div class="table-scroll" tabindex="0" aria-label="施策の分析と二次利用。横スクロールできます"><table><thead><tr><th>施策</th><th>実行時に残す証拠</th><th>公開・配信後に問うこと</th><th>次に使う場所</th></tr></thead><tbody><tr><td>建設特化</td><td>顧客の言葉、求人条件、現場写真・動画、許諾、訴求別ブリーフ</td><td>どの職種・課題・証拠が有効リードから面談・受注まで進んだか</td><td>広告の別案、建設向けLP、営業説明、次の顧客取材</td></tr><tr><td>トレプロチャンネル</td><td>出演者の証言、回答の時間位置、切り出し許諾、企画ごとのCTA</td><td>どの問いで視聴が続き、短尺・広告・LP経由の相談の質が高まったか</td><td>短尺動画、広告A/B、LPのFAQ・事例、商談後フォロー、次回企画</td></tr><tr><td>リージョナル</td><td>設定画面、配信地域、素材ID、LP、勤務・通勤条件</td><td>地域差は実在したか。訴求・条件・流入属性の何が有効率を変えたか</td><td>勝ち要素の次地域テスト、地域別LP・広告、営業の地域別説明</td></tr></tbody></table></div>
+<div class="grid"><div class="panel"><h3>共通の評価軸</h3><p>短期：費用、総リード、有効率、有効CPA、アポ率。中期：受注・失注理由と訴求の一致。顧客から共有可能な場合は、採用・6か月／1年定着を後追いする。リードを増やしても採用・定着に結びつかない訴求は見直す。</p></div><div class="panel"><h3>金曜定例での意思決定</h3><p>①今週得た顧客の事実、②有効リードとアポ・受注の質、③素材とLPのどちらに問題があるか、④次週に変える変数を一つ、⑤使い回せる証拠と許諾を確認する。結論は「継続・修正・停止」と根拠を残す。</p></div></div>
+</div></details>
+</div></details>
+<details class="category-group" id="group-growth"><summary><span class="group-index">03</span><span><strong class="group-name">周辺施策と経営管理</strong><small class="group-desc">新しい接点・代理店・予実</small></span><span class="group-count">2項目</span></summary><div class="group-body">
+<details class="section item-toggle" id="growth"><summary class="item-summary"><span class="item-number">01</span><strong class="item-title">周辺の新規獲得・流通チャネル</strong></summary><div class="item-body"><h2>周辺の新規獲得・流通チャネル</h2><p class="lede">施策01〜03の軸は維持する。そこで得た課題ブリーフ、動画、地域別の証拠を、広告以外の接点にも持ち出す。各チャネルを単発で増やさず、流入元から有効リード・商談・売上まで追って優先度を決める。</p>
+<div class="initiative-logic"><div><b>建設特化と接続</b><p>イベント、業界紙・チラシ、建設向けサービスでは、施策01で確かめた同じ採用課題と証拠を使う。接点ごとの反応差から訴求を修正する。</p></div><div><b>チャンネルと接続</b><p>出演者の具体的な回答を紹介・営業の資料や短尺に使う。代理店にも同じ説明素材を渡し、提案内容のばらつきを抑える。</p></div><div><b>リージョナルと接続</b><p>商工会や地方の代理店から地域固有の採用条件を聞く。広告で得た地域別の学びを営業・紹介にも返す。</p></div></div>
+<details class="work-details"><summary>未認知の建設企業に会う接点を増やす</summary><div class="inside"><p>現在の地域広告だけでは未認知層への接点が足りるか不明。施策01のブリーフを共通に使い、接点ごとの費用と相談の質を比較する。</p><div class="table-scroll" tabindex="0" aria-label="建設向け周辺チャネル。横スクロールできます"><table><thead><tr><th>候補</th><th>目的と次の動き</th><th>判断する材料</th><th>担当</th></tr></thead><tbody><tr><td>協力会社のイベント・集まり</td><td>トレプロを紹介する登壇・紹介の機会を探す。BRANU（ブラニュー）などに実施可能な枠と条件を問い合わせる。</td><td>参加企業の属性、登壇費用、紹介数、有効商談、事後フォロー可能性</td><td>要確認</td></tr><tr><td>業界特化の地方新聞・チラシ</td><td>建設向け地方新聞と商工会のチラシ折り込みを候補に、掲載条件・費用・配布地域を調べる。</td><td>到達企業、出稿費、専用URL・QR経由の有効リードと商談</td><td>要確認</td></tr><tr><td>DMP広告・建設向けサイト</td><td>ツクリンクなどの建設向けマッチング・比較サービスを調べ、掲載条件と費用を比較する。</td><td>対象職種・会社規模への到達、費用、有効率、通常の地域広告との差</td><td>要確認</td></tr></tbody></table></div><label class="note-label">候補媒体・打診結果の編集<textarea data-note="growth-construction">一次案：施策01で確定した「誰の何の採用障壁を解くか」を共通の紹介文にする。イベント・紙・建設向けサイトには別の流入元コードを付け、参加数やクリックだけでなく有効リードと商談まで追う。掲載・登壇は条件と費用を確認してから判断する。</textarea></label></div></details>
+<details class="work-details"><summary>代理店・地域団体から継続的な紹介経路を作る</summary><div class="inside"><p>地方開拓用リストは作成済み。単発の紹介で終わらせず、稼働代理店数、代理店経由の受注、継続売上を管理する。提携・買収は情報収集段階として分けて記録する。</p><div class="table-scroll" tabindex="0" aria-label="代理店と地域連携の動き。横スクロールできます"><table><thead><tr><th>経路</th><th>次の動き</th><th>追う指標</th><th>担当</th></tr></thead><tbody><tr><td>FC・求人広告代理店</td><td>橋口さんが候補企業へ営業。アプローチ中の企業にはメール配信と架電を行い、求人広告とトレプロを組み合わせた提案余地を確認する。</td><td>打診数→商談数→契約代理店数→稼働代理店数→代理店経由売上</td><td>橋口さん</td></tr><tr><td>地方の商工会など</td><td>既存のつながりから紹介を依頼できる相手と、接点を持てる団体を洗い出す。</td><td>紹介ルート数、紹介企業数、有効商談、受注</td><td>要確認</td></tr><tr><td>広告代理店の提携・買収可能性</td><td>代理店営業の対話で相手先の事業状況、提携・買収への意向を聞く。得た情報を基に追跡KPIを決める。</td><td>提携可能性、稼働状況、売上・粗利、統合に必要な条件。買収判断は別途。</td><td>要確認</td></tr></tbody></table></div><label class="note-label">候補・進捗・提携条件の編集<textarea data-note="growth-partners">一次案：既存の地方開拓リストを起点に、求人広告を扱う企業へ「既存提案にトレプロを加えると何が増えるか」を確認する。代理店の数だけでなく稼働・受注・継続売上まで追う。商工会は紹介経路、M&amp;Aは探索事項として別管理する。</textarea></label></div></details>
+<div class="callout warn"><b>費用を投じる条件</b><p>イベント・紙・DMP・代理店施策の費用は、掲載条件や収益分配が未確認のため、下の広告媒体配分にはまだ含めない。出稿・提携の候補ごとに投資額、見込み売上、既存チャネルとの重複を確認し、経営の予実試算に接続する。</p></div>
+</div></details>
+<details class="section item-toggle" id="management"><summary class="item-summary"><span class="item-number">02</span><strong class="item-title">経営ダッシュボードと予実</strong></summary><div class="item-body"><h2>経営ダッシュボードと予実</h2><p class="lede">アカウントの細かな指標を、会社全体の目的に戻して見るための箱を作る。金山さん・森さんと予実を照合し、オフライン・代理店・継続課金の売上見立てを同じ表で比較する。</p>
+<div class="table-scroll" tabindex="0" aria-label="経営ダッシュボードの大項目。横スクロールできます"><table><thead><tr><th>大項目の箱</th><th>中に置く論点</th><th>朝会で先に見る指標</th></tr></thead><tbody><tr><td>売上向上</td><td>施策01〜03、イベント・紙・DMP、代理店・商工会、M&amp;A探索、AI研修／求人プランのサブスク</td><td>予算との差、新規売上、継続売上、チャネル別の受注</td></tr><tr><td>獲得品質・再現性</td><td>リードの有効判定、受注・失注理由、地域・素材・LPの学習</td><td>有効CPA、アポ率、受注率、再利用できる証拠</td></tr><tr><td>業務効率化</td><td>AI動画の制作時間、撮影・編集の手戻り、ダッシュボード更新作業</td><td>制作時間、制作原価、更新にかかる作業量</td></tr></tbody></table></div>
+<details class="work-details"><summary>朝会での追加・閲覧・更新表示の仕様案</summary><div class="inside"><h4>追加</h4><p>新しい論点は大項目の箱に紐づけて追加する。箱を増やす前に目的の重複を確認する。</p><h4>閲覧</h4><p>朝会では大項目の数値と意思決定だけを見せ、詳細はプルダウンで展開する。施策の担当・進捗・次の判断を同じ順序で置く。</p><h4>更新通知</h4><p>箱の中の内容が変わったら「アップデートあり」を表示し、変更した項目と更新者・更新時刻を見られる仕様にする。このHTMLは構成案であり、共有ダッシュボード側の通知機能は別途実装する。</p><label class="note-label">構成案と仕様の編集<textarea data-note="dashboard-spec">一次案：売上向上／獲得品質・再現性／業務効率化の3箱。新しい論点は該当する箱へ追加し、朝会では「予算との差・変化した論点・次の判断」を先に表示。詳細は展開式にし、更新者・更新時刻と変更項目を見せる。</textarea></label><p class="mini-owner">構成案・仕様整理の担当：要確認</p></div></details>
+<div class="panel" style="margin-top:14px"><div class="forecast-top"><h3>新規施策の簡易予実シミュレーション</h3><label>表示月 <select id="businessMonth"><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option></select></label></div><p class="micro">入力値はすべて仮定。既存事業の売上見込みに、新規チャネルの売上だけを加算する。各月は独立して保存される。広告・制作費の試算とは別管理し、同じ費用を二重計上しない。</p>
+<div class="forecast-group"><h4>予算・実績・既存事業</h4><div class="form-grid"><div class="field"><label for="bTarget">月の売上予算（円）</label><input id="bTarget" data-business="" type="number" min="0" step="10000" value="0"></div><div class="field"><label for="bActual">当月実績・判明分（円）</label><input id="bActual" data-business="" type="number" min="0" step="10000" placeholder="未入力"></div><div class="field"><label for="bBase">既存事業の売上見込み（円）</label><input id="bBase" data-business="" type="number" min="0" step="10000" value="0"></div></div></div>
+<div class="forecast-group"><h4>オフライン施策</h4><div class="form-grid"><div class="field"><label for="bOfflineCount">実施数</label><input id="bOfflineCount" data-business="" type="number" min="0" step="1" value="0"></div><div class="field"><label for="bOfflineRevenue">実施1件あたり売上見込み（円）</label><input id="bOfflineRevenue" data-business="" type="number" min="0" step="10000" value="0"></div><div class="field"><label for="bOfflineCost">月の投資額（円）</label><input id="bOfflineCost" data-business="" type="number" min="0" step="10000" value="0"></div></div></div>
+<div class="forecast-group"><h4>FC・代理店</h4><div class="form-grid"><div class="field"><label for="bAgents">稼働代理店数</label><input id="bAgents" data-business="" type="number" min="0" step="1" value="0"></div><div class="field"><label for="bAgencyDeals">1社あたり月間契約数</label><input id="bAgencyDeals" data-business="" type="number" min="0" step="0.1" value="0"></div><div class="field"><label for="bAgencyRevenue">1契約あたり売上（円）</label><input id="bAgencyRevenue" data-business="" type="number" min="0" step="10000" value="0"></div><div class="field"><label for="bAgencyCost">手数料・開拓費（円）</label><input id="bAgencyCost" data-business="" type="number" min="0" step="10000" value="0"></div></div></div>
+<div class="forecast-group"><h4>継続課金の2ケース</h4><div class="form-grid"><div class="field"><label for="bAiSubs">AI研修の稼働契約数</label><input id="bAiSubs" data-business="" type="number" min="0" step="1" value="0"></div><div class="field"><label for="bAiFee">AI研修の月額（円）</label><input id="bAiFee" data-business="" type="number" min="0" step="1000" value="0"></div><div class="field"><label for="bJobSubs">求人プランの稼働契約数</label><input id="bJobSubs" data-business="" type="number" min="0" step="1" value="0"></div><div class="field"><label for="bJobFee">求人プランの月額（円）</label><input id="bJobFee" data-business="" type="number" min="0" step="1000" value="0"></div><div class="field"><label for="bLaunchCost">立ち上げ投資（円）</label><input id="bLaunchCost" data-business="" type="number" min="0" step="10000" value="0"></div></div></div>
+<div class="forecast-summary" aria-live="polite"><div><small>新規施策の売上見込み</small><strong id="bOutNew">¥0</strong></div><div><small>新規施策の投資額</small><strong id="bOutInvestment">¥0</strong></div><div><small>売上見込みと予算の差</small><strong id="bOutGap">要入力</strong></div></div><div class="table-scroll" tabindex="0" aria-label="10月から12月の予実試算。横スクロールできます"><table><thead><tr><th>月</th><th>売上予算</th><th>当月実績</th><th>既存見込み</th><th>オフライン</th><th>代理店</th><th>AI研修</th><th>求人プラン</th><th>売上見込み計</th><th>投資額</th><th>実績−予算</th><th>見込み−予算</th></tr></thead><tbody id="businessForecastRows"><tr><td>10月</td><td class="num">要入力</td><td class="num">未入力</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num ">要入力</td><td class="num ">要入力</td></tr><tr><td>11月</td><td class="num">要入力</td><td class="num">未入力</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num ">要入力</td><td class="num ">要入力</td></tr><tr><td>12月</td><td class="num">要入力</td><td class="num">未入力</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num">¥0</td><td class="num ">要入力</td><td class="num ">要入力</td></tr></tbody></table></div><label class="note-label">ケースの成立条件・実績との差<textarea data-note="business-forecast-assumptions">一次案：オフラインは実施数×1件あたり売上、FCは稼働代理店数×1社あたり契約数×契約売上、サブスクは各月の稼働契約数×月額で試算し、月別の件数で立ち上がり時期を表す。金山さん・森さんと既存予実を確認し、重複売上や手数料を除いて更新する。</textarea></label><p class="micro">当月実績は判明分を入力し、売上見込みには足さない。予算が未入力の月は差額を「要入力」と表示。投資額は売上から自動控除せず、予算との差と並べて判断する。利益見込みを計算するには原価・手数料の精査が別途必要。</p><p class="mini-owner">予実の関係者：金山さん・森さん／作成担当：要確認</p></div>
+</div></details>
+</div></details>
+<details class="category-group" id="group-operation"><summary><span class="group-index">04</span><span><strong class="group-name">配信・訴求設計</strong><small class="group-desc">媒体・設定・素材・LP</small></span><span class="group-count">4項目</span></summary><div class="group-body">
+<details class="section item-toggle" id="allocation"><summary class="item-summary"><span class="item-number">01</span><strong class="item-title">媒体配分と予算ルール</strong></summary><div class="item-body"><h2>媒体配分と予算ルール</h2><p class="lede">月額¥6,090,390は9月実績を置いた仮上限。10月1〜5日の既消化額が未確定のため、10月の残予算は実績入力後に確定する。</p>
+<div class="two-col"><div class="panel"><h3>配分案（地域選定の合意後）</h3><div class="allocation" id="allocationRows"><div class="alloc-row "><b>Google 一般</b><span class="bar"><i style="width:45%"></i></span><strong>45%</strong><span class="num">¥2,740,676</span></div><div class="alloc-row meta"><b>Meta 既存</b><span class="bar"><i style="width:10%"></i></span><strong>10%</strong><span class="num">¥609,039</span></div><div class="alloc-row meta"><b>Meta 大阪</b><span class="bar"><i style="width:15%"></i></span><strong>15%</strong><span class="num">¥913,559</span></div><div class="alloc-row meta"><b>Meta 次エリア（兵庫例）</b><span class="bar"><i style="width:15%"></i></span><strong>15%</strong><span class="num">¥913,559</span></div><div class="alloc-row "><b>Google 指名</b><span class="bar"><i style="width:5%"></i></span><strong>5%</strong><span class="num">¥304,520</span></div><div class="alloc-row zero"><b>DemandGen・TikTok</b><span class="bar"><i style="width:0%"></i></span><strong>0%</strong><span class="num">¥0</span></div><div class="alloc-row reserve"><b>リザーブ</b><span class="bar"><i style="width:10%"></i></span><strong>10%</strong><span class="num">¥609,039</span></div></div><p class="micro">リザーブ10%は自動消化しない。次エリア15%は兵庫を例にした試算枠であり、エリア確定前には配信しない。金曜の有効CPA・有効率・アポ率で配分を見直す。</p></div><div class="panel"><h3>配分の理由</h3><ul class="mini-list"><li><b>一般検索45%</b>：9月末の増分は有効3件・CPA約¥117,000で改善傾向。ただし10万円未満の判定ラインには届かず、検索語句の精査と週次評価を条件にする。</li><li><b>Meta40%</b>：9月アポ17件で最大供給源。一方、有効CPA¥146,903は高い。地域テストは設定を正して小さく比較する。</li><li><b>指名5%</b>：CPA¥54,961。需要以上に予算を積まない。余りはリザーブへ。</li><li><b>DemandGen 0%</b>：直近の有効0件を受け一時停止。TikTokも予算抑制を継続。</li></ul></div></div>
+<div class="callout warn"><b>日額の決め方</b><p>30日換算の月額上限は約¥203,013／日。実際の10月日額は「月額上限 − 10月既消化額」を残日数で割り、さらに休日抑制を反映する。開始週は大阪・次エリアを同額にし、平日対比で土日祝の日額を約30%低く設定して様子を見る。曜日差を見る間は比較する両地域で同じ時間・予算ルールを使う。</p></div>
+</div></details>
+<details class="section item-toggle" id="setup"><summary class="item-summary"><span class="item-number">02</span><strong class="item-title">新しい配信内容・設定</strong></summary><div class="item-body"><h2>新しい配信内容・設定</h2><div class="grid"><div class="panel"><span class="tag">Meta 地域テスト</span><h3>大阪 vs 兵庫（候補例）</h3><ul class="mini-list"><li>次エリアを兵庫とする合意後、大阪と兵庫を別広告セットまたは別キャンペーンに分離し、予算を同額にする。</li><li>配信目標、最適化イベント、有効リード計測、掲載面、年齢条件、期間を揃える。</li><li>LP01を共通の初期着地先候補とし、運送業向けの同じ訴求・構成で地域差分だけを出す。</li><li>「広告に反応する可能性が高い人へのリーチを増やす」のチェックを外せる設定か確認し、地域外拡大を止める。UI上の選択内容をスクリーンショットで保存。</li><li>実配信の都道府県内訳を日次確認し、地域外流入が多ければテストを止めて設定を修正する。</li></ul></div><div class="panel"><span class="tag">Google 検索</span><h3>一般検索と指名</h3><ul class="mini-list"><li>一般検索は検索語句レポートで無効・低意図クエリを除外し、高意図語の広告文とLP01/LP04の接続を確認。</li><li>指名は機会損失がない範囲で維持。5%を消化目標にはしない。</li><li>新LPテストは媒体・キーワード群を揃えて比較し、有効リードとアポまで追う。</li></ul><span class="tag orange">保留</span><p>DemandGenはLP04/05・Discover面の検証履歴を残す。直近の有効0件の原因が訴求・面・計測のどれかを確認してから再開。TikTokは今回の初週予算に入れない。</p></div></div>
+<div class="decision-grid" style="margin-top:14px"><div class="decision green"><b>拡大</b>同条件で各地域の有効5件以上を目安に有効CPAとアポ化を比較。差が継続し、配信地域の混入がない場合、勝ちエリアを20〜30%ずつ段階増額。</div><div class="decision yellow"><b>継続検証</b>各地域の有効が5件未満なら、CTR・LP到達・総CVRを先行指標として扱い、勝敗を断定しない。変える変数は1つにする。</div><div class="decision red"><b>停止・修正</b>地域外配信が確認された場合、計測が欠ける場合、または有効0件で費用が事前上限を超えた場合は一旦停止。原因と修正内容を記録する。</div></div>
+<p class="micro">「各地域有効5件」は統計的有意差の保証ではなく、極小母数で判断しないための暫定的な運用基準。大阪の過去有効CPA¥190,897から見ると、各地域¥90万前後のテスト枠でも5件に届くかは不確実。</p>
+</div></details>
+<details class="section item-toggle" id="creative"><summary class="item-summary"><span class="item-number">03</span><strong class="item-title">訴求と制作の設計</strong></summary><div class="item-body"><h2>訴求と制作の設計</h2><p class="lede">クリエイター制作は少数の重点素材、AI動画は検証量の確保に使う。地域テストでは素材条件を揃え、勝ち要素が見えた後に制作量を増やす。</p>
+<div class="grid"><div class="panel"><span class="tag">少量・重点</span><h3>クリエイター制作動画</h3><p>月2本を上限目安に、有効リードにつながるターゲット・訴求・LPへ投入する。撮影や出演を要するため、毎週の大量制作は前提にしない。</p><p class="micro">KPI：ブリーフ、完成本数、制作時間、配信費、獲得した有効リード・アポを記録する。</p></div><div class="panel"><span class="tag">検証・量産</span><h3>AI動画</h3><p>基本案は週4本。1訴求の冒頭A/Bを2地域向けに用意する。運送業向けクリエイティブの検証では、事例の使い方と冒頭の違いを記録する。</p><p class="micro">KPI：週4本、4週16本、12週48本。4訴求を各A/B化して2地域へ出す場合は週16本となるため、リード母数を確認してから拡張する。</p></div></div>
+<h3>訴求マインドマップ</h3><p class="micro">中心の問いから「対象 → 課題 → 証拠・表現」まで掘り下げる。各枝の細部は入力欄に追記できる。</p>
+<div class="mind-root">新規リード獲得の訴求<br><small>誰に、何を、どんな根拠で伝えるか</small></div>
+<div class="mindmap">
+<div class="mind-branch"><h4>01 誰に届けるか <small>対象</small></h4><div class="mind-sub"><b>業種・役割</b><div class="mind-leaf"><span>運送業：意思決定者と採用担当</span><textarea data-note="mind-audience-role" placeholder="役職、会社規模、採用状況を記入">一次仮説：運送会社の経営者・採用責任者。まず採用する職種、必要免許、募集人数、営業拠点を聞き、既存の受注・失注案件で優先層を決める。</textarea></div><div class="mind-leaf"><span>建設業：別企画で定義</span><textarea data-note="mind-audience-construction" placeholder="対象と優先順位を記入">一次仮説：現場職・施工管理の採用で困る建設事業者。経験者限定か未経験育成が可能かで訴求を分ける。</textarea></div></div><div class="mind-sub"><b>地域・市場</b><div class="mind-leaf"><span>大阪／次エリア（兵庫は例）</span><textarea data-note="mind-audience-area" placeholder="選定理由、地域固有の条件を記入">大阪は比較基準だが有効CPA¥190,897で高い。兵庫は事例を使える可能性がある候補例。通勤圏・勤務地・運行／配送ルートを確認して選ぶ。</textarea></div></div></div>
+<div class="mind-branch"><h4>02 何に反応するか <small>課題</small></h4><div class="mind-sub"><b>顕在課題</b><div class="mind-leaf"><span>採用・集客のどの段階が詰まるか</span><textarea data-note="mind-problem-current" placeholder="商談・顧客の声・データから確認した課題を記入">顧客の顕在課題は応募数不足だけでなく、条件に合わない応募、面談後の離脱、採用後の定着かもしれない。業種別に漏斗と失注理由を聞く。</textarea></div></div><div class="mind-sub"><b>判断障壁</b><div class="mind-leaf"><span>費用、手間、成果への不安</span><textarea data-note="mind-problem-barrier" placeholder="広告を見る側が相談をためらう理由を記入">「広告で応募を増やしても採用できないのでは」「条件を出すと応募が減るのでは」という懸念を想定。実態が見える求人条件と有効リードの定義を示す。</textarea></div></div></div>
+<div class="mind-branch"><h4>03 なぜ信じられるか <small>根拠</small></h4><div class="mind-sub"><b>事例・数値</b><div class="mind-leaf"><span>「神姫バス」事例の転用可能性</span><textarea data-note="mind-proof-case" placeholder="使える成果、許諾、運送業向けに言い換える点を記入">「神姫バス」事例は構成や見せ方の学習源。成果値・素材の利用許諾・対象顧客への適用範囲を確認し、他社の実績として誤認させない。</textarea></div></div><div class="mind-sub"><b>人物・現場</b><div class="mind-leaf"><span>出演者、顧客、現場の証言</span><textarea data-note="mind-proof-person" placeholder="撮影できる人物・場面と根拠を記入">橋口さん・金山さんは支援の考え方、外部ゲストは現場の実態や採用後の変化を語る。肩書や知名度より、具体的な証言を優先する。</textarea></div></div></div>
+<div class="mind-branch"><h4>04 どう見せるか <small>表現</small></h4><div class="mind-sub"><b>冒頭3秒</b><div class="mind-leaf"><span>A：課題から入る／B：事例から入る</span><textarea data-note="mind-expression-hook" placeholder="具体的な台詞、絵、A/Bで変える変数を記入">A：採用課題を一問で提示。B：実際の現場・事例の証拠から始める。冒頭だけを変え、地域・LP・配信条件を揃える。</textarea></div></div><div class="mind-sub"><b>本編・CTA</b><div class="mind-leaf"><span>証拠の順番と相談導線</span><textarea data-note="mind-expression-cta" placeholder="見せる順番、CTA、接続するLPを記入">短尺で課題と証拠を示し、LPで対象職種・勤務条件・事例を補足。「自社の採用課題を相談する」など内容と一致するCTAを使う。</textarea></div></div></div>
+</div><div class="callout"><b>検証の読み方</b><p>冒頭の違いは3秒再生率・CTR、訴求の違いは総CVR・有効率、最終的な評価は制作費を含む有効CPAとアポCPAで見る。比較中は地域・LP・配信条件をできるだけ揃える。</p></div>
+</div></details>
+<details class="section item-toggle" id="lp"><summary class="item-summary"><span class="item-number">04</span><strong class="item-title">補足：LPの見直し</strong></summary><div class="item-body"><h2>補足：LPの見直し</h2><div class="panel"><p>LP01は有効CPAで良い初速を示す一方、アポCPAはLP04が僅差で低い。流入条件の差があるため、LPの勝因やフォーム位置の効果はまだ断定しない。金曜定例では素材の議論と分けて、LP別の総リード・有効・アポを確認し、翌週の検証仮説を1つ決める。</p><p class="micro">フォームを早く見せる案は候補の一つ。LPの具体的な0→1改修は、画面比較と計測が揃ってから決める。</p></div></div></details>
+</div></details>
+<details class="category-group" id="group-execution"><summary><span class="group-index">05</span><span><strong class="group-name">実行・費用・引き継ぎ</strong><small class="group-desc">カレンダー・試算・依頼・出典</small></span><span class="group-count">4項目</span></summary><div class="group-body">
+<details class="section item-toggle" id="cadence"><summary class="item-summary"><span class="item-number">01</span><strong class="item-title">スケジュール・KPI</strong></summary><div class="item-body"><h2>スケジュール・KPI</h2><p class="lede">直近1週間と10〜12月をカレンダーで管理する。現状のCPAは高く評価も低いため、14万円を維持目標に置かない。制作数とともに、顧客課題を理解し次回に使える証拠が増えたかを見る。</p>
+<div class="panel"><h3>成果の前に追う学習KPI</h3><div class="table-scroll" tabindex="0" aria-label="学習KPI。横スクロールできます"><table><thead><tr><th>期間</th><th>顧客課題の確認</th><th>制作・配信</th><th>分析・二次利用</th></tr></thead><tbody><tr><td>初週</td><td>直近受注・失注の聞き取り対象を選び、建設／運送の質問票を作る</td><td>運送動画の証拠・許諾と地域比較の条件を確定する</td><td>設定漏れとリードの質を照合し、金曜に次週の一変数を決める</td></tr><tr><td>10月</td><td>仮置き：建設・運送の案件を計4件以上聞き、課題ブリーフを各1件作る</td><td>AI週4本は体制上限の基本案。実際の入稿は根拠と地域合意後</td><td>素材／LP／地域ごとの有効率・アポ率と失注理由を残す</td></tr><tr><td>11月</td><td>初回テストの結果で「相談に至る理由」を更新する</td><td>建設試作、運送地域テスト、チャンネル企画の収録・公開を確定日ベースで進める</td><td>番組の回答を短尺・広告・LPへ1件以上転用できるか確認する</td></tr><tr><td>12月</td><td>勝ち訴求が他の職種・地域に通じる条件を整理する</td><td>有効リードから受注につながった案に制作・媒体費を寄せる</td><td>再利用素材と失敗した条件を一覧化し、次四半期の調査候補を決める</td></tr></tbody></table></div><label class="note-label">KPIと実績の編集欄<textarea data-note="learning-kpi">一次案：10月は案件ヒアリング4件、建設／運送の課題ブリーフ各1件。YouTubeは企画ごとに「聞く問い・切り出し先・CTA・公開後の学び」を記録。件数は担当者と顧客の協力可能範囲で更新する。</textarea></label></div>
+<h3>直近1週間：10月6〜12日</h3><div class="calendar-scroll" tabindex="0" aria-label="直近1週間のカレンダー。横スクロールできます"><div class="week-calendar"><div class="week-day"><div class="week-date">10/6<small>火</small></div><strong>数値・設定監査</strong><p>9月と10月既消化、配信地域設定を確認</p></div><div class="week-day"><div class="week-date">10/7<small>水</small></div><strong>顧客課題と運送CR</strong><p>受注・失注の聞き取り先と「神姫バス」の使える証拠を整理</p></div><div class="week-day"><div class="week-date">10/8<small>木</small></div><strong>エリア比較設計</strong><p>勤務・通勤条件、大阪と兵庫例の配信条件を整理</p></div><div class="week-day"><div class="week-date">10/9<small>金</small></div><strong>定例</strong><p>顧客課題の仮説、媒体、素材、LPを確認</p></div><div class="week-day"><div class="week-date">10/10<small>土</small></div><strong>休日配信</strong><p>日額を抑えて同条件で観測</p></div><div class="week-day"><div class="week-date">10/11<small>日</small></div><strong>休日配信</strong><p>地域別の配信内訳を確認</p></div><div class="week-day"><div class="week-date">10/12<small>月</small></div><strong>初週レビュー</strong><p>翌週の入稿と予算を判断</p></div></div></div><div class="panel" style="margin-top:14px"><b>初週の確認項目</b><p>受注・失注案件の聞き取り先、地域例の合意、運送業向けクリエイティブの根拠、媒体費の残額、地域拡大設定、YouTubeの企画とスタジオ進捗を揃える。AI動画4本／週は制作体制の基本案とし、入稿日は地域・訴求の合意後に確定する。</p></div>
+<h3>月間カレンダー：10〜12月</h3><div class="month-calendar"><div class="month-head"><div><b>10月</b><span>計測・仮説整理</span></div><strong>有効CPA 10万円未満を目指す</strong></div><div class="calendar-scroll" tabindex="0" aria-label="10月のカレンダー。横スクロールできます"><div class="month-grid"><div class="weekday">月</div><div class="weekday">火</div><div class="weekday">水</div><div class="weekday">木</div><div class="weekday">金</div><div class="weekday">土</div><div class="weekday">日</div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day"><span class="day-number">1</span></div><div class="month-day"><span class="day-number">2</span></div><div class="month-day"><span class="day-number">3</span></div><div class="month-day"><span class="day-number">4</span></div><div class="month-day"><span class="day-number">5</span></div><div class="month-day has-event"><span class="day-number">6</span><span class="month-event">現状把握</span></div><div class="month-day has-event"><span class="day-number">7</span><span class="month-event">顧客課題・運送CR</span></div><div class="month-day has-event"><span class="day-number">8</span><span class="month-event">地域・条件比較</span></div><div class="month-day has-event"><span class="day-number">9</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">10</span></div><div class="month-day"><span class="day-number">11</span></div><div class="month-day has-event"><span class="day-number">12</span><span class="month-event">初週レビュー</span></div><div class="month-day has-event"><span class="day-number">13</span><span class="month-event">試作・入稿判断</span></div><div class="month-day"><span class="day-number">14</span></div><div class="month-day"><span class="day-number">15</span></div><div class="month-day has-event"><span class="day-number">16</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">17</span></div><div class="month-day"><span class="day-number">18</span></div><div class="month-day"><span class="day-number">19</span></div><div class="month-day has-event"><span class="day-number">20</span><span class="month-event">建設ブリーフ</span></div><div class="month-day"><span class="day-number">21</span></div><div class="month-day"><span class="day-number">22</span></div><div class="month-day has-event"><span class="day-number">23</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">24</span></div><div class="month-day"><span class="day-number">25</span></div><div class="month-day"><span class="day-number">26</span></div><div class="month-day has-event"><span class="day-number">27</span><span class="month-event">月次集計</span></div><div class="month-day"><span class="day-number">28</span></div><div class="month-day"><span class="day-number">29</span></div><div class="month-day has-event"><span class="day-number">30</span><span class="month-event">定例・月次</span></div><div class="month-day"><span class="day-number">31</span></div><div class="month-day outside" aria-hidden="true"></div></div></div></div><div class="month-calendar"><div class="month-head"><div><b>11月</b><span>訴求と媒体の再配分</span></div><strong>有効CPA 9万円未満を目指す</strong></div><div class="calendar-scroll" tabindex="0" aria-label="11月のカレンダー。横スクロールできます"><div class="month-grid"><div class="weekday">月</div><div class="weekday">火</div><div class="weekday">水</div><div class="weekday">木</div><div class="weekday">金</div><div class="weekday">土</div><div class="weekday">日</div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day"><span class="day-number">1</span></div><div class="month-day has-event"><span class="day-number">2</span><span class="month-event">配信結果整理</span></div><div class="month-day"><span class="day-number">3</span></div><div class="month-day"><span class="day-number">4</span></div><div class="month-day"><span class="day-number">5</span></div><div class="month-day has-event"><span class="day-number">6</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">7</span></div><div class="month-day"><span class="day-number">8</span></div><div class="month-day has-event"><span class="day-number">9</span><span class="month-event">建設の試作</span></div><div class="month-day"><span class="day-number">10</span></div><div class="month-day"><span class="day-number">11</span></div><div class="month-day"><span class="day-number">12</span></div><div class="month-day has-event"><span class="day-number">13</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">14</span></div><div class="month-day"><span class="day-number">15</span></div><div class="month-day has-event"><span class="day-number">16</span><span class="month-event">出演日程確認</span></div><div class="month-day"><span class="day-number">17</span></div><div class="month-day"><span class="day-number">18</span></div><div class="month-day"><span class="day-number">19</span></div><div class="month-day has-event"><span class="day-number">20</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">21</span></div><div class="month-day"><span class="day-number">22</span></div><div class="month-day has-event"><span class="day-number">23</span><span class="month-event">次エリア検討</span></div><div class="month-day"><span class="day-number">24</span></div><div class="month-day"><span class="day-number">25</span></div><div class="month-day"><span class="day-number">26</span></div><div class="month-day has-event"><span class="day-number">27</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">28</span></div><div class="month-day"><span class="day-number">29</span></div><div class="month-day has-event"><span class="day-number">30</span><span class="month-event">月次集計</span></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div></div></div></div><div class="month-calendar"><div class="month-head"><div><b>12月</b><span>再現性と横展開</span></div><strong>有効CPA 8万円未満を目指す</strong></div><div class="calendar-scroll" tabindex="0" aria-label="12月のカレンダー。横スクロールできます"><div class="month-grid"><div class="weekday">月</div><div class="weekday">火</div><div class="weekday">水</div><div class="weekday">木</div><div class="weekday">金</div><div class="weekday">土</div><div class="weekday">日</div><div class="month-day outside" aria-hidden="true"></div><div class="month-day"><span class="day-number">1</span></div><div class="month-day"><span class="day-number">2</span></div><div class="month-day"><span class="day-number">3</span></div><div class="month-day has-event"><span class="day-number">4</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">5</span></div><div class="month-day"><span class="day-number">6</span></div><div class="month-day has-event"><span class="day-number">7</span><span class="month-event">地域再評価</span></div><div class="month-day"><span class="day-number">8</span></div><div class="month-day"><span class="day-number">9</span></div><div class="month-day"><span class="day-number">10</span></div><div class="month-day has-event"><span class="day-number">11</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">12</span></div><div class="month-day"><span class="day-number">13</span></div><div class="month-day has-event"><span class="day-number">14</span><span class="month-event">横展開判断</span></div><div class="month-day"><span class="day-number">15</span></div><div class="month-day"><span class="day-number">16</span></div><div class="month-day"><span class="day-number">17</span></div><div class="month-day has-event"><span class="day-number">18</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">19</span></div><div class="month-day"><span class="day-number">20</span></div><div class="month-day has-event"><span class="day-number">21</span><span class="month-event">翌月企画</span></div><div class="month-day"><span class="day-number">22</span></div><div class="month-day"><span class="day-number">23</span></div><div class="month-day"><span class="day-number">24</span></div><div class="month-day has-event"><span class="day-number">25</span><span class="month-event">金曜定例</span></div><div class="month-day"><span class="day-number">26</span></div><div class="month-day"><span class="day-number">27</span></div><div class="month-day has-event"><span class="day-number">28</span><span class="month-event">月次集計</span></div><div class="month-day"><span class="day-number">29</span></div><div class="month-day"><span class="day-number">30</span></div><div class="month-day"><span class="day-number">31</span></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div><div class="month-day outside" aria-hidden="true"></div></div></div></div><div class="callout red"><b>有効CPAの目標案と評価</b><p>9月の¥145,009は高く、改善したと評価できない。10月は10万円未満、11月は9万円未満、12月は8万円未満を目標案とする。6月¥91,494・7月¥77,482の実績を改善水準の参考にした。達成予測ではなく、予算・媒体構成・配信量を確認して月次で更新する。</p></div><p class="micro">制作の運用KPIはAI動画4本／週、クリエイター制作2本／4週を基本案とする。YouTubeの企画・出演・収録・公開は上のガントで個別管理。金曜定例では顧客課題、媒体配分、地域実績、素材、LP、二次利用を確認する。受注とROASは確定時期が遅れるため速報と後日更新を分ける。</p></div></details>
+<details class="section item-toggle" id="calculator"><summary class="item-summary"><span class="item-number">02</span><strong class="item-title">制作本数・時間・費用の試算</strong></summary><div class="item-body"><h2>制作本数・時間・費用の試算</h2><p class="lede">単価・時間・本数を変更すると、週、4週、12週の制作量と費用が更新される。入力はこの端末のブラウザに保存される。</p>
+<div class="panel"><h3>本数の前提</h3><div class="form-grid"><div class="field"><label for="ideas">訴求案／週</label><input id="ideas" type="number" min="0" step="1" value="1"><div class="hint">基本案は1案</div></div><div class="field"><label for="variants">冒頭ABの本数／案</label><input id="variants" type="number" min="1" step="1" value="2"><div class="hint">AとBで2</div></div><div class="field"><label for="areas">地域版の数</label><input id="areas" type="number" min="1" step="1" value="2"><div class="hint">大阪と兵庫は候補例</div></div><div class="field"><label for="weeks">試算週数</label><input id="weeks" type="number" min="1" max="52" step="1" value="12"><div class="hint">3か月を12週で近似</div></div></div>
+<div class="controls"><button class="btn" type="button" id="basicBtn">基本案：週4本</button><button class="btn secondary" type="button" id="expandedBtn">4案を各AB：週16本</button><button class="btn secondary" type="button" id="resetBtn">初期値に戻す</button></div>
+<div class="divider"></div><h3>AI動画の単価・クレジット</h3><div class="form-grid"><div class="field"><label for="aiDirect">AI生成原価／完成1本（円）</label><input id="aiDirect" type="number" min="0" step="100" value="2000"><div class="hint">参照資料の標準値</div></div><div class="field"><label for="aiHours">人の作業時間／完成1本（時間）</label><input id="aiHours" type="number" min="0" step="0.1" value="1.6"><div class="hint">参照資料の約96分</div></div><div class="field"><label for="hourRate">人時単価（円／時間）</label><input id="hourRate" type="number" min="0" step="100" value="5000"><div class="hint">参照資料の仮定</div></div><div class="field"><label for="aiCredits">クレジット／完成1本</label><input id="aiCredits" type="number" min="0" step="1" value="200"><div class="hint">仮置き。利用サービスの実測で上書き</div></div></div>
+<div class="callout warn"><b>クレジットは仮値</b><p>指定のAI動画資料には円建てのAI原価（標準¥2,000／本）はあるが、利用サービスのクレジット消費数は書かれていない。ここでは計算例を見せるため200クレジット／完成1本を仮置きした。実際のクレジットは、利用モデル・尺・リテイク回数を決めた後、管理画面の消費実績で置き換える。円建て原価とクレジットを二重に費用加算しない。</p></div>
+<div class="divider"></div><h3>クリエイター制作動画</h3><div class="form-grid"><div class="field"><label for="creatorMonthly">完成本数／4週</label><input id="creatorMonthly" type="number" min="0" step="1" value="2"><div class="hint">月2本を基本案</div></div><div class="field"><label for="creatorFee">制作費／完成1本（円）</label><input id="creatorFee" type="number" min="0" step="100" value="10000"><div class="hint">ご指定の1万円ケース</div></div><div class="field"><label for="creatorHours">制作者の制作時間／本</label><input id="creatorHours" type="number" min="0" step="0.5" value="4"><div class="hint">制作費に含む参考工数</div></div><div class="field"><label for="reviewHours">追加の社内確認時間／本</label><input id="reviewHours" type="number" min="0" step="0.1" value="0"><div class="hint">費用へ別途加算する場合のみ</div></div></div>
+<div class="divider"></div><h3>媒体費の上限</h3><div class="form-grid"><div class="field"><label for="mediaBudget">月額媒体費上限（円）</label><input id="mediaBudget" type="number" min="0" step="1000" value="6090390"><div class="hint">9月実績を仮上限に設定</div></div><div class="field"><label for="spentToDate">10月既消化額（円）</label><input id="spentToDate" type="number" min="0" step="1000" value="0"><div class="hint">未入力。実績確認後に入力</div></div></div><p class="micro" id="budgetNotice">10月既消化額は未入力です。¥0を実績とは扱わず、配信担当から10/1以降の消化額を取得してください。</p>
+<div class="calc-summary" aria-live="polite"><div class="calc-cell"><div class="small">AI完成動画</div><div class="big" id="outWeeklyVideos">4本／週</div><div class="sub" id="outVideoPeriods">4週 16本 / 12週 48本</div></div><div class="calc-cell"><div class="small">必要クレジット（仮値）</div><div class="big" id="outWeeklyCredits">800／週</div><div class="sub" id="outCreditPeriods">4週 3,200 / 12週 9,600</div></div><div class="calc-cell"><div class="small">AI制作費（人時込み）</div><div class="big" id="outWeeklyAiCost">¥40,000</div><div class="sub" id="outAiCostPeriods">4週 ¥160,000 / 12週 ¥480,000</div></div><div class="calc-cell"><div class="small">AI＋クリエイター（12週）</div><div class="big" id="outTotalCost">¥540,000</div><div class="sub" id="outCreatorDetail">内訳：AI ¥480,000 + 実写 ¥60,000</div></div></div>
+<div class="table-scroll" style="margin-top:16px" tabindex="0" aria-label="制作コスト内訳。横スクロールできます"><table><thead><tr><th>費目</th><th>1週</th><th>4週</th><th>入力週数</th><th>計算方法</th></tr></thead><tbody><tr><td>AI完成本数</td><td id="tAiWeek">4本</td><td id="tAi4">16本</td><td id="tAiTotal">48本</td><td>訴求案×AB×地域版</td></tr><tr><td>AI生成原価</td><td id="tDirectWeek">¥8,000</td><td id="tDirect4">¥32,000</td><td id="tDirectTotal">¥96,000</td><td>完成本数×生成原価</td></tr><tr><td>AI人時</td><td id="tAiHoursWeek">6.4h</td><td id="tAiHours4">25.6h</td><td id="tAiHoursTotal">76.8h</td><td>完成本数×時間×人時単価</td></tr><tr><td>AI合計</td><td id="tAiCostWeek">¥40,000</td><td id="tAiCost4">¥160,000</td><td id="tAiCostTotal">¥480,000</td><td>生成原価＋人時</td></tr><tr><td>クリエイター制作時間</td><td id="tCreatorHoursWeek">2h</td><td id="tCreatorHours4">8h</td><td id="tCreatorHoursTotal">24h</td><td>完成本数×制作時間。制作費に含む</td></tr><tr><td>クリエイター合計</td><td id="tCreatorWeek">¥5,000</td><td id="tCreator4">¥20,000</td><td id="tCreatorTotal">¥60,000</td><td>本数×（制作費＋追加社内確認費）</td></tr><tr><td>制作費合計</td><td id="tAllWeek">¥45,000</td><td id="tAll4">¥180,000</td><td id="tAllTotal">¥540,000</td><td>AI＋クリエイター</td></tr></tbody></table></div>
+<p class="micro" id="costReadout">AI完成1本の原価：生成 ¥2,000 ＋ 人の作業 1.6h × ¥5,000/h = ¥10,000。クリエイター1本：制作費 ¥10,000 ＋ 追加社内確認 0h × ¥5,000/h = ¥10,000。</p><p class="micro">クリエイターの「制作時間」は制作費1万円に含まれる想定で、重複計上しない。追加の社内確認時間を入力した場合のみ人時単価で加算。4週を便宜上1か月とし、12週を3か月の制作計画として表示。暦月との端数は発注時に調整。</p>
+</div>
+<div class="scenario"><div class="panel"><h3>基本案：週4本</h3><p>1訴求×冒頭2案×2地域（例：大阪・兵庫）。AI完成版は4週16本、12週48本。標準原価¥2,000＋96分×¥5,000/h＝<b>¥10,000／本</b>。AI制作費は週¥40,000、12週¥480,000。クリエイター月2本・1本¥10,000を加えると12週<b>¥540,000</b>。クレジットは仮200／本で12週9,600。</p></div><div class="panel"><h3>4案を各A/B化する場合：週16本</h3><p>4訴求×冒頭2案×2地域（例：大阪・兵庫）。AI完成版は4週64本、12週192本。1本¥10,000ならAI制作費は週¥160,000、12週¥1,920,000。クリエイター月2本を加えると12週<b>¥1,980,000</b>。クレジットは仮200／本で12週38,400。現状は各素材の有効リード母数が薄くなるため、基本案を先行する。</p></div></div>
+</div></details>
+<details class="section item-toggle" id="handoff"><summary class="item-summary"><span class="item-number">03</span><strong class="item-title">運用担当者への依頼項目</strong></summary><div class="item-body"><h2>運用担当者への依頼項目</h2><p class="lede">依頼内容をカテゴリ別に一括表示。チェック状態はこの端末のブラウザに保存される。</p>
+<div class="handoff-groups">
+<fieldset class="checklist-group"><legend>00 顧客課題・受注理由</legend><div class="checklist"><div class="checkitem"><label><input type="checkbox" data-check="dealReview"><b>受注・失注の分解</b>直近案件を業種、地域、採用職種、相談理由、受注・失注理由で整理し、広告の訴求IDと紐づける。</label></div><div class="checkitem"><label><input type="checkbox" data-check="jobFacts"><b>求人条件の確認</b>給与、勤務時間、通勤、教育体制など広告で伝えられる事実と顧客側の改善課題を分ける。</label></div><div class="checkitem"><label><input type="checkbox" data-check="retention"><b>採用後の追跡</b>共有可能な顧客には採用・6か月／1年定着と早期離職理由の取得方法を確認する。</label></div></div></fieldset>
+<fieldset class="checklist-group"><legend>01 予算・計測</legend><div class="checklist"><div class="checkitem"><label><input type="checkbox" data-check="budget"><b>月内の残予算</b>10月の既消化額を確定し、残日数から日額を算出する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="report"><b>日次レポート</b>媒体×地域×素材×LPで費用、表示、クリック、総リード、有効、アポを記録する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="quality"><b>有効判定の定義</b>媒体CVと営業の有効リード、アポの帰属日・重複を照合する。</label></div></div></fieldset>
+<fieldset class="checklist-group"><legend>02 媒体・ターゲティング</legend><div class="checklist"><div class="checkitem"><label><input type="checkbox" data-check="general"><b>Google 一般</b>配分案45%。検索語句、除外語句、広告文とLP接続を精査する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="brand"><b>Google 指名</b>配分案5%を上限目安に需要を取り切り、余剰を無理に消化しない。</label></div><div class="checkitem"><label><input type="checkbox" data-check="meta"><b>Meta 既存</b>配分案10%。新しい地域検証とは広告セットと集計を分離する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="pause"><b>保留媒体</b>DemandGen・TikTokは初週0%。再開条件を金曜に確認する。</label></div></div></fieldset>
+<fieldset class="checklist-group"><legend>03 3つの施策</legend><div class="checklist"><div class="checkitem"><label><input type="checkbox" data-check="construction"><b>建設特化</b>受注・失注の聞き取りを基に対象職種と採用障壁を絞り、事実確認済みの証拠でブリーフを確定する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="channel"><b>YouTubeチャンネル</b>企画ごとの問い、出演者、打診・収録・公開、二次利用先、許諾、公開後の学びをガントに入力する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="regionalApproval"><b>地域例の合意</b>兵庫は候補例として、顧客の採用需要、通勤・勤務条件、「神姫バス」事例の転用条件を確認する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="region"><b>地域テスト</b>合意後に大阪と次エリアを同額・同条件で設定し、配信地域の実績を保存する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="expansion"><b>地域外拡大</b>反応可能性による地域外リーチ拡大の設定を監査し、画面を保存する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="creative"><b>素材の命名</b>動画ID、業種、訴求、冒頭A/B、地域、LP、開始日を一貫して記録する。</label></div></div></fieldset>
+<fieldset class="checklist-group"><legend>04 判断・定例</legend><div class="checklist"><div class="checkitem"><label><input type="checkbox" data-check="friday"><b>金曜定例</b>顧客課題の発見、媒体配分、3施策の進捗、有効リード・アポ、素材、LP、二次利用を議題に固定する。</label></div><div class="checkitem"><label><input type="checkbox" data-check="decision"><b>判断記録</b>継続・停止・増額の理由を母数・比較条件・受注／失注理由とともに残し、次の素材・地域へ渡す。</label></div></div></fieldset>
+</div><div class="callout"><b>次の地域へ広げる条件</b><p>成果が出たエリアの要因を訴求・素材・流入属性・営業の有効判定で分解する。兵庫が勝った場合も同じ手順を使い、再現した要素を持って次の1地域へ進む。</p></div></div></details>
+<details class="section item-toggle" id="sources"><summary class="item-summary"><span class="item-number">04</span><strong class="item-title">出典・計算の扱い</strong></summary><div class="item-body"><h2>出典・計算の扱い</h2><ol class="source-list"><li><b>打合せ資料：</b>「トレプロ様お打合せ資料_1002.pptx」2〜4枚目（月次、週次、媒体）、5〜9枚目（LP・地域・素材の運用状況）。9月確定値と10/1時点の途中集計が混在するため、本文では期間を明記。</li><li><b>最新のエリア・LP別：</b>「エリア別_LP別.pptx」1枚目。エリアは9/25〜10/4、LP04/05は9/18〜10/4、LP01は9/25〜10/4。LP別数値を媒体や地域ごとに分解したクロス集計は添付にない。</li><li><b>AI動画原価：</b><a href="https://gist.github.com/Fukuoka-desu/bfb58bb863b18fa18101afb46b47d162" target="_blank" rel="noopener noreferrer">AI動画事業化 決裁参考｜トレプロ役員資料</a>。標準AI原価¥2,000／本、標準MM工数約96分／本、人時単価¥5,000/hの例を試算に採用。資料の標準例は60秒動画6本パッケージの原価設計で、広告用短尺への適用は初回制作で実測し直す。</li><li><b>計画上の仮定：</b>月額上限¥6,090,390、配分45/40/5/10、動画週4本、クリエイター月2本、クレジット200／本、月次CPA目標は提案値。クレジット実数は参照資料にないため仮置き。</li><li><b>市場背景：</b><a href="https://www.chusho.meti.go.jp/pamflet/hakusyo/2026/PDF/2026gaiyou.pdf" target="_blank" rel="noopener noreferrer">2026年版中小企業白書・概要</a>（建設・運輸・情報通信の不足感）、<a href="https://www.meti.go.jp/report/whitepaper/mono/2026/index.html" target="_blank" rel="noopener noreferrer">2026年版ものづくり白書</a>（製造の人材確保・定着・技能継承）、<a href="https://www.chusho.meti.go.jp/pamflet/hakusyo/2025/chusho/b2_1_4.html" target="_blank" rel="noopener noreferrer">2025年版中小企業白書・人材戦略</a>（不足状況と定着率）。</li><li><b>市場背景の補足：</b><a href="https://www.mlit.go.jp/kankocho/topics06_00045.html" target="_blank" rel="noopener noreferrer">観光庁・人材共有事業</a>、<a href="https://www.maff.go.jp/j/tokei/kekka_gaiyou/noucen/040909/index.html" target="_blank" rel="noopener noreferrer">農水省・2025年農林業センサス</a>。5つの顧客課題と4つの調査候補はこれらの資料を踏まえた検証枠組みであり、個別顧客で確認済みの事実ではない。</li><li><b>追加の事業開発メモ：</b>神姫バス事例、BRANU・ツクリンク、地方開拓リスト、代理店・商工会・M&amp;A・サブスクの案は今回ご提供いただいた情報。掲載条件、事例の利用許諾、売上見込みは確認前。追加項目の期限は本ページでは設定していない。</li></ol><div class="callout warn"><b>確定前に埋める値</b><p>10月既消化額、Metaで実際に選べる地域設定、地域別の実配信内訳、利用するAI動画サービスのクレジット消費、クリエイター見積、LPごとのフォーム構造。これらを確定した時点で本ページの試算と配信依頼を更新する。</p></div><p class="micro print-note">印刷時は入力値が紙面に表示されます。別端末への共有には、ページ上部のボタンから入力内容を含むHTMLをダウンロードしてください。</p><a class="toplink" href="#top">ページ先頭へ戻る</a></div></details>
+</div></details>
+</div></main></div>
+<script type="application/json" id="treproEmbeddedState">{"id":"muxtep9j_nb8pt3otleg","storage":{"treproAccountPlan202610":"{\"ideas\":\"1\",\"variants\":\"2\",\"areas\":\"2\",\"weeks\":\"12\",\"aiDirect\":\"2000\",\"aiHours\":\"1.6\",\"hourRate\":\"5000\",\"aiCredits\":\"200\",\"creatorMonthly\":\"2\",\"creatorFee\":\"10000\",\"creatorHours\":\"4\",\"reviewHours\":\"0\",\"mediaBudget\":\"6090390\",\"spentToDate\":\"0\"}","treproBusinessForecast202610":"{\"10\":{\"bTarget\":0,\"bActual\":\"\",\"bBase\":0,\"bOfflineCount\":0,\"bOfflineRevenue\":0,\"bOfflineCost\":0,\"bAgents\":0,\"bAgencyDeals\":0,\"bAgencyRevenue\":0,\"bAgencyCost\":0,\"bAiSubs\":0,\"bAiFee\":0,\"bJobSubs\":0,\"bJobFee\":0,\"bLaunchCost\":0},\"11\":{\"bTarget\":0,\"bActual\":\"\",\"bBase\":0,\"bOfflineCount\":0,\"bOfflineRevenue\":0,\"bOfflineCost\":0,\"bAgents\":0,\"bAgencyDeals\":0,\"bAgencyRevenue\":0,\"bAgencyCost\":0,\"bAiSubs\":0,\"bAiFee\":0,\"bJobSubs\":0,\"bJobFee\":0,\"bLaunchCost\":0},\"12\":{\"bTarget\":0,\"bActual\":\"\",\"bBase\":0,\"bOfflineCount\":0,\"bOfflineRevenue\":0,\"bOfflineCost\":0,\"bAgents\":0,\"bAgencyDeals\":0,\"bAgencyRevenue\":0,\"bAgencyCost\":0,\"bAiSubs\":0,\"bAiFee\":0,\"bJobSubs\":0,\"bJobFee\":0,\"bLaunchCost\":0}}","treproBusinessMonth202610":"10","treproPlanGuests202610":"[{\"name\":\"橋口さん\",\"theme\":\"既存成約の理由をどう分解するか\",\"contact\":\"\",\"record\":\"\",\"publish\":\"\",\"reuse\":\"成約理由を問う短尺／LPのFAQ／商談資料\",\"learning\":\"公開後に有効リードと商談での質問を確認\"},{\"name\":\"金山さん\",\"theme\":\"建設・運送の採用課題をどう聞き分けるか\",\"contact\":\"\",\"record\":\"\",\"publish\":\"\",\"reuse\":\"業種別の短尺／広告冒頭A/B\",\"learning\":\"視聴維持と相談内容を業種別に比較\"},{\"name\":\"ゲスト候補\",\"theme\":\"運送の現場で応募前に知りたい条件\",\"contact\":\"\",\"record\":\"\",\"publish\":\"\",\"reuse\":\"現場証言の短尺／運送向けLP\",\"learning\":\"出演者・事例利用許諾と企業からの相談内容を確認\"}]","treproOpenDetails202610":"[1,2,3]","treproPlanNote_client-problem":"第一仮説：建設・運送の採用担当／経営者は応募数だけでなく、条件に合う人材の応募・面談・定着までつながる再現性を求めている。既存成約の理由は未分解。まず直近受注・失注案件を業種、地域、求人条件、導入理由で聞き直す。","treproPlanNote_field-research":"一次案：物流は通勤・勤務時間・免許条件、建設は現場経験・資格・育成、製造は技能継承、宿泊は繁閑差と人材共有を質問候補にする。業種を広げる判断には商談需要と事例素材の有無を加える。","treproPlanNote_construction-audience":"一次仮説：採用難のある建設事業者の経営者・採用責任者。職種（施工管理／技能職など）、事業規模、勤務地、募集人数で分け、商談数と顧客事例のある層を優先する。具体的な優先セグメントは案件ヒアリングで確定する。","treproPlanNote_construction-why":"2026年版中小企業白書は建設の強い人手不足感を示す。一方、業界の不足感はトレプロへの相談理由そのものではない。募集条件を可視化し、未経験者の育成や定着まで説明できる企業に絞れば、広告の約束と実際の採用体験を合わせられる可能性がある。","treproPlanNote_construction-evidence":"現在の添付資料には建設業だけのリード・受注実績はない。直近の建設案件から「相談のきっかけ」「採用したい職種」「競合との違い」「失注理由」「動画で示せる事実」を集め、数値と顧客の言葉を追記する。","treproPlanNote_construction-decision":"最初の制作前に、対象職種、顧客が開示できる求人条件、出演・撮影許諾、訴求可能な事例を確定する。十分な裏付けが取れなければ制作本数を増やさず、ヒアリングを続ける。","treproPlanNote_channel-studio":"スタジオ確保に向けた動きは進行中。場所、契約状況、利用可能日、撮影・編集担当、ゲスト調整担当は未入力。初回収録日を入れる前に担当と利用条件を確定する。","treproPlanNote_channel-purpose":"一次案：採用課題を抱える企業が、実際の条件・支援の進め方・事例を見て相談の可否を判断できる番組にする。橋口さん／金山さんの知見と現場ゲストの実話を組み合わせる。テーマ別の視聴維持、短尺からの流入、問い合わせ、有効率まで測る。","treproPlanNote_channel-guest-reason":"橋口さん・金山さんはトレプロの考え方や実行の裏側を説明する役割を想定。外部ゲストは知名度だけで決めず、建設・運送などの現場課題に具体的な証言を持つ人を候補にする。誰に何を聞くかは企画ごとに確定する。","treproPlanNote_channel-analysis":"各回で「どの問いに反応したか」「どこで離脱したか」「相談の質は変わったか」を確認。刺さった回答を広告・LP・営業資料に移し、次回ゲストへの質問を更新する。素材の切り出し・広告利用許諾を収録前に確認する。","treproPlanNote_regional-case":"一次仮説：「神姫バス」の勝ち要素を、冒頭の構成、人物・現場の見せ方、証拠の順番、CTAに分解する。成果値や表現の利用許諾は未確認。今回の動画には対象顧客が実際に開示できる勤務条件・採用成果・現場の声だけを使う。","treproPlanNote_regional-appeal":"一次仮説：採用担当者は応募数より、必要な免許・勤務時間・運行／配送エリアに合う人材と面談できるかを重視する。「地域の条件に合う応募者の質」を主訴求とし、実際に改善できる範囲を顧客に確認してから広告文にする。","treproPlanNote_regional-area":"一次案：大阪を比較基準とし、次エリアに兵庫を置く。兵庫の過去成果は未取得。候補の合意後、配信可能地域と勤務・通勤条件を確認して設定する。","treproPlanNote_regional-analysis":"勝った地域の理由を、①実際の配信地域、②ターゲット属性、③冒頭・訴求、④LPの離脱、⑤有効判定・アポ・受注理由に分ける。差が小さい場合は「地域差あり」とせず、求人条件と訴求の再設計に戻す。","treproPlanNote_growth-construction":"一次案：施策01で確定した「誰の何の採用障壁を解くか」を共通の紹介文にする。イベント・紙・建設向けサイトには別の流入元コードを付け、参加数やクリックだけでなく有効リードと商談まで追う。掲載・登壇は条件と費用を確認してから判断する。","treproPlanNote_growth-partners":"一次案：既存の地方開拓リストを起点に、求人広告を扱う企業へ「既存提案にトレプロを加えると何が増えるか」を確認する。代理店の数だけでなく稼働・受注・継続売上まで追う。商工会は紹介経路、M&Aは探索事項として別管理する。","treproPlanNote_dashboard-spec":"一次案：売上向上／獲得品質・再現性／業務効率化の3箱。新しい論点は該当する箱へ追加し、朝会では「予算との差・変化した論点・次の判断」を先に表示。詳細は展開式にし、更新者・更新時刻と変更項目を見せる。","treproPlanNote_business-forecast-assumptions":"一次案：オフラインは実施数×1件あたり売上、FCは稼働代理店数×1社あたり契約数×契約売上、サブスクは各月の稼働契約数×月額で試算し、月別の件数で立ち上がり時期を表す。金山さん・森さんと既存予実を確認し、重複売上や手数料を除いて更新する。","treproPlanNote_mind-audience-role":"一次仮説：運送会社の経営者・採用責任者。まず採用する職種、必要免許、募集人数、営業拠点を聞き、既存の受注・失注案件で優先層を決める。","treproPlanNote_mind-audience-construction":"一次仮説：現場職・施工管理の採用で困る建設事業者。経験者限定か未経験育成が可能かで訴求を分ける。","treproPlanNote_mind-audience-area":"大阪は比較基準だが有効CPA¥190,897で高い。兵庫は事例を使える可能性がある候補例。通勤圏・勤務地・運行／配送ルートを確認して選ぶ。","treproPlanNote_mind-problem-current":"顧客の顕在課題は応募数不足だけでなく、条件に合わない応募、面談後の離脱、採用後の定着かもしれない。業種別に漏斗と失注理由を聞く。","treproPlanNote_mind-problem-barrier":"「広告で応募を増やしても採用できないのでは」「条件を出すと応募が減るのでは」という懸念を想定。実態が見える求人条件と有効リードの定義を示す。","treproPlanNote_mind-proof-case":"「神姫バス」事例は構成や見せ方の学習源。成果値・素材の利用許諾・対象顧客への適用範囲を確認し、他社の実績として誤認させない。","treproPlanNote_mind-proof-person":"橋口さん・金山さんは支援の考え方、外部ゲストは現場の実態や採用後の変化を語る。肩書や知名度より、具体的な証言を優先する。","treproPlanNote_mind-expression-hook":"A：採用課題を一問で提示。B：実際の現場・事例の証拠から始める。冒頭だけを変え、地域・LP・配信条件を揃える。","treproPlanNote_mind-expression-cta":"短尺で課題と証拠を示し、LPで対象職種・勤務条件・事例を補足。「自社の採用課題を相談する」など内容と一致するCTAを使う。","treproPlanNote_learning-kpi":"一次案：10月は案件ヒアリング4件、建設／運送の課題ブリーフ各1件。YouTubeは企画ごとに「聞く問い・切り出し先・CTA・公開後の学び」を記録。件数は担当者と顧客の協力可能範囲で更新する。","treproPlanCheck_dealReview":"0","treproPlanCheck_jobFacts":"0","treproPlanCheck_retention":"0","treproPlanCheck_budget":"0","treproPlanCheck_report":"0","treproPlanCheck_quality":"0","treproPlanCheck_general":"0","treproPlanCheck_brand":"0","treproPlanCheck_meta":"0","treproPlanCheck_pause":"0","treproPlanCheck_construction":"0","treproPlanCheck_channel":"0","treproPlanCheck_regionalApproval":"0","treproPlanCheck_region":"0","treproPlanCheck_expansion":"0","treproPlanCheck_creative":"0","treproPlanCheck_friday":"0","treproPlanCheck_decision":"0"}}</script>
+<script>
+(()=>{
+let embeddedState={};try{embeddedState=JSON.parse(document.getElementById('treproEmbeddedState')?.textContent||'{}')}catch(e){}
+const statePrefix=embeddedState.id?'treproSnapshot_'+embeddedState.id+'_':'';
+const storeGet=key=>{try{const v=localStorage.getItem(statePrefix+key);return v!==null?v:(embeddedState.storage?.[key]??null)}catch(e){return embeddedState.storage?.[key]??null}};
+const storeSet=(key,value)=>{try{localStorage.setItem(statePrefix+key,String(value))}catch(e){}};
+const ids=['ideas','variants','areas','weeks','aiDirect','aiHours','hourRate','aiCredits','creatorMonthly','creatorFee','creatorHours','reviewHours','mediaBudget','spentToDate'];
+const defaults={ideas:1,variants:2,areas:2,weeks:12,aiDirect:2000,aiHours:1.6,hourRate:5000,aiCredits:200,creatorMonthly:2,creatorFee:10000,creatorHours:4,reviewHours:0,mediaBudget:6090390,spentToDate:0};
+const el=id=>document.getElementById(id), yen=n=>'¥'+Math.round(n).toLocaleString('ja-JP'), count=n=>Number(n).toLocaleString('ja-JP'), hours=n=>Number(n.toFixed(1)).toLocaleString('ja-JP')+'h';
+let saved={};try{saved=JSON.parse(storeGet('treproAccountPlan202610')||'{}')}catch(e){};ids.forEach(id=>{if(saved[id]!==undefined)el(id).value=saved[id]});
+function value(id){const n=Number(el(id).value);return Number.isFinite(n)?Math.max(0,n):0}
+function put(id,v){el(id).textContent=v}
+function drawAllocation(budget){const data=[['Google 一般',45,''],['Meta 既存',10,'meta'],['Meta 大阪',15,'meta'],['Meta 次エリア（兵庫例）',15,'meta'],['Google 指名',5,''],['DemandGen・TikTok',0,'zero'],['リザーブ',10,'reserve']];el('allocationRows').innerHTML=data.map(([name,p,cls])=>`<div class="alloc-row ${cls}"><b>${name}</b><span class="bar"><i style="width:${p}%"></i></span><strong>${p}%</strong><span class="num">${yen(budget*p/100)}</span></div>`).join('')}
+function update(){let v={};ids.forEach(id=>v[id]=value(id));const perWeek=v.ideas*v.variants*v.areas, weeks=Math.max(1,Math.round(v.weeks)), ai4=perWeek*4, total=perWeek*weeks, creditsWeek=perWeek*v.aiCredits, aiUnit=v.aiDirect+v.aiHours*v.hourRate, aiWeek=perWeek*aiUnit, creatorUnit=v.creatorFee+v.reviewHours*v.hourRate, creatorWeek=v.creatorMonthly/4*creatorUnit, creatorTotal=creatorWeek*weeks, allWeek=aiWeek+creatorWeek;
+put('outWeeklyVideos',count(perWeek)+'本／週');put('outVideoPeriods','4週 '+count(ai4)+'本 / '+weeks+'週 '+count(total)+'本');put('outWeeklyCredits',count(creditsWeek)+'／週');put('outCreditPeriods','4週 '+count(creditsWeek*4)+' / '+weeks+'週 '+count(creditsWeek*weeks));put('outWeeklyAiCost',yen(aiWeek));put('outAiCostPeriods','4週 '+yen(aiWeek*4)+' / '+weeks+'週 '+yen(aiWeek*weeks));put('outTotalCost',yen(allWeek*weeks));put('outCreatorDetail','内訳：AI '+yen(aiWeek*weeks)+' + 実写 '+yen(creatorTotal));
+const cells={tAiWeek:count(perWeek)+'本',tAi4:count(ai4)+'本',tAiTotal:count(total)+'本',tDirectWeek:yen(perWeek*v.aiDirect),tDirect4:yen(ai4*v.aiDirect),tDirectTotal:yen(total*v.aiDirect),tAiHoursWeek:hours(perWeek*v.aiHours),tAiHours4:hours(ai4*v.aiHours),tAiHoursTotal:hours(total*v.aiHours),tAiCostWeek:yen(aiWeek),tAiCost4:yen(aiWeek*4),tAiCostTotal:yen(aiWeek*weeks),tCreatorHoursWeek:hours(v.creatorMonthly/4*v.creatorHours),tCreatorHours4:hours(v.creatorMonthly*v.creatorHours),tCreatorHoursTotal:hours(v.creatorMonthly/4*weeks*v.creatorHours),tCreatorWeek:yen(creatorWeek),tCreator4:yen(creatorWeek*4),tCreatorTotal:yen(creatorTotal),tAllWeek:yen(allWeek),tAll4:yen(allWeek*4),tAllTotal:yen(allWeek*weeks)};Object.entries(cells).forEach(([id,val])=>put(id,val));
+put('costReadout','AI完成1本の原価：生成 '+yen(v.aiDirect)+' ＋ 人の作業 '+hours(v.aiHours)+' × '+yen(v.hourRate)+'/h = '+yen(aiUnit)+'。クリエイター1本：制作費 '+yen(v.creatorFee)+' ＋ 追加社内確認 '+hours(v.reviewHours)+' × '+yen(v.hourRate)+'/h = '+yen(creatorUnit)+'。');
+put('budgetNotice',v.spentToDate>0?'10月の入力済み既消化額 '+yen(v.spentToDate)+'。入力上の残枠 '+yen(Math.max(0,v.mediaBudget-v.spentToDate))+'。実際の全件が入力済みか確認してください。':'10月既消化額は未入力です。¥0を実績とは扱わず、配信担当から10/1以降の消化額を取得してください。');drawAllocation(v.mediaBudget);try{storeSet('treproAccountPlan202610',JSON.stringify(v))}catch(e){}
+}
+ids.forEach(id=>el(id).addEventListener('input',update));el('basicBtn').addEventListener('click',()=>{el('ideas').value=1;el('variants').value=2;el('areas').value=2;update()});el('expandedBtn').addEventListener('click',()=>{el('ideas').value=4;el('variants').value=2;el('areas').value=2;update()});el('resetBtn').addEventListener('click',()=>{ids.forEach(id=>el(id).value=defaults[id]);update()});
+const businessFields=['bTarget','bActual','bBase','bOfflineCount','bOfflineRevenue','bOfflineCost','bAgents','bAgencyDeals','bAgencyRevenue','bAgencyCost','bAiSubs','bAiFee','bJobSubs','bJobFee','bLaunchCost'];
+const businessStore='treproBusinessForecast202610';const businessMonths=['10','11','12'];const businessBlank=()=>Object.fromEntries(businessFields.map(k=>[k,k==='bActual'?'':0]));let businessState={};try{const x=JSON.parse(storeGet(businessStore)||'{}');if(x&&typeof x==='object')businessState=x}catch(e){}
+businessMonths.forEach(m=>businessState[m]={...businessBlank(),...(businessState[m]||{})});try{const savedMonth=storeGet('treproBusinessMonth202610');if(businessMonths.includes(savedMonth))el('businessMonth').value=savedMonth}catch(e){}
+function businessCalc(v){const n=k=>Math.max(0,Number(v[k])||0),offline=n('bOfflineCount')*n('bOfflineRevenue'),agency=n('bAgents')*n('bAgencyDeals')*n('bAgencyRevenue'),aiSub=n('bAiSubs')*n('bAiFee'),jobSub=n('bJobSubs')*n('bJobFee'),newSales=offline+agency+aiSub+jobSub,investment=n('bOfflineCost')+n('bAgencyCost')+n('bLaunchCost'),forecast=n('bBase')+newSales,target=n('bTarget'),actual=v.bActual===''?null:n('bActual');return {offline,agency,aiSub,jobSub,newSales,investment,forecast,target,actual,base:n('bBase'),gap:target>0?forecast-target:null,actualGap:target>0&&actual!==null?actual-target:null}}
+function gapText(n){return n===null?'要入力':n<0?'−'+yen(-n):'+'+yen(n)}
+function renderBusiness(){const month=el('businessMonth').value,r=businessCalc(businessState[month]);put('bOutNew',yen(r.newSales));put('bOutInvestment',yen(r.investment));put('bOutGap',gapText(r.gap));el('businessForecastRows').innerHTML=businessMonths.map(m=>{const q=businessCalc(businessState[m]);return `<tr><td>${m}月</td><td class="num">${q.target?yen(q.target):'要入力'}</td><td class="num">${q.actual===null?'未入力':yen(q.actual)}</td><td class="num">${yen(q.base)}</td><td class="num">${yen(q.offline)}</td><td class="num">${yen(q.agency)}</td><td class="num">${yen(q.aiSub)}</td><td class="num">${yen(q.jobSub)}</td><td class="num">${yen(q.forecast)}</td><td class="num">${yen(q.investment)}</td><td class="num ${q.actualGap===null?'':q.actualGap<0?'bad':'good'}">${gapText(q.actualGap)}</td><td class="num ${q.gap===null?'':q.gap<0?'bad':'good'}">${gapText(q.gap)}</td></tr>`}).join('')}
+function loadBusinessMonth(){const v=businessState[el('businessMonth').value];businessFields.forEach(k=>el(k).value=v[k]??0);renderBusiness()}
+document.querySelectorAll('[data-business]').forEach(field=>field.addEventListener('input',()=>{const month=el('businessMonth').value;businessState[month][field.id]=field.id==='bActual'&&field.value===''?'':Math.max(0,Number(field.value)||0);try{storeSet(businessStore,JSON.stringify(businessState))}catch(e){}renderBusiness()}));
+el('businessMonth').addEventListener('change',()=>{try{storeSet('treproBusinessMonth202610',el('businessMonth').value)}catch(e){}loadBusinessMonth()});
+loadBusinessMonth();
+document.querySelectorAll('[data-check]').forEach(box=>{const key='treproPlanCheck_'+box.dataset.check;try{box.checked=storeGet(key)==='1'}catch(e){}box.addEventListener('change',()=>{try{storeSet(key,box.checked?'1':'0')}catch(e){}})});
+// Editable research notes: local to this browser and this file URL.
+const oldCaseName=String.fromCharCode(0x65b0,0x898f,0x30d1,0x30b9,0x30bf);const normalizeCaseName=s=>String(s).split(oldCaseName).join('神姫バス');
+document.querySelectorAll('[data-note]').forEach(field=>{const key='treproPlanNote_'+field.dataset.note;try{const savedNote=storeGet(key);if(savedNote!==null){const corrected=normalizeCaseName(savedNote);field.value=corrected;if(corrected!==savedNote)storeSet(key,corrected)}}catch(e){}field.addEventListener('input',()=>{try{storeSet(key,field.value)}catch(e){}})});
+const guestStore='treproPlanGuests202610';let guests=[{name:'橋口さん',theme:'既存成約の理由をどう分解するか',contact:'',record:'',publish:'',reuse:'成約理由を問う短尺／LPのFAQ／商談資料',learning:'公開後に有効リードと商談での質問を確認'},{name:'金山さん',theme:'建設・運送の採用課題をどう聞き分けるか',contact:'',record:'',publish:'',reuse:'業種別の短尺／広告冒頭A/B',learning:'視聴維持と相談内容を業種別に比較'},{name:'ゲスト候補',theme:'運送の現場で応募前に知りたい条件',contact:'',record:'',publish:'',reuse:'現場証言の短尺／運送向けLP',learning:'出演者・事例利用許諾と企業からの相談内容を確認'}];try{const raw=storeGet(guestStore),corrected=raw===null?null:normalizeCaseName(raw);if(corrected!==raw)storeSet(guestStore,corrected);const g=JSON.parse(corrected||'null');if(Array.isArray(g)){const starters=guests;guests=g.map(item=>({name:'',theme:'',contact:'',record:'',publish:'',reuse:'',learning:'',...(starters.find(x=>x.name===item.name)||{}),...item}))}}catch(e){}
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function saveGuests(){try{storeSet(guestStore,JSON.stringify(guests))}catch(e){}}
+function renderGuestEditor(){el('guestRows').innerHTML=guests.map((g,i)=>`<div class="guest-row" data-guest="${i}"><label>出演者<input data-field="name" type="text" value="${escapeHtml(g.name||'')}" placeholder="出演者名"></label><label class="wide">企画テーマ・聞く問い<input data-field="theme" type="text" value="${escapeHtml(g.theme||'')}" placeholder="例：応募前に伝えるべき勤務条件"></label><button class="guest-remove" type="button" data-remove="${i}" aria-label="${escapeHtml(g.theme||g.name||'企画')}を削除">×</button><label>打診日<input data-field="contact" type="date" value="${escapeHtml(g.contact||'')}"></label><label>収録日<input data-field="record" type="date" value="${escapeHtml(g.record||'')}"></label><label>公開日<input data-field="publish" type="date" value="${escapeHtml(g.publish||'')}"></label><label class="wide">切り出し・二次利用先<textarea data-field="reuse" placeholder="短尺、広告、LP、営業資料など">${escapeHtml(g.reuse||'')}</textarea></label><label class="wide">公開後の結果・次回に残す学び<textarea data-field="learning" placeholder="視聴・流入・有効リードと次の問い">${escapeHtml(g.learning||'')}</textarea></label></div>`).join('');renderGantt()}
+function weekIndex(date){if(!/^\d{4}-\d{2}-\d{2}$/.test(date||''))return -1;const [y,m,d]=date.split('-').map(Number);return Math.floor((Date.UTC(y,m-1,d)-Date.UTC(2026,9,6))/(7*86400000))}
+function renderGantt(){const latest=Math.max(-1,...guests.flatMap(g=>[g.contact,g.record,g.publish].map(weekIndex)));const weeks=Math.max(13,latest+1);let head='<div class="gantt-head">企画・出演者</div>';for(let i=0;i<weeks;i++){const d=new Date(Date.UTC(2026,9,6+i*7));head+=`<div class="gantt-head">${d.getUTCMonth()+1}/${d.getUTCDate()}</div>`}let rows='';for(const g of guests){const label=[g.theme,g.name].filter(Boolean).join(' / ')||'未入力';rows+=`<div class="gantt-name" title="${escapeHtml(label)}">${escapeHtml(label)}</div>`;for(let i=0;i<weeks;i++){let phases=[];if(weekIndex(g.contact)===i)phases.push('打診');if(weekIndex(g.record)===i)phases.push('収録');if(weekIndex(g.publish)===i)phases.push('公開');let cls=phases.length>1?'phase-multi':phases[0]==='打診'?'phase-contact':phases[0]==='収録'?'phase-record':phases[0]==='公開'?'phase-publish':'';const contact=weekIndex(g.contact),record=weekIndex(g.record),publish=weekIndex(g.publish);if(!phases.length&&contact>=0&&record>contact&&i>contact&&i<record)cls='phase-booking';if(!phases.length&&record>=0&&publish>record&&i>record&&i<publish)cls='phase-edit';rows+=`<div class="gantt-cell ${cls}">${phases.join('・')}</div>`}}el('guestGantt').innerHTML=`<div class="gantt" style="grid-template-columns:190px repeat(${weeks},minmax(61px,1fr));min-width:${190+weeks*61}px">${head}${rows}</div>`}
+el('guestRows').addEventListener('input',event=>{const field=event.target.dataset.field,row=event.target.closest('[data-guest]');if(!field||!row)return;const i=Number(row.dataset.guest);if(!guests[i])return;guests[i][field]=event.target.value;saveGuests();renderGantt()});
+el('guestRows').addEventListener('click',event=>{const btn=event.target.closest('[data-remove]');if(!btn)return;guests.splice(Number(btn.dataset.remove),1);saveGuests();renderGuestEditor()});
+el('addGuest').addEventListener('click',()=>{guests.push({name:'',theme:'',contact:'',record:'',publish:'',reuse:'',learning:''});saveGuests();renderGuestEditor();el('guestRows').lastElementChild?.scrollIntoView({behavior:'smooth',block:'center'});el('guestRows').lastElementChild?.querySelector('[data-field="theme"]')?.focus()});
+const allDetails=[...document.querySelectorAll('details')];
+function openIndices(){return allDetails.flatMap((d,i)=>d.open?[i]:[])}
+function saveOpenState(){if(embeddedState.id)storeSet('treproOpenDetails202610',JSON.stringify(openIndices()))}
+if(embeddedState.id)try{const savedOpen=JSON.parse(storeGet('treproOpenDetails202610')||'null');if(Array.isArray(savedOpen))allDetails.forEach((d,i)=>d.open=savedOpen.includes(i))}catch(e){}
+allDetails.forEach(d=>d.addEventListener('toggle',saveOpenState));
+el('openAllSections').addEventListener('click',()=>{allDetails.forEach(d=>d.open=true);saveOpenState()});
+el('closeAllSections').addEventListener('click',()=>{allDetails.forEach(d=>d.open=false);saveOpenState()});
+document.querySelectorAll('.side nav a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{const target=document.querySelector(link.getAttribute('href'));if(target?.tagName==='DETAILS'){target.open=true;saveOpenState()}}));
+el('downloadSnapshot').addEventListener('click',()=>{
+ const storage={treproAccountPlan202610:JSON.stringify(Object.fromEntries(ids.map(id=>[id,el(id).value]))),treproBusinessForecast202610:JSON.stringify(businessState),treproBusinessMonth202610:el('businessMonth').value,treproPlanGuests202610:JSON.stringify(guests),treproOpenDetails202610:JSON.stringify(openIndices())};
+ document.querySelectorAll('[data-note]').forEach(field=>storage['treproPlanNote_'+field.dataset.note]=field.value);
+ document.querySelectorAll('[data-check]').forEach(box=>storage['treproPlanCheck_'+box.dataset.check]=box.checked?'1':'0');
+ const snapshot={id:Date.now().toString(36)+'_'+Math.random().toString(36).slice(2),storage};
+ const html=document.documentElement.cloneNode(true);
+ html.querySelector('#treproEmbeddedState').textContent=JSON.stringify(snapshot).replace(/</g,()=>String.fromCharCode(92)+'u003c');
+ const blob=new Blob(['<!doctype html>\n',html.outerHTML],{type:'text/html;charset=utf-8'});
+ const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='トレプロ_アカウントプランニング_共有用.html';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
+});
+renderGuestEditor();update();
+})();
+</script>
 
-  <section class="section" id="verdict">
-    <div class="wrap">
-      <div class="kicker">30秒で見る</div>
-      <h2>良いところと、直すところ。</h2>
-      <p class="lede">緑は相対的に良い。赤は改善が必要。黄は条件つきで続ける。灰はいったん止める。基準は有効CPA 10万円未満。件数が出ていても、この線より高ければ成功とは扱わない。</p>
-      <div class="flags" aria-hidden="true">
-        <span class="flag good"><i></i>良い</span>
-        <span class="flag bad"><i></i>要改善</span>
-        <span class="flag watch"><i></i>条件つき</span>
-        <span class="flag hold"><i></i>保留</span>
-      </div>
-      <div class="filters" role="group" aria-label="判定で絞る">
-        <button type="button" data-filter="all" class="is-on">すべて</button>
-        <button type="button" data-filter="good">良い</button>
-        <button type="button" data-filter="bad">要改善</button>
-        <button type="button" data-filter="watch">条件つき</button>
-        <button type="button" data-filter="hold">保留</button>
-      </div>
-      <div class="scores" id="scores">
-        <article class="score good" data-tone="good"><span class="flag good">良い</span><b>指名検索は効率が良い。</b><p>9月の有効CPAは54,961円、有効率80%。需要を取り切る。検索需要以上に予算は積まない。</p></article>
-        <article class="score good" data-tone="good"><span class="flag good">良い</span><b>LP01は10万円を下回った。</b><p>9/25〜10/4で有効5件、有効CPA 97,047円、CVR 0.97%。流入条件が違うので、LPだけの勝因とはまだ言えない。</p></article>
-        <article class="score good" data-tone="good"><span class="flag good">良い</span><b>有効になったあとのアポ化は高い。</b><p>9月は有効42件に対しアポ38件、90.48%。先に直すのは獲得効率と、その質。</p></article>
-        <article class="score watch" data-tone="watch"><span class="flag watch">条件つき</span><b>戻り先は7月の水準。</b><p>7月は有効100件、CPA 77,482円、ROAS 187%。6月の91,494円も10万円未満。ここを改善の参考にする。</p></article>
-        <article class="score bad" data-tone="bad"><span class="flag bad">要改善</span><b>9月の全体は合格ラインにない。</b><p>費用6,090,390円で有効42件。CPA 145,009円、受注1件、ROAS 65%。8月55件からさらに減った。</p></article>
-        <article class="score bad" data-tone="bad"><span class="flag bad">要改善</span><b>費用の本体が高い。</b><p>Metaは有効CPA 146,903円でアポ17件。Google一般は161,659円。件数は出るが、10万円未満ではない。</p></article>
-        <article class="score bad" data-tone="bad"><span class="flag bad">要改善</span><b>大阪は件数と効率を分ける。</b><p>9/25〜10/4の有効は大阪4件だけ。CPAは190,897円で、9月全体より約32%高い。岡山と倉敷は有効0件。</p></article>
-        <article class="score bad" data-tone="bad"><span class="flag bad">要改善</span><b>休日はさらに厚い。</b><p>9/20〜10/1の平日有効率62.5%・CPA 147,429円に対し、土日祝は38.5%・213,078円。まず休日の日額を落とす。</p></article>
-        <article class="score bad" data-tone="bad"><span class="flag bad">要改善</span><b>成約の再現条件が分かっていない。</b><p>受注1件を成功パターンとして使わない。失注理由、求人条件、定着が広告データとつながっていない。</p></article>
-        <article class="score hold" data-tone="hold"><span class="flag hold">保留</span><b>DemandGenとTikTokは初週に入れない。</b><p>DemandGenは9/25以降、115,000円使って有効0件。TikTokも今回の初週予算に入れない。</p></article>
-        <article class="score hold" data-tone="hold"><span class="flag hold">保留</span><b>兵庫は候補であって、実績ではない。</b><p>過去の成果値はない。エリア合意の前に次エリア枠は配信しない。神姫バスの成果を他社の実績としては語らない。</p></article>
-      </div>
-    </div>
-  </section>
 
-  <section class="section" id="trend">
-    <div class="wrap">
-      <div class="kicker">月次</div>
-      <h2>7月の山から、9月の谷へ。</h2>
-      <p class="lede">有効CPAでは、棒が短いほど良い。縦線は10万円で、9月はその線を大きく超える。有効リード、ROAS、受注は、棒が長いほど良い。</p>
-      <div class="compare reveal">
-        <article class="month-card good">
-          <div class="when">戻り先 · 7月</div>
-          <strong>¥77,482</strong>
-          <ul>
-            <li>有効リード 100件 / 有効率 78.13%</li>
-            <li>アポ 56 / 受注 3 / ROAS 187%</li>
-            <li>費用 ¥7.75M</li>
-          </ul>
-        </article>
-        <div class="delta" aria-label="7月から9月の変化">
-          <span class="down">CPA +87%</span>
-          <span class="down">有効 −58件</span>
-          <span class="down">受注 3→1</span>
-          <span class="down">ROAS 187→65%</span>
-        </div>
-        <article class="month-card bad">
-          <div class="when">現在地 · 9月</div>
-          <strong>¥145,009</strong>
-          <ul>
-            <li>有効リード 42件 / 有効率 60.00%</li>
-            <li>アポ 38 / 受注 1 / ROAS 65%</li>
-            <li>費用 ¥6,090,390</li>
-          </ul>
-        </article>
-      </div>
+<script>
+(()=>{
+  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const nodes=document.querySelectorAll(".motion-block,#allocationRows");
+  const show=el=>el.classList.add("motion-on");
+  if(reduce||!("IntersectionObserver" in window)){nodes.forEach(show);return}
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      show(entry.target);
+      io.unobserve(entry.target);
+    });
+  },{threshold:0.2});
+  nodes.forEach(el=>io.observe(el));
+})();
+</script>
 
-      <div class="panel reveal" style="margin-top:18px" data-switch>
-        <div class="tabs" role="tablist" aria-label="月次グラフの指標">
-          <button type="button" class="is-on" data-tab="cpa" role="tab" aria-selected="true">有効CPA</button>
-          <button type="button" data-tab="leads" role="tab" aria-selected="false">有効リード</button>
-          <button type="button" data-tab="roas" role="tab" aria-selected="false">ROAS</button>
-          <button type="button" data-tab="orders" role="tab" aria-selected="false">受注</button>
-        </div>
-        <div class="pane is-on" data-pane="cpa" role="tabpanel">
-          <div class="row good-c"><div class="name">6月</div><div class="track-wrap"><div class="track"><i style="--w:57.2%"></i></div><span class="goal" style="--g:62.5%" data-label="10万"></span></div><div class="val">¥91,494</div></div>
-          <div class="row good-c"><div class="name">7月</div><div class="track-wrap"><div class="track"><i style="--w:48.4%"></i></div><span class="goal" style="--g:62.5%"></span></div><div class="val">¥77,482</div></div>
-          <div class="row bad-c"><div class="name">8月</div><div class="track-wrap"><div class="track"><i style="--w:84.9%"></i></div><span class="goal" style="--g:62.5%"></span></div><div class="val">¥135,835</div></div>
-          <div class="row bad-c"><div class="name">9月</div><div class="track-wrap"><div class="track"><i style="--w:90.6%"></i></div><span class="goal" style="--g:62.5%"></span></div><div class="val">¥145,009</div></div>
-          <p class="micro">目盛りは16万円まで。6月は10万円未満、7月はさらに良い。8月と9月は線の右側で、要改善。</p>
-        </div>
-        <div class="pane" data-pane="leads" role="tabpanel">
-          <div class="row watch-c"><div class="name">6月</div><div class="track-wrap"><div class="track"><i style="--w:60%"></i></div></div><div class="val">66件</div></div>
-          <div class="row good-c"><div class="name">7月</div><div class="track-wrap"><div class="track"><i style="--w:90.9%"></i></div></div><div class="val">100件</div></div>
-          <div class="row watch-c"><div class="name">8月</div><div class="track-wrap"><div class="track"><i style="--w:50%"></i></div></div><div class="val">55件</div></div>
-          <div class="row bad-c"><div class="name">9月</div><div class="track-wrap"><div class="track"><i style="--w:38.2%"></i></div></div><div class="val">42件</div></div>
-          <p class="micro">件数は多いほど良い。7月の100件が山で、9月の42件が谷。</p>
-        </div>
-        <div class="pane" data-pane="roas" role="tabpanel">
-          <div class="row good-c"><div class="name">6月</div><div class="track-wrap"><div class="track"><i style="--w:94.7%"></i></div></div><div class="val">284%</div></div>
-          <div class="row watch-c"><div class="name">7月</div><div class="track-wrap"><div class="track"><i style="--w:62.3%"></i></div></div><div class="val">187%</div></div>
-          <div class="row watch-c"><div class="name">8月</div><div class="track-wrap"><div class="track"><i style="--w:41.3%"></i></div></div><div class="val">124%</div></div>
-          <div class="row bad-c"><div class="name">9月</div><div class="track-wrap"><div class="track"><i style="--w:21.7%"></i></div></div><div class="val">65%</div></div>
-          <p class="micro">ROASは6月284%から9月65%まで落ちている。受注の確定は遅いので、速報と後日更新を分ける。</p>
-        </div>
-        <div class="pane" data-pane="orders" role="tabpanel">
-          <div class="row good-c"><div class="name">6月</div><div class="track-wrap"><div class="track"><i style="--w:75%"></i></div></div><div class="val">3件</div></div>
-          <div class="row good-c"><div class="name">7月</div><div class="track-wrap"><div class="track"><i style="--w:75%"></i></div></div><div class="val">3件</div></div>
-          <div class="row watch-c"><div class="name">8月</div><div class="track-wrap"><div class="track"><i style="--w:50%"></i></div></div><div class="val">2件</div></div>
-          <div class="row bad-c"><div class="name">9月</div><div class="track-wrap"><div class="track"><i style="--w:25%"></i></div></div><div class="val">1件</div></div>
-          <p class="micro">受注は6・7月が3件、9月が1件。母数は小さいので、理由の分解とセットで見る。</p>
-        </div>
-      </div>
-
-      <div class="grid-2" style="margin-top:18px">
-        <div class="panel reveal">
-          <h3>9月の落ち方</h3>
-          <p class="micro" style="margin-top:0">総リード70件を100%としたときの幅。有効率60%なので有効は42件。</p>
-          <div class="funnel" style="margin-top:12px">
-            <div class="step"><b>総リード</b><div class="pipe"><i style="--w:100%"></i></div><em>70件</em></div>
-            <div class="step"><b>有効</b><div class="pipe"><i style="--w:60%"></i></div><em>42件</em></div>
-            <div class="step"><b>アポ</b><div class="pipe"><i style="--w:54%"></i></div><em>38件</em></div>
-            <div class="step"><b>受注</b><div class="pipe"><i style="--w:8%"></i></div><em>1件</em></div>
-          </div>
-          <p class="micro">有効からアポまでは太い。受注で細くなる。広告の先にある理由が、まだ記録されていない。</p>
-        </div>
-        <div class="panel reveal">
-          <h3>直近の週</h3>
-          <p class="micro" style="margin-top:0">有効CPA。縦線は10万円。9/28週は10/1までの4日間。</p>
-          <div class="row bad-c"><div class="name">9/07</div><div class="track-wrap"><div class="track"><i style="--w:63.3%"></i></div><span class="goal" style="--g:50%"></span></div><div class="val">¥126,534</div><div class="sub">有効11件 · 有効率73.33% · 確定</div></div>
-          <div class="row watch-c"><div class="name">9/14</div><div class="track-wrap"><div class="track"><i style="--w:50.4%"></i></div><span class="goal" style="--g:50%"></span></div><div class="val">¥100,789</div><div class="sub">有効12件 · 有効率70.59% · 10万円に最も近い</div></div>
-          <div class="row bad-c"><div class="name">9/21</div><div class="track-wrap"><div class="track"><i style="--w:91.7%"></i></div><span class="goal" style="--g:50%"></span></div><div class="val">¥183,366</div><div class="sub">有効7件 · 有効率46.67% · この4週で最も悪い</div></div>
-          <div class="row bad-c"><div class="name">9/28</div><div class="track-wrap"><div class="track"><i style="--w:70%"></i></div><span class="goal" style="--g:50%"></span></div><div class="val">¥140,063</div><div class="sub">有効8件 · 有効率61.54% · 4日間のため月次とは並べない</div></div>
-        </div>
-      </div>
-      <div class="callout bad"><b>読み方</b><p>9/14週だけが10万円の線に触れている。その前後は高い。週ごとの上下を、媒体と曜日の差に分解してから予算を動かす。</p></div>
-    </div>
-  </section>
-
-  <section class="section" id="mix">
-    <div class="wrap">
-      <div class="kicker">どこに金が乗っているか</div>
-      <h2>安いのは小さい枠。大きい枠はまだ高い。</h2>
-      <p class="lede">9月の媒体、9/25〜10/4のエリア、期間の違うLPを、同じ棒のルールで見る。短い緑が良く、長い赤が要改善。表の期間が違うものは足し合わせない。</p>
-
-      <div class="panel reveal">
-        <h3>9月の媒体別・有効CPA</h3>
-        <p class="micro" style="margin-top:0">縦線は10万円。目盛りは20万円まで。その他指名（Microsoft・Yahoo!）は費用7,684円で有効0件。</p>
-        <div class="row good-c"><div class="name">指名</div><div class="track-wrap"><div class="track"><i style="--w:27.5%"></i></div><span class="goal" style="--g:50%" data-label="10万"></span></div><div class="val">¥54,961</div><div class="sub">費用 ¥219,844 · 有効4 / 総5 · 有効率80% · アポ5 · 需要を取り切る</div></div>
-        <div class="row bad-c"><div class="name">Meta</div><div class="track-wrap"><div class="track"><i style="--w:73.5%"></i></div><span class="goal" style="--g:50%"></span></div><div class="val">¥146,903</div><div class="sub">費用 ¥2,644,256 · 有効18 / 総32 · アポ17 · 件数は最大。効率は要改善</div></div>
-        <div class="row bad-c"><div class="name">一般</div><div class="track-wrap"><div class="track"><i style="--w:80.8%"></i></div><span class="goal" style="--g:50%"></span></div><div class="val">¥161,659</div><div class="sub">費用 ¥2,263,220 · 有効14 / 総24 · アポ14 · 9/25以降の増分は約117,000円</div></div>
-        <div class="row hold-c"><div class="name">DG</div><div class="track-wrap"><div class="track"><i style="--w:81.7%"></i></div><span class="goal" style="--g:50%"></span></div><div class="val">¥163,457</div><div class="sub">費用 ¥653,829 · 有効4 / 総7 · アポ2 · 直近は115,000円で有効0件。保留</div></div>
-        <p class="micro">媒体表の費用合計は5,788,833円。全体との差301,557円は、この表では媒体に紐づかない。有効の合計は40件で、月次の42件とも一致しない。比率は方針であり、既存配分の完全な再現ではない。指名のアポ5件が有効4件を超えるため、帰属の定義も照合する。</p>
-      </div>
-
-      <div class="grid-2" style="margin-top:14px">
-        <div class="panel reveal">
-          <h3>エリア · 9/25〜10/4</h3>
-          <p class="micro" style="margin-top:0">左が費用、右が有効件数。大阪だけ件数があり、効率は悪い。</p>
-          <div class="row bad-c"><div class="name">大阪</div><div class="track-wrap"><div class="track"><i style="--w:95.4%"></i></div></div><div class="val">¥764k</div><div class="sub">有効4件 · CPA ¥190,897 · CVR 0.52% · アポ2</div></div>
-          <div class="row hold-c"><div class="name">倉敷</div><div class="track-wrap"><div class="track"><i style="--w:17.4%"></i></div></div><div class="val">¥139k</div><div class="sub">有効0 · クリック240 · CVR 0.00%</div></div>
-          <div class="row bad-c"><div class="name">岡山</div><div class="track-wrap"><div class="track"><i style="--w:62.6%"></i></div></div><div class="val">¥500k</div><div class="sub">総リード1 · 有効0 · 総CPA ¥500,404 · CPCは¥364で最も安い</div></div>
-          <p class="micro">費用の棒は80万円を100%にしている。クリック単価が安いことと、有効が取れることは別。兵庫の過去値はない。</p>
-        </div>
-        <div class="panel reveal">
-          <h3>LPの有効CPA</h3>
-          <p class="micro" style="margin-top:0">LP01は9/25〜10/4。LP04とLP05は9/18〜10/4。期間が違う。</p>
-          <div class="row good-c"><div class="name">LP01</div><div class="track-wrap"><div class="track"><i style="--w:48.5%"></i></div><span class="goal" style="--g:50%" data-label="10万"></span></div><div class="val">¥97,047</div><div class="sub">CVR 0.97% · 有効5 · アポCPA ¥242,618</div></div>
-          <div class="row bad-c"><div class="name">LP04</div><div class="track-wrap"><div class="track"><i style="--w:75.4%"></i></div><span class="goal" style="--g:50%"></span></div><div class="val">¥150,780</div><div class="sub">CVR 0.76% · 有効3 · アポCPA ¥226,170 は3つの中で最も低い</div></div>
-          <div class="row bad-c"><div class="name">LP05</div><div class="track-wrap"><div class="track"><i style="--w:90.5%"></i></div><span class="goal" style="--g:50%"></span></div><div class="val">¥181,059</div><div class="sub">費用 ¥1,810,589 と最大 · 有効10 · アポCPA ¥301,765</div></div>
-          <p class="micro">LP01の有効CPAはLP05より約46%低い。アポCPAだけ見るとLP04が僅差で先行する。媒体とエリアが揃っていないので、フォーム位置の効果は未確定。</p>
-        </div>
-      </div>
-      <div class="callout"><b>LPの読み方</b><p>初期の着地はLP01を候補にする。金曜の定例では、素材の話と分けて、LP別の総リード・有効・アポを見る。翌週に変える仮説は一つ。</p></div>
-    </div>
-  </section>
-
-  <section class="section" id="problem">
-    <div class="wrap">
-      <div class="kicker">施策の前</div>
-      <h2>CPAを下げる前に、再現条件を聞く。</h2>
-      <p class="lede">広告の効率だけを直しても、顧客の採用が続く理由にはならない。どの企業が、どの人材を、なぜ採れないのかを先に特定する。</p>
-      <div class="callout bad"><b>中心の仮説</b><p>9月は有効42件、受注1件、ROAS 65%。成約には営業力や時期も効く。成約した事実だけでは、次の訴求が再現できるとは言えない。これは仮説であり、既存顧客の成果を偶然だと断定するものではない。</p></div>
-      <div class="steps reveal">
-        <article class="step-card"><b>1 課題を特定</b><p>業種・地域・職種ごとに、応募前と採用後の障壁を顧客と現場に聞く。</p></article>
-        <article class="step-card"><b>2 証拠を作る</b><p>実際の条件、社員の声、育成や定着の事例を撮影して整理する。</p></article>
-        <article class="step-card"><b>3 獲得で検証</b><p>訴求、地域、LPを揃えて配信し、有効リードから受注まで追う。</p></article>
-        <article class="step-card"><b>4 次へ残す</b><p>勝った理由と失敗理由を、動画、LP、営業資料、次のエリアに渡す。</p></article>
-      </div>
-      <div class="cards" style="margin-top:14px">
-        <article class="card"><div class="idx">市場</div><h3>不足は業種で違う</h3><p>中小企業白書は、建設、運輸・郵便、情報通信で強い人手不足感を示す。製造業は確保に加え、定着と技能継承も論点になる。</p></article>
-        <article class="card"><div class="idx">市場</div><h3>応募数の先がある</h3><p>2025年版は人材不足と定着率の関係を示す。観光庁は施設間の人材共有、農水省の2025年調査では個人経営体の基幹的農業従事者が5年で25.1%減った。</p></article>
-        <article class="card"><div class="idx">仮説</div><h3>最初に聞く相手</h3><p>建設と運送の採用担当、経営者。応募数ではなく、条件に合う人の面談と定着までを求めている、という一次仮説。直近の受注と失注を聞き直す。</p></article>
-      </div>
-      <div class="scroll reveal" style="margin-top:14px" tabindex="0" aria-label="顧客の5つの問い">
-        <table>
-          <thead><tr><th>顧客の課題</th><th>まず確かめること</th><th>トレプロ</th><th>顧客企業</th></tr></thead>
-          <tbody>
-            <tr><td>求人条件が見えない</td><td>給与以外のシフト、残業、通勤、教育が応募前に分かるか</td><td>取材し、広告とLPで誤解なく伝える</td><td>条件を開示し、必要なら直す</td></tr>
-            <tr><td>経験者だけでは採り切れない</td><td>未経験者が育つ経路と資格支援があるか</td><td>応募できる対象と育成の証拠を訴求にする</td><td>受け入れと育成を整える</td></tr>
-            <tr><td>採用数だけで見ている</td><td>応募から1年定着までの落ち方</td><td>広告から商談・採用まで訴求別に追う</td><td>定着と早期離職の理由を共有する</td></tr>
-            <tr><td>地域を移る障壁</td><td>通勤、住まい、家族、外国人材の条件</td><td>エリアごとに、効く説明を検証する</td><td>働く条件と暮らす条件を具体化する</td></tr>
-            <tr><td>採用だけでは仕事が埋まらない</td><td>増員以外に、省力化が要る工程</td><td>獲得で解ける範囲と解けない範囲を報告する</td><td>業務設計と省力化を進める</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="micro">5項目は市場資料から作った検証の枠。全クライアントに当てはまる、という意味ではない。</p>
-    </div>
-  </section>
-
-  <section class="section" id="plan">
-    <div class="wrap">
-      <div class="kicker">10〜12月</div>
-      <h2>3つの施策を、一つの学習にする。</h2>
-      <p class="lede">建設の取材、チャンネルの対話、地域別の広告を、別々の報告で終わらせない。同じ顧客課題と訴求IDに結び、広告の前後を追う。</p>
-      <div class="cards">
-        <article class="card reveal">
-          <div class="idx">01 / CREATIVE</div>
-          <h3>建設に寄せた動画</h3>
-          <p>「人手不足です」では、どの顧客にも同じ訴求になる。職種、資格、勤務地、育成のどこが詰まるかを絞る。確認できた事実だけで、課題型と事例型の2案を作る。</p>
-          <p class="micro">10月前半に受注・失注を聞き、後半に初回テスト。11月に質の低い表現を直し、12月に共通素材へ残す。裏付けがなければ本数を増やさない。</p>
-        </article>
-        <article class="card reveal d1">
-          <div class="idx">02 / OWNED</div>
-          <h3>トレプロチャンネル</h3>
-          <p>給与と人数だけでは、広告が一般論になる。橋口さん、金山さん、現場のゲストで、一つの問いを各回に固定する。再生数の施策にはしない。</p>
-          <p class="micro">本編から短尺、広告の冒頭、LP、商談資料へ切り出す。スタジオの契約と収録日は未確定。許諾は収録前に確認する。</p>
-        </article>
-        <article class="card reveal d2">
-          <div class="idx">03 / REGIONAL</div>
-          <h3>地域で説明を学ぶ</h3>
-          <p>大阪の有効4件は手掛かりだが、CPA 190,897円は高い。地名を替える作業ではない。兵庫は候補例で、神姫バスは構成の学習源。成果値の流用はしない。</p>
-          <p class="micro">次エリアは合意後に、大阪と同額・同条件で比べる。地域外へ広げる設定は止める。各地域の有効5件未満では勝敗を断定しない。</p>
-        </article>
-      </div>
-      <div class="scroll reveal" style="margin-top:14px" tabindex="0">
-        <table>
-          <thead><tr><th>施策</th><th>実行時に残すもの</th><th>あとで問うこと</th><th>次に使う場所</th></tr></thead>
-          <tbody>
-            <tr><td>建設</td><td>顧客の言葉、求人条件、現場素材、許諾、訴求ブリーフ</td><td>どの職種と証拠が、面談と受注まで進んだか</td><td>別案の広告、建設LP、営業説明、次の取材</td></tr>
-            <tr><td>チャンネル</td><td>証言、回答の位置、切り出し許諾、回ごとのCTA</td><td>どの問いで視聴が続き、相談の質が変わったか</td><td>短尺、広告のA/B、LP、商談後、次回企画</td></tr>
-            <tr><td>地域</td><td>設定画面、配信地域、素材ID、LP、勤務と通勤の条件</td><td>地域差は本物か。何が有効率を変えたか</td><td>次の地域、地域別LP、営業の説明</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="grid-2" style="margin-top:14px">
-        <div class="panel reveal">
-          <h3>チャンネルの最初の3本</h3>
-          <p>日付は未入力。企画だけ先に置く。</p>
-          <div class="row"><div class="name">橋口</div><div class="track-wrap"><div class="track"><i style="--w:100%;--c:#0c7c68"></i></div></div><div class="val">企画</div><div class="sub">既存成約の理由をどう分解するか。短尺、LPのFAQ、商談資料へ。</div></div>
-          <div class="row"><div class="name">金山</div><div class="track-wrap"><div class="track"><i style="--w:100%;--c:#3d7197"></i></div></div><div class="val">企画</div><div class="sub">建設と運送の採用課題をどう聞き分けるか。業種別の短尺と広告冒頭へ。</div></div>
-          <div class="row"><div class="name">ゲスト</div><div class="track-wrap"><div class="track"><i style="--w:100%;--c:#b86a2f"></i></div></div><div class="val">候補</div><div class="sub">運送の現場で、応募前に知りたい条件。現場の短尺と運送LPへ。</div></div>
-        </div>
-        <div class="panel">
-          <h3>金曜に決めること</h3>
-          <ol>
-            <li>今週得た顧客の事実</li>
-            <li>有効リードと、アポ・受注の質</li>
-            <li>問題は素材か、LPか</li>
-            <li>次週に変える変数は一つ</li>
-            <li>使い回せる証拠と許諾</li>
-          </ol>
-          <p class="micro">結論は「継続・修正・停止」と根拠を残す。短期は費用、総リード、有効率、有効CPA、アポ率。中期は受注・失注と訴求の一致。採用と定着は、顧客が共有できる範囲で後から追う。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="budget">
-    <div class="wrap">
-      <div class="kicker">配分案</div>
-      <h2>月609万円は仮の上限。自動では消化しない。</h2>
-      <p class="lede">9月実績の6,090,390円を仮上限に置いた案。10月1〜5日の既消化は未確定なので、残予算は実績のあとで確定する。次エリア15%は兵庫を例にした枠で、合意前は配信しない。</p>
-      <div class="panel reveal">
-        <div class="donut-layout">
-          <svg class="donut" viewBox="0 0 200 200" role="img" aria-label="配分。Google一般45%、Meta既存10%、Meta大阪15%、次エリア15%、指名5%、リザーブ10%">
-            <g transform="rotate(-90 100 100)">
-              <circle class="seg" cx="100" cy="100" r="72" stroke="#d08a3a" stroke-dasharray="0 452.4" data-dash="203.6 452.4" />
-              <circle class="seg" cx="100" cy="100" r="72" stroke="#3d7197" stroke-dasharray="0 452.4" stroke-dashoffset="-203.6" data-dash="45.2 452.4" />
-              <circle class="seg" cx="100" cy="100" r="72" stroke="#c4544a" stroke-dasharray="0 452.4" stroke-dashoffset="-248.8" data-dash="67.9 452.4" />
-              <circle class="seg" cx="100" cy="100" r="72" stroke="#e0b15a" stroke-dasharray="0 452.4" stroke-dashoffset="-316.7" data-dash="67.9 452.4" />
-              <circle class="seg" cx="100" cy="100" r="72" stroke="#0e8a78" stroke-dasharray="0 452.4" stroke-dashoffset="-384.5" data-dash="22.6 452.4" />
-              <circle class="seg" cx="100" cy="100" r="72" stroke="#9aabb0" stroke-dasharray="0 452.4" stroke-dashoffset="-407.2" data-dash="45.2 452.4" />
-            </g>
-            <text x="100" y="96" text-anchor="middle" font-size="13" fill="#5d7278">仮上限</text>
-            <text x="100" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#163038">¥6.09M</text>
-          </svg>
-          <div class="legend">
-            <div><i class="swatch" style="background:#d08a3a"></i><span>Google 一般 45%</span><b>¥2,740,676</b></div>
-            <div><i class="swatch" style="background:#3d7197"></i><span>Meta 既存 10%</span><b>¥609,039</b></div>
-            <div><i class="swatch" style="background:#c4544a"></i><span>Meta 大阪 15%</span><b>¥913,559</b></div>
-            <div><i class="swatch" style="background:#e0b15a"></i><span>Meta 次エリア 15%</span><b>¥913,559</b></div>
-            <div><i class="swatch" style="background:#0e8a78"></i><span>Google 指名 5%</span><b>¥304,520</b></div>
-            <div><i class="swatch" style="background:#9aabb0"></i><span>リザーブ 10%</span><b>¥609,039</b></div>
-          </div>
-        </div>
-        <div class="row watch-c" style="margin-top:16px"><div class="name">一般</div><div class="track-wrap"><div class="track"><i style="--w:45%"></i></div></div><div class="val">条件つき</div><div class="sub">9月末の増分は有効3件、CPA約117,000円で改善傾向。10万円未満には未達。検索語句の精査が条件。</div></div>
-        <div class="row bad-c"><div class="name">Meta</div><div class="track-wrap"><div class="track"><i style="--w:40%"></i></div></div><div class="val">40%</div><div class="sub">既存10%＋大阪15%＋次エリア15%。アポの最大供給源だがCPAは高い。地域テストは設定を正して小さく比べる。</div></div>
-        <div class="row good-c"><div class="name">指名</div><div class="track-wrap"><div class="track"><i style="--w:5%"></i></div></div><div class="val">5%</div><div class="sub">CPA 54,961円。5%を消化目標にはしない。余りはリザーブへ。</div></div>
-        <div class="row hold-c"><div class="name">停止</div><div class="track-wrap"><div class="track"><i style="--w:2%"></i></div></div><div class="val">0%</div><div class="sub">DemandGenとTikTokは0%。リザーブ10%は自動消化しない。</div></div>
-      </div>
-      <div class="grid-3" style="margin-top:14px">
-        <article class="card"><h3>日額の置き方</h3><p>30日換算で約203,013円／日。実際は「上限 − 10月既消化」を残日数で割る。開始週は大阪と次エリアを同額にし、土日祝は平日より約30%低くする。</p></article>
-        <article class="card"><h3>続ける条件</h3><p>各地域の有効5件以上を目安に、CPAとアポ化を比べる。差が続き、地域外の混入がなければ、勝ちエリアを20〜30%ずつ増やす。5件は統計的な保証ではない。</p></article>
-        <article class="card"><h3>止める条件</h3><p>地域外配信が見えたとき、計測が欠けたとき、有効0件のまま事前上限を超えたとき。大阪の過去CPAから見ると、各地域90万円前後でも5件に届くかは不確実。</p></article>
-      </div>
-      <div class="callout warn"><b>制作は広告費と混ぜない</b><p>基本案はAI動画 週4本（1訴求 × 冒頭2 × 地域2）。12週で48本、人時込み480,000円。クリエイターは4週あたり2本、12週で60,000円。制作の合計は540,000円。クレジット200／本は仮で、円建ての原価と二重に足さない。4訴求まで広げると母数が薄くなるので、基本案を先にやる。</p></div>
-    </div>
-  </section>
-
-  <section class="section" id="schedule">
-    <div class="wrap">
-      <div class="kicker">実行</div>
-      <h2>最初の1週間で、変数を一つに絞る。</h2>
-      <p class="lede">10月6〜12日は、配信を増やす週ではない。既消化、顧客の事実、地域の条件、設定の漏れを揃える週。AI動画4本／週は体制の基本案で、入稿日は合意のあと。</p>
-      <div class="week reveal">
-        <article class="day"><b>10/6 火</b><strong>数値と設定</strong><span>9月と10月既消化、配信地域を確認</span></article>
-        <article class="day"><b>10/7 水</b><strong>課題と運送</strong><span>受注・失注の聞き先と、使える証拠を整理</span></article>
-        <article class="day"><b>10/8 木</b><strong>エリア設計</strong><span>勤務・通勤と、大阪／兵庫例の条件</span></article>
-        <article class="day"><b>10/9 金</b><strong>定例</strong><span>課題、媒体、素材、LPを確認</span></article>
-        <article class="day"><b>10/10 土</b><strong>休日は抑える</strong><span>日額を落として同条件で見る</span></article>
-        <article class="day"><b>10/11 日</b><strong>配信内訳</strong><span>地域別の着地を確認</span></article>
-        <article class="day"><b>10/12 月</b><strong>初週レビュー</strong><span>翌週の入稿と予算を判断</span></article>
-      </div>
-      <div class="cards targets" style="margin-top:14px">
-        <article class="card"><div class="idx">10月 · 計測と仮説</div><strong>10万円未満</strong><p>案件の聞き取りを仮に4件。建設と運送の課題ブリーフを各1つ。13日に試作と入稿を判断し、20日に建設ブリーフ、27日に月次。</p></article>
-        <article class="card"><div class="idx">11月 · 再配分</div><strong>9万円未満</strong><p>2日に配信結果、9日に建設の試作、16日に出演日程、23日に次エリア、30日に月次。番組の回答を短尺かLPへ1件以上移せるかを見る。</p></article>
-        <article class="card"><div class="idx">12月 · 再現</div><strong>8万円未満</strong><p>7日に地域を再評価し、14日に横展開を判断。21日に翌月企画、28日に月次。受注までつながった案へ制作と媒体費を寄せる。</p></article>
-      </div>
-      <p class="micro">月次のCPAは目標案であり、達成予測ではない。6月91,494円と7月77,482円を参考に、予算と配信量を見ながら更新する。</p>
-
-      <div class="grid-2" style="margin-top:18px">
-        <div class="panel reveal">
-          <h3>制作の基本案</h3>
-          <div class="row"><div class="name">週</div><div class="track-wrap"><div class="track"><i style="--w:33%;--c:#0c7c68"></i></div></div><div class="val">4本</div><div class="sub">AI ¥40,000 · クレジット仮800</div></div>
-          <div class="row"><div class="name">4週</div><div class="track-wrap"><div class="track"><i style="--w:66%;--c:#3d7197"></i></div></div><div class="val">16本</div><div class="sub">AI ¥160,000 · クリエイター2本を含む月の目安</div></div>
-          <div class="row"><div class="name">12週</div><div class="track-wrap"><div class="track"><i style="--w:100%; --c:#102d36"></i></div></div><div class="val">¥540,000</div><div class="sub">AI 48本 ¥480,000 ＋ クリエイター ¥60,000。1本は生成2,000円＋1.6時間×5,000円。</div></div>
-          <p class="micro">人時単価と生成原価は役員資料の標準例。60秒パッケージの原価を短尺に当てているので、初回で実測し直す。10月の既消化が未入力のあいだ、残予算は確定値にしない。</p>
-        </div>
-        <div class="panel">
-          <h3>運用で揃えること</h3>
-          <ul>
-            <li>10月の既消化と、残日数の日額</li>
-            <li>媒体 × 地域 × 素材 × LP の日次</li>
-            <li>媒体CVと、営業の有効・アポの定義</li>
-            <li>地域外へ広げる設定の画面保存</li>
-            <li>受注・失注を訴求IDに紐づける</li>
-            <li>動画ID、業種、冒頭A/B、地域、LP、開始日</li>
-          </ul>
-          <p class="micro">周辺のイベント、紙、建設向けサイト、代理店、商工会は、掲載条件と費用が未確認なので、この配分には入れていない。予実は金山さん・森さんと照合する箱を別に持つ。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="sources">
-    <div class="wrap">
-      <div class="kicker">出典</div>
-      <h2>数字の出どころ。</h2>
-      <ul class="sources">
-        <li>打合せ資料「トレプロ様お打合せ資料_1002.pptx」2〜4枚目が月次・週次・媒体、5〜9枚目がLP・地域・素材。9月確定と10/1時点の途中値が混在するため、本文で期間を分けた。</li>
-        <li>エリアとLPは「エリア別_LP別.pptx」1枚目。エリアは9/25〜10/4、LP04/05は9/18〜10/4、LP01は9/25〜10/4。LPを媒体や地域に割ったクロス集計は添付にない。</li>
-        <li>AI動画の原価は、AI動画事業化の決裁参考。標準の生成原価2,000円／本、工数約96分、人時5,000円の例。クレジット200／本は資料にない仮置き。</li>
-        <li>配分45/40/5/10、週4本、クリエイター月2本、月次CPAの目標は計画上の提案値。月額上限は9月実績を仮に置いたもの。</li>
-        <li>市場は <a href="https://www.chusho.meti.go.jp/pamflet/hakusyo/2026/PDF/2026gaiyou.pdf">2026年版中小企業白書・概要</a>、<a href="https://www.meti.go.jp/report/whitepaper/mono/2026/index.html">2026年版ものづくり白書</a>、<a href="https://www.chusho.meti.go.jp/pamflet/hakusyo/2025/chusho/b2_1_4.html">2025年版・人材戦略</a>、<a href="https://www.mlit.go.jp/kankocho/topics06_00045.html">観光庁・人材共有</a>、<a href="https://www.maff.go.jp/j/tokei/kekka_gaiyou/noucen/040909/index.html">農水省・2025年農林業センサス</a>。</li>
-        <li>神姫バス、BRANU、ツクリンク、地方開拓、代理店・商工会・M&A・サブスクは提供情報。掲載条件、利用許諾、売上見込みは確認前。</li>
-      </ul>
-      <div class="callout warn"><b>確定前の値</b><p>10月既消化、Metaで実際に選べる地域設定、地域別の実配信、クレジット消費、クリエイター見積、LPのフォーム構造。ここが埋まったら、配分と依頼を更新する。</p></div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      <div>トレプロ｜新規リード獲得のアカウントプランニング。2026年10月6日の共有資料をもとに、第三者が読める形へ再構成。</div>
-      <div>有効CPA 10万円未満を、改善の目安にしている。</div>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      document.documentElement.classList.add("js");
-
-      document.querySelectorAll(".seg").forEach(function (seg) {
-        if (reduce) seg.setAttribute("stroke-dasharray", seg.getAttribute("data-dash"));
-      });
-
-      var reveals = document.querySelectorAll(".reveal");
-      function show(el) {
-        el.classList.add("in");
-        el.querySelectorAll(".seg").forEach(function (seg) {
-          seg.setAttribute("stroke-dasharray", seg.getAttribute("data-dash"));
-        });
-      }
-      if (reduce || !("IntersectionObserver" in window)) {
-        reveals.forEach(show);
-      } else {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            show(entry.target);
-            io.unobserve(entry.target);
-          });
-        }, { threshold: 0.18 });
-        reveals.forEach(function (el) { io.observe(el); });
-      }
-
-      document.querySelectorAll("[data-switch]").forEach(function (box) {
-        var buttons = box.querySelectorAll("[data-tab]");
-        buttons.forEach(function (btn) {
-          btn.addEventListener("click", function () {
-            buttons.forEach(function (b) {
-              var on = b === btn;
-              b.classList.toggle("is-on", on);
-              b.setAttribute("aria-selected", on ? "true" : "false");
-            });
-            box.querySelectorAll("[data-pane]").forEach(function (pane) {
-              var on = pane.getAttribute("data-pane") === btn.getAttribute("data-tab");
-              pane.classList.toggle("is-on", on);
-              if (on) pane.querySelectorAll(".track i").forEach(function (bar) {
-                bar.style.width = "0";
-                requestAnimationFrame(function () { bar.style.width = ""; });
-              });
-            });
-          });
-        });
-      });
-
-      var filterButtons = document.querySelectorAll("[data-filter]");
-      filterButtons.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var name = btn.getAttribute("data-filter");
-          filterButtons.forEach(function (b) { b.classList.toggle("is-on", b === btn); });
-          document.querySelectorAll("#scores .score").forEach(function (card) {
-            card.hidden = name !== "all" && card.getAttribute("data-tone") !== name;
-          });
-        });
-      });
-
-      var links = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
-      var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
-      function spy() {
-        var y = window.scrollY + 90;
-        var current = sections[0];
-        sections.forEach(function (sec) { if (sec.offsetTop <= y) current = sec; });
-        links.forEach(function (a) {
-          a.classList.toggle("is-on", current && a.getAttribute("href") === "#" + current.id);
-        });
-      }
-      spy();
-      document.addEventListener("scroll", spy, { passive: true });
-    })();
-  </script>
-</body>
-</html>
+</body></html>
